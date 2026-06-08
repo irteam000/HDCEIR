@@ -1,5 +1,5 @@
 """
-경쟁사 모니터링 자동화 MVP
+경쟁사 모니터링 자동화 MVP (코스피 트랙 + 건설기계 트랙)
 """
 
 from __future__ import annotations
@@ -41,6 +41,9 @@ class Config:
     news_language: str = "ko"
     news_country: str = "KR"
     report_title: str = "경쟁사 동향 데일리 브리핑"
+    # 코스피 트랙 설정
+    kospi_ticker: str = "^KS11"
+    kospi_keywords: list[str] = field(default_factory=lambda: ["코스피", "KOSPI"])
     smtp_host: str = field(default_factory=lambda: os.getenv("SMTP_HOST", ""))
     smtp_port: int = field(default_factory=lambda: int(os.getenv("SMTP_PORT", "587")))
     smtp_user: str = field(default_factory=lambda: os.getenv("SMTP_USER", ""))
@@ -63,6 +66,7 @@ def load_config(path: str) -> Config:
         )
         for c in raw["competitors"]
     ]
+    kospi = raw.get("kospi", {})
     return Config(
         company_name=raw["company_name"],
         competitors=competitors,
@@ -71,6 +75,8 @@ def load_config(path: str) -> Config:
         news_language=raw.get("news_language", "ko"),
         news_country=raw.get("news_country", "KR"),
         report_title=raw.get("report_title", "경쟁사 동향 데일리 브리핑"),
+        kospi_ticker=kospi.get("ticker", "^KS11"),
+        kospi_keywords=kospi.get("keywords", ["코스피", "KOSPI"]),
         mail_to=raw.get("mail_to", []),
     )
 
@@ -92,19 +98,13 @@ class StockSnapshot:
     error: str = ""
 
 
-def fetch_news(comp: Competitor, cfg: Config) -> list[NewsItem]:
-    lang = comp.lang or cfg.news_language
-    country = comp.country or cfg.news_country
-    query = " OR ".join(f'"{k}"' for k in comp.keywords)
-    params = {
-        "q": query,
-        "hl": lang,
-        "gl": country,
-        "ceid": f"{country}:{lang}",
-    }
+def _fetch_news_by_keywords(keywords: list[str], lang: str, country: str,
+                            lookback_hours: int, max_items: int) -> list[NewsItem]:
+    query = " OR ".join(f'"{k}"' for k in keywords)
+    params = {"q": query, "hl": lang, "gl": country, "ceid": f"{country}:{lang}"}
     url = "https://news.google.com/rss/search?" + urllib.parse.urlencode(params)
     feed = feedparser.parse(url)
-    cutoff = dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=cfg.news_lookback_hours)
+    cutoff = dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=lookback_hours)
     items: list[NewsItem] = []
     for entry in feed.entries:
         published = None
@@ -116,20 +116,33 @@ def fetch_news(comp: Competitor, cfg: Config) -> list[NewsItem]:
         if getattr(entry, "source", None):
             source = entry.source.get("title", "")
         items.append(NewsItem(title=entry.title, link=entry.link, published=published, source=source))
-        if len(items) >= cfg.max_news_per_competitor:
+        if len(items) >= max_items:
             break
     return items
 
 
-def fetch_stock(comp: Competitor) -> Optional[StockSnapshot]:
-    if not comp.ticker:
+def fetch_news(comp: Competitor, cfg: Config) -> list[NewsItem]:
+    lang = comp.lang or cfg.news_language
+    country = comp.country or cfg.news_country
+    return _fetch_news_by_keywords(comp.keywords, lang, country,
+                                   cfg.news_lookback_hours, cfg.max_news_per_competitor)
+
+
+def fetch_kospi_news(cfg: Config) -> list[NewsItem]:
+    # 코스피 관련 뉴스는 한국어로 더 많이 모이도록 넉넉히 수집
+    return _fetch_news_by_keywords(cfg.kospi_keywords, "ko", "KR",
+                                   cfg.news_lookback_hours, max(cfg.max_news_per_competitor, 6))
+
+
+def fetch_stock_by_ticker(ticker: str) -> Optional[StockSnapshot]:
+    if not ticker:
         return None
-    snap = StockSnapshot(ticker=comp.ticker)
+    snap = StockSnapshot(ticker=ticker)
     if yf is None:
         snap.error = "yfinance 미설치"
         return snap
     try:
-        hist = yf.Ticker(comp.ticker).history(period="1mo")
+        hist = yf.Ticker(ticker).history(period="1mo")
         if hist is not None and not hist.empty:
             hist = hist.dropna(subset=["Close"])
         if hist is None or hist.empty:
@@ -142,12 +155,16 @@ def fetch_stock(comp: Competitor) -> Optional[StockSnapshot]:
             if prev:
                 snap.change_pct = round((last - prev) / prev * 100, 2)
         try:
-            snap.currency = yf.Ticker(comp.ticker).fast_info.get("currency", "") or ""
+            snap.currency = yf.Ticker(ticker).fast_info.get("currency", "") or ""
         except Exception:
             snap.currency = ""
     except Exception as e:
         snap.error = str(e)[:120]
     return snap
+
+
+def fetch_stock(comp: Competitor) -> Optional[StockSnapshot]:
+    return fetch_stock_by_ticker(comp.ticker)
 
 
 @dataclass
@@ -166,48 +183,44 @@ def collect_all(cfg: Config) -> list[CompetitorData]:
 
 
 SUMMARY_SYSTEM_PROMPT = """\
-당신은 기업 IR팀의 경쟁사 분석 애널리스트입니다.
-수집된 경쟁사 뉴스 제목과 주가 정보를 바탕으로, 자사 IR 담당자가
-아침에 1분 안에 읽을 수 있는 간결한 동향 브리핑을 작성하세요.
+당신은 기업 IR팀의 시장·경쟁사 분석 애널리스트입니다.
+수집된 뉴스 제목을 바탕으로, IR 담당자가 1분 안에 읽을 수 있는 간결한 동향 브리핑을 작성하세요.
 
 규칙:
 - 추측하지 말고 제공된 정보에 근거해서만 작성합니다. 정보가 부족하면 "특이사항 없음"으로 표기합니다.
 - 과장된 전망이나 투자 권유성 표현은 쓰지 않습니다.
-- 단순 주가 등락(예: "주가 +1.3%")만 다루는 항목은 highlights에 넣지 마세요. 주가는 별도 화면에 이미 표시됩니다. 실적·공시·사업 등 실제 뉴스성 이슈만 담습니다.
+- 단순 주가/지수 등락 수치만 다루는 항목은 highlights에 넣지 마세요. 수치는 별도 화면에 이미 표시됩니다.
 - 출력은 아래 JSON 형식만 반환합니다. 다른 텍스트나 마크다운 코드펜스를 넣지 마세요.
 
 {
   "tldr": ["핵심 한 줄 요약 1", "핵심 한 줄 요약 2", "핵심 한 줄 요약 3"],
   "highlights": [
-    {"competitor": "회사명", "category": "실적|공시|뉴스", "headline": "한 줄 제목", "detail": "2~3문장 상세"}
+    {"competitor": "주제", "category": "실적|공시|뉴스|시장", "headline": "한 줄 제목", "detail": "2~3문장 상세"}
   ]
 }
 """
 
 
-def build_summary_user_prompt(cfg: Config, data: list[CompetitorData]) -> str:
-    lines = [f"자사: {cfg.company_name}", "수집된 경쟁사 정보:\n"]
-    for d in data:
-        lines.append(f"### {d.comp.name} ({d.comp.region})")
-        if d.stock and d.stock.price is not None:
-            chg = f"{d.stock.change_pct:+.2f}%" if d.stock.change_pct is not None else "N/A"
-            lines.append(f"- 주가: {d.stock.price} {d.stock.currency} (전일 대비 {chg})")
-        if d.news:
-            lines.append("- 뉴스 제목:")
-            for n in d.news:
+def build_summary_user_prompt(title: str, blocks: list[tuple[str, list[NewsItem]]]) -> str:
+    lines = [f"분석 대상: {title}", "수집된 뉴스:\n"]
+    for name, news in blocks:
+        lines.append(f"### {name}")
+        if news:
+            for n in news:
                 lines.append(f"  · {n.title}")
         else:
-            lines.append("- 뉴스: 수집된 항목 없음")
+            lines.append("  (수집된 뉴스 없음)")
         lines.append("")
     return "\n".join(lines)
 
 
-def summarize_with_claude(cfg: Config, data: list[CompetitorData]) -> dict:
+def _summarize(title: str, blocks: list[tuple[str, list[NewsItem]]]) -> dict:
     import json
     api_key = os.getenv("ANTHROPIC_API_KEY")
+    fallback = _fallback_summary(blocks)
     if not api_key:
-        print("  ! ANTHROPIC_API_KEY 없음 — 폴백 요약 사용", file=sys.stderr)
-        return _fallback_summary(data)
+        print(f"  ! ANTHROPIC_API_KEY 없음 — {title} 폴백 요약 사용", file=sys.stderr)
+        return fallback
     try:
         from anthropic import Anthropic
         client = Anthropic(api_key=api_key)
@@ -215,28 +228,37 @@ def summarize_with_claude(cfg: Config, data: list[CompetitorData]) -> dict:
             model="claude-sonnet-4-5",
             max_tokens=1500,
             system=SUMMARY_SYSTEM_PROMPT,
-            messages=[{"role": "user", "content": build_summary_user_prompt(cfg, data)}],
+            messages=[{"role": "user", "content": build_summary_user_prompt(title, blocks)}],
         )
         text = "".join(b.text for b in msg.content if b.type == "text")
         text = text.strip().removeprefix("```json").removeprefix("```").removesuffix("```").strip()
         return json.loads(text)
     except Exception as e:
-        print(f"  ! LLM 요약 실패 ({e}) — 폴백 사용", file=sys.stderr)
-        return _fallback_summary(data)
+        print(f"  ! {title} LLM 요약 실패 ({e}) — 폴백 사용", file=sys.stderr)
+        return fallback
 
 
-def _fallback_summary(data: list[CompetitorData]) -> dict:
+def _fallback_summary(blocks: list[tuple[str, list[NewsItem]]]) -> dict:
     highlights = []
-    for d in data:
-        for n in d.news[:3]:
+    for name, news in blocks:
+        for n in news[:3]:
             highlights.append({
-                "competitor": d.comp.name,
+                "competitor": name,
                 "category": "뉴스",
                 "headline": n.title,
                 "detail": f"출처: {n.source or '미상'}.",
             })
-    tldr = [h["headline"] for h in highlights[:3]] or ["지난 기간 특이사항 없음"]
+    tldr = [h["headline"] for h in highlights[:3]] or ["특이사항 없음"]
     return {"tldr": tldr, "highlights": highlights}
+
+
+def summarize_competitors(cfg: Config, data: list[CompetitorData]) -> dict:
+    blocks = [(d.comp.name, d.news) for d in data]
+    return _summarize("건설기계 경쟁사", blocks)
+
+
+def summarize_kospi(cfg: Config, kospi_news: list[NewsItem]) -> dict:
+    return _summarize("코스피 시장", [("코스피", kospi_news)])
 
 
 CATEGORY_COLORS = {
@@ -244,19 +266,73 @@ CATEGORY_COLORS = {
     "공시": ("#E6F1FB", "#185FA5"),
     "리포트": ("#FAEEDA", "#854F0B"),
     "뉴스": ("#F1EFE8", "#5F5E5A"),
-    "주가": ("#E1F5EE", "#0F6E56"),
+    "시장": ("#EDE9FB", "#4A3F9E"),
 }
 
 
-def render_html(cfg: Config, data: list[CompetitorData], summary: dict) -> str:
+def _esc(s: str) -> str:
+    return (s or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def _render_highlights(summary: dict) -> str:
+    out = ""
+    for h in summary.get("highlights", []):
+        cat = h.get("category", "뉴스")
+        bg, fg = CATEGORY_COLORS.get(cat, CATEGORY_COLORS["뉴스"])
+        out += f"""
+        <div style="margin-bottom:14px;">
+          <div style="margin-bottom:4px;">
+            <span style="font-size:11px;background:{bg};color:{fg};padding:2px 8px;border-radius:8px;">{_esc(cat)}</span>
+            <span style="font-size:14px;font-weight:500;margin-left:6px;">{_esc(h.get('headline',''))}</span>
+          </div>
+          <p style="font-size:13px;color:#5F5E5A;line-height:1.6;margin:0;">{_esc(h.get('detail',''))}</p>
+        </div>"""
+    return out or '<p style="font-size:13px;color:#999;">특이사항 없음</p>'
+
+
+def _render_link(n: NewsItem) -> str:
+    date_txt = ""
+    if n.published is not None:
+        kst = n.published + dt.timedelta(hours=9)
+        date_txt = f'<span style="color:#999;"> · {kst:%Y-%m-%d}</span>'
+    return (
+        f'<li><a href="{_esc(n.link)}" style="color:#185FA5;text-decoration:none;">{_esc(n.title)}</a>'
+        f' <span style="color:#999;">— {_esc(n.source)}</span>{date_txt}</li>'
+    )
+
+
+def _render_source_links(blocks: list[tuple[str, list[NewsItem]]]) -> str:
+    out = ""
+    for name, news in blocks:
+        if not news:
+            continue
+        news_sorted = sorted(news, key=lambda n: n.published or dt.datetime.min.replace(tzinfo=dt.timezone.utc), reverse=True)
+        links = "".join(_render_link(n) for n in news_sorted)
+        out += f'<p style="font-size:13px;font-weight:500;margin:10px 0 4px;">{_esc(name)}</p><ul style="margin:0 0 8px;padding-left:18px;font-size:12px;line-height:1.6;">{links}</ul>'
+    return out or '<p style="font-size:12px;color:#999;">수집된 뉴스 없음</p>'
+
+
+def render_html(cfg: Config, data: list[CompetitorData],
+                comp_summary: dict, kospi_summary: dict,
+                kospi_snap: Optional[StockSnapshot], kospi_news: list[NewsItem]) -> str:
     now = dt.datetime.now(dt.timezone.utc) + dt.timedelta(hours=9)
-    total_news = sum(len(d.news) for d in data)
+    total_news = sum(len(d.news) for d in data) + len(kospi_news)
 
-    def esc(s: str) -> str:
-        return (s or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    # 코스피 지수 카드 (보라색 강조)
+    kospi_card = ""
+    if kospi_snap and kospi_snap.price is not None:
+        chg = kospi_snap.change_pct
+        color = "#C0392B" if (chg or 0) >= 0 else "#1B6CC4"
+        arrow = "▲" if (chg or 0) >= 0 else "▼"
+        chg_txt = f"{arrow} {abs(chg):.2f}%" if chg is not None else "—"
+        kospi_card = f"""
+        <div style="background:#EDE9FB;border:1px solid #C9BEF2;border-radius:8px;padding:12px;">
+          <p style="font-size:12px;color:#4A3F9E;margin:0;font-weight:600;">📊 코스피 (KOSPI)</p>
+          <p style="font-size:18px;font-weight:500;margin:2px 0;">{kospi_snap.price:,.2f}</p>
+          <p style="font-size:12px;color:{color};margin:0;">{chg_txt}</p>
+        </div>"""
 
-    tldr_items = "".join(f"<li>{esc(t)}</li>" for t in summary.get("tldr", []))
-
+    # 건설기계 기업 카드들
     stock_cards = ""
     for d in data:
         if not (d.stock and d.stock.price is not None):
@@ -267,79 +343,83 @@ def render_html(cfg: Config, data: list[CompetitorData], summary: dict) -> str:
         chg_txt = f"{arrow} {abs(chg):.2f}%" if chg is not None else "—"
         stock_cards += f"""
         <div style="background:#F7F6F2;border-radius:8px;padding:12px;">
-          <p style="font-size:12px;color:#5F5E5A;margin:0;">{esc(d.comp.name)}</p>
-          <p style="font-size:18px;font-weight:500;margin:2px 0;">{d.stock.price:,} <span style="font-size:12px;color:#888;">{esc(d.stock.currency)}</span></p>
+          <p style="font-size:12px;color:#5F5E5A;margin:0;">{_esc(d.comp.name)}</p>
+          <p style="font-size:18px;font-weight:500;margin:2px 0;">{d.stock.price:,} <span style="font-size:12px;color:#888;">{_esc(d.stock.currency)}</span></p>
           <p style="font-size:12px;color:{color};margin:0;">{chg_txt}</p>
         </div>"""
 
-    highlight_blocks = ""
-    for h in summary.get("highlights", []):
-        cat = h.get("category", "뉴스")
-        bg, fg = CATEGORY_COLORS.get(cat, CATEGORY_COLORS["뉴스"])
-        highlight_blocks += f"""
-        <div style="margin-bottom:14px;">
-          <div style="margin-bottom:4px;">
-            <span style="font-size:11px;background:{bg};color:{fg};padding:2px 8px;border-radius:8px;">{esc(cat)}</span>
-            <span style="font-size:14px;font-weight:500;margin-left:6px;">{esc(h.get('headline',''))}</span>
-          </div>
-          <p style="font-size:13px;color:#5F5E5A;line-height:1.6;margin:0;">{esc(h.get('detail',''))}</p>
-        </div>"""
-
-    source_links = ""
-
-    def render_link(n) -> str:
-        date_txt = ""
-        if n.published is not None:
-            kst = n.published + dt.timedelta(hours=9)
-            date_txt = f'<span style="color:#999;"> · {kst:%Y-%m-%d}</span>'
-        return (
-            f'<li><a href="{esc(n.link)}" style="color:#185FA5;text-decoration:none;">{esc(n.title)}</a>'
-            f' <span style="color:#999;">— {esc(n.source)}</span>{date_txt}</li>'
-        )
-
-    for d in data:
-        if not d.news:
-            continue
-        news_sorted = sorted(
-            d.news,
-            key=lambda n: n.published or dt.datetime.min.replace(tzinfo=dt.timezone.utc),
-            reverse=True,
-        )
-        links = "".join(render_link(n) for n in news_sorted)
-        source_links += f'<p style="font-size:13px;font-weight:500;margin:10px 0 4px;">{esc(d.comp.name)}</p><ul style="margin:0 0 8px;padding-left:18px;font-size:12px;line-height:1.6;">{links}</ul>'
+    comp_blocks = [(d.comp.name, d.news) for d in data]
 
     return f"""<!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <meta http-equiv="refresh" content="600">
-<title>{esc(cfg.report_title)}</title></head>
+<title>{_esc(cfg.report_title)}</title>
+<style>
+  .tab-btn {{ flex:1; padding:10px; border:none; background:#EFEDE7; cursor:pointer; font-size:14px; font-weight:500; color:#666; border-radius:8px 8px 0 0; }}
+  .tab-btn.active {{ background:#fff; color:#1a1a1a; }}
+  .tab-panel {{ display:none; }}
+  .tab-panel.active {{ display:block; }}
+</style>
+</head>
 <body style="margin:0;background:#EFEDE7;font-family:-apple-system,'Segoe UI',sans-serif;color:#1a1a1a;">
 <div style="max-width:680px;margin:0 auto;padding:20px;">
   <div style="background:#fff;border-radius:12px;border:1px solid #e3e1d9;overflow:hidden;">
     <div style="padding:20px 24px;border-bottom:1px solid #eee;">
       <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center;">
-        <span style="font-size:18px;font-weight:600;">📡 {esc(cfg.report_title)}</span>
+        <span style="font-size:18px;font-weight:600;">📡 {_esc(cfg.report_title)}</span>
         <span style="font-size:13px;color:#777;">갱신 {now:%Y년 %m월 %d일} {now:%H:%M} KST</span>
       </div>
-      <p style="font-size:13px;color:#999;margin:8px 0 0;">모니터링 대상 {len(cfg.competitors)}개사 · 지난 {cfg.news_lookback_hours}시간 · 뉴스 {total_news}건 수집</p>
+      <p style="font-size:13px;color:#999;margin:8px 0 0;">건설기계 {len(cfg.competitors)}개사 + 코스피 · 지난 {cfg.news_lookback_hours}시간 · 뉴스 {total_news}건 수집</p>
     </div>
+
+    <!-- 코스피 핵심 -->
     <div style="padding:20px 24px;border-bottom:1px solid #eee;">
-      <p style="font-size:13px;font-weight:600;color:#666;margin:0 0 10px;">오늘의 핵심 (TL;DR)</p>
-      <ul style="margin:0;padding-left:18px;font-size:14px;line-height:1.7;">{tldr_items}</ul>
+      <p style="font-size:13px;font-weight:600;color:#4A3F9E;margin:0 0 10px;">코스피 핵심 (TL;DR)</p>
+      <ul style="margin:0;padding-left:18px;font-size:14px;line-height:1.7;">{''.join(f'<li>{_esc(t)}</li>' for t in kospi_summary.get('tldr', []))}</ul>
     </div>
-    {'<div style="padding:20px 24px;border-bottom:1px solid #eee;"><p style="font-size:13px;font-weight:600;color:#666;margin:0 0 12px;">주가 스냅샷</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;">' + stock_cards + '</div></div>' if stock_cards else ''}
+
+    <!-- 주가 스냅샷 -->
     <div style="padding:20px 24px;border-bottom:1px solid #eee;">
-      <p style="font-size:13px;font-weight:600;color:#666;margin:0 0 12px;">주요 이슈 상세</p>
-      {highlight_blocks or '<p style="font-size:13px;color:#999;">특이사항 없음</p>'}
+      <p style="font-size:13px;font-weight:600;color:#666;margin:0 0 12px;">주가 스냅샷</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;">
+        {kospi_card}
+        {stock_cards}
+      </div>
     </div>
+
+    <!-- 주요 이슈 상세: 탭 -->
     <div style="padding:20px 24px;">
-      <p style="font-size:13px;font-weight:600;color:#666;margin:0 0 4px;">출처 링크</p>
-      {source_links or '<p style="font-size:12px;color:#999;">수집된 뉴스 없음</p>'}
+      <div style="display:flex;gap:4px;margin-bottom:16px;">
+        <button class="tab-btn active" onclick="showTab('tab-comp')">건설기계 주요이슈</button>
+        <button class="tab-btn" onclick="showTab('tab-kospi')">코스피 주요이슈</button>
+      </div>
+
+      <div id="tab-comp" class="tab-panel active">
+        {_render_highlights(comp_summary)}
+        <p style="font-size:13px;font-weight:600;color:#666;margin:18px 0 4px;border-top:1px solid #eee;padding-top:14px;">출처 링크</p>
+        {_render_source_links(comp_blocks)}
+      </div>
+
+      <div id="tab-kospi" class="tab-panel">
+        {_render_highlights(kospi_summary)}
+        <p style="font-size:13px;font-weight:600;color:#666;margin:18px 0 4px;border-top:1px solid #eee;padding-top:14px;">출처 링크</p>
+        {_render_source_links([("코스피", kospi_news)])}
+      </div>
     </div>
   </div>
   <p style="font-size:11px;color:#999;text-align:center;margin:12px 0 0;">자동 생성 리포트 · 요약은 AI가 생성하므로 원문 확인 권장 · 2시간마다 자동 갱신</p>
-</div></body></html>"""
+</div>
+<script>
+function showTab(id) {{
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}}
+</script>
+</body></html>"""
 
 
 def send_email(cfg: Config, html: str) -> None:
@@ -370,24 +450,32 @@ def main() -> None:
     args = parser.parse_args()
 
     cfg = load_config(args.config)
-    print(f"[1/4] 설정 로드 완료 — 대상 {len(cfg.competitors)}개사", file=sys.stderr)
+    print(f"[1/4] 설정 로드 완료 — 건설기계 {len(cfg.competitors)}개사 + 코스피", file=sys.stderr)
+
     print("[2/4] 데이터 수집 중...", file=sys.stderr)
     data = collect_all(cfg)
+    print("  - 코스피 지수·뉴스 수집 중...", file=sys.stderr)
+    kospi_snap = fetch_stock_by_ticker(cfg.kospi_ticker)
+    kospi_news = fetch_kospi_news(cfg)
 
     if args.dry_run:
-        print("\n=== DRY RUN 수집 결과 ===")
+        print("\n=== DRY RUN ===")
+        if kospi_snap:
+            print(f"[코스피] {kospi_snap.price} ({kospi_snap.change_pct})")
+        for n in kospi_news[:5]:
+            print(f"  · {n.title}")
         for d in data:
-            print(f"\n[{d.comp.name}]")
-            if d.stock:
-                print(f"  주가: {d.stock.price} {d.stock.currency} ({d.stock.change_pct})")
+            print(f"\n[{d.comp.name}] 주가={d.stock.price if d.stock else None}")
             for n in d.news:
                 print(f"  · {n.title}")
         return
 
     print("[3/4] LLM 요약 생성 중...", file=sys.stderr)
-    summary = summarize_with_claude(cfg, data)
+    comp_summary = summarize_competitors(cfg, data)
+    kospi_summary = summarize_kospi(cfg, kospi_news)
+
     print("[4/4] 리포트 렌더링...", file=sys.stderr)
-    html = render_html(cfg, data, summary)
+    html = render_html(cfg, data, comp_summary, kospi_summary, kospi_snap, kospi_news)
     with open(args.out, "w", encoding="utf-8") as f:
         f.write(html)
     print(f"  저장 완료 → {args.out}", file=sys.stderr)
