@@ -96,6 +96,8 @@ class StockSnapshot:
     change_pct: Optional[float] = None
     currency: str = ""
     market_cap: Optional[float] = None
+    history: list[float] = field(default_factory=list)   # 최근 1개월 종가 (미니 차트용)
+    ytd_pct: Optional[float] = None                       # 연초 대비 수익률 (비교 그래프용)
     error: str = ""
 
 
@@ -182,6 +184,57 @@ def format_krw_jo(value_krw: Optional[float]) -> str:
     return f"{eok:,.0f}억"
 
 
+def render_sparkline(values: list[float], up: bool, width: int = 110, height: int = 32) -> str:
+    """종가 리스트를 작은 SVG 라인 차트(스파크라인)로. 색은 등락 방향에 따라."""
+    if not values or len(values) < 2:
+        return ""
+    lo, hi = min(values), max(values)
+    span = (hi - lo) or 1.0
+    n = len(values)
+    pts = []
+    for i, v in enumerate(values):
+        x = i / (n - 1) * (width - 4) + 2
+        y = height - 2 - (v - lo) / span * (height - 4)
+        pts.append(f"{x:.1f},{y:.1f}")
+    color = "#C0392B" if up else "#1B6CC4"
+    points = " ".join(pts)
+    return (
+        f'<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" '
+        f'style="display:block;margin-top:6px;">'
+        f'<polyline points="{points}" fill="none" stroke="{color}" stroke-width="1.5" '
+        f'stroke-linejoin="round" stroke-linecap="round"/></svg>'
+    )
+
+
+def render_comparison_chart(rows: list[tuple[str, float]]) -> str:
+    """(회사명, 연초대비%) 목록을 가로 막대 비교 그래프(SVG)로."""
+    if not rows:
+        return '<p style="font-size:13px;color:#999;">비교할 데이터가 없습니다.</p>'
+    rows = sorted(rows, key=lambda r: r[1], reverse=True)
+    max_abs = max((abs(v) for _, v in rows), default=1.0) or 1.0
+    row_h, label_w, bar_max, gap = 28, 120, 180, 6
+    mid_x = label_w + bar_max + 20  # 0 기준선 위치
+    width = mid_x + bar_max + 60
+    height = len(rows) * (row_h + gap) + 20
+    parts = [f'<svg width="100%" viewBox="0 0 {width} {height}" style="max-width:100%;">']
+    parts.append(f'<line x1="{mid_x}" y1="10" x2="{mid_x}" y2="{height-10}" stroke="#ddd" stroke-width="1"/>')
+    for i, (name, pct) in enumerate(rows):
+        y = 10 + i * (row_h + gap)
+        cy = y + row_h / 2
+        bar_len = abs(pct) / max_abs * bar_max
+        up = pct >= 0
+        color = "#C0392B" if up else "#1B6CC4"
+        bx = mid_x if up else mid_x - bar_len
+        parts.append(f'<text x="{label_w}" y="{cy+4:.0f}" text-anchor="end" font-size="12" fill="#444">{_esc(name)}</text>')
+        parts.append(f'<rect x="{bx:.0f}" y="{y}" width="{bar_len:.0f}" height="{row_h}" rx="3" fill="{color}" opacity="0.85"/>')
+        sign = "+" if up else ""
+        tx = mid_x + bar_len + 6 if up else mid_x - bar_len - 6
+        anchor = "start" if up else "end"
+        parts.append(f'<text x="{tx:.0f}" y="{cy+4:.0f}" text-anchor="{anchor}" font-size="12" fill="{color}" font-weight="500">{sign}{pct:.1f}%</text>')
+    parts.append('</svg>')
+    return "".join(parts)
+
+
 def fetch_stock_by_ticker(ticker: str) -> Optional[StockSnapshot]:
     if not ticker:
         return None
@@ -202,6 +255,19 @@ def fetch_stock_by_ticker(ticker: str) -> Optional[StockSnapshot]:
             prev = float(hist["Close"].iloc[-2])
             if prev:
                 snap.change_pct = round((last - prev) / prev * 100, 2)
+        # 미니 차트용: 최근 1개월 종가 흐름 저장
+        snap.history = [float(x) for x in hist["Close"].tolist()]
+        # 연초 대비 수익률(YTD): 올해 첫 거래일 종가 대비
+        try:
+            ytd = yf.Ticker(ticker).history(period="ytd")
+            if ytd is not None and not ytd.empty:
+                ytd = ytd.dropna(subset=["Close"])
+                if not ytd.empty:
+                    first = float(ytd["Close"].iloc[0])
+                    if first:
+                        snap.ytd_pct = round((last - first) / first * 100, 2)
+        except Exception:
+            pass
         tk = yf.Ticker(ticker)
         # 통화 + 시총 수집: 여러 경로를 순서대로 시도
         try:
@@ -239,6 +305,102 @@ def fetch_stock_by_ticker(ticker: str) -> Optional[StockSnapshot]:
 
 def fetch_stock(comp: Competitor) -> Optional[StockSnapshot]:
     return fetch_stock_by_ticker(comp.ticker)
+
+
+# ---------------------------------------------------------------------------
+# DART 공시 수집
+# ---------------------------------------------------------------------------
+
+@dataclass
+class Disclosure:
+    corp_name: str
+    report_nm: str
+    rcept_dt: str       # 접수일자 YYYYMMDD
+    url: str
+
+
+_DART_CORP_MAP: Optional[dict[str, str]] = None  # 종목코드(6자리) → corp_code(8자리)
+
+
+def _load_dart_corp_map(api_key: str) -> dict[str, str]:
+    """DART 전체 기업 고유번호 목록을 받아 종목코드→corp_code 매핑 생성 (1회)."""
+    global _DART_CORP_MAP
+    if _DART_CORP_MAP is not None:
+        return _DART_CORP_MAP
+    mapping: dict[str, str] = {}
+    try:
+        import io
+        import zipfile
+        import xml.etree.ElementTree as ET
+        url = "https://opendart.fss.or.kr/api/corpCode.xml"
+        resp = requests.get(url, params={"crtfc_key": api_key}, timeout=30)
+        with zipfile.ZipFile(io.BytesIO(resp.content)) as z:
+            with z.open(z.namelist()[0]) as f:
+                tree = ET.parse(f)
+        for item in tree.getroot().findall("list"):
+            stock = (item.findtext("stock_code") or "").strip()
+            corp = (item.findtext("corp_code") or "").strip()
+            if stock and corp:
+                mapping[stock] = corp
+    except Exception as e:
+        print(f"  ! DART 기업코드 목록 로드 실패: {e}", file=sys.stderr)
+    _DART_CORP_MAP = mapping
+    return mapping
+
+
+def fetch_disclosures(comp: Competitor, cfg: Config, api_key: str) -> list[Disclosure]:
+    """국내 상장사(.KS/.KQ)의 최근 공시를 DART에서 조회."""
+    if not comp.ticker.endswith((".KS", ".KQ")):
+        return []  # 해외 종목은 DART 대상 아님
+    stock_code = comp.ticker.split(".")[0]
+    corp_map = _load_dart_corp_map(api_key)
+    corp_code = corp_map.get(stock_code)
+    if not corp_code:
+        return []
+    end = dt.datetime.now()
+    bgn = end - dt.timedelta(hours=cfg.news_lookback_hours)
+    try:
+        resp = requests.get(
+            "https://opendart.fss.or.kr/api/list.json",
+            params={
+                "crtfc_key": api_key,
+                "corp_code": corp_code,
+                "bgn_de": bgn.strftime("%Y%m%d"),
+                "end_de": end.strftime("%Y%m%d"),
+                "page_count": 20,
+            },
+            timeout=20,
+        )
+        data = resp.json()
+        if data.get("status") != "000":
+            return []
+        out = []
+        for it in data.get("list", []):
+            rcept_no = it.get("rcept_no", "")
+            out.append(Disclosure(
+                corp_name=it.get("corp_name", comp.name),
+                report_nm=it.get("report_nm", ""),
+                rcept_dt=it.get("rcept_dt", ""),
+                url=f"https://dart.fss.or.kr/dsaf001/main.do?rcpNo={rcept_no}",
+            ))
+        return out
+    except Exception as e:
+        print(f"  ! {comp.name} 공시 조회 실패: {e}", file=sys.stderr)
+        return []
+
+
+def collect_disclosures(cfg: Config, data: list[CompetitorData]) -> list[Disclosure]:
+    api_key = os.getenv("DART_API_KEY")
+    if not api_key:
+        print("  ! DART_API_KEY 없음 — 공시 수집 생략", file=sys.stderr)
+        return []
+    all_disc: list[Disclosure] = []
+    for d in data:
+        all_disc.extend(fetch_disclosures(d.comp, cfg, api_key))
+    # 최신순 정렬
+    all_disc.sort(key=lambda x: x.rcept_dt, reverse=True)
+    return all_disc
+
 
 
 @dataclass
@@ -386,9 +548,29 @@ def _render_source_links(blocks: list[tuple[str, list[NewsItem]]]) -> str:
     return out or '<p style="font-size:12px;color:#999;">수집된 뉴스 없음</p>'
 
 
+def _render_disclosures(disclosures: Optional[list]) -> str:
+    if disclosures is None:
+        return '<p style="font-size:13px;color:#999;">DART_API_KEY가 설정되지 않아 공시를 수집하지 않았습니다.</p>'
+    if not disclosures:
+        return '<p style="font-size:13px;color:#999;">해당 기간 내 신규 공시가 없습니다.</p>'
+    rows = ""
+    for d in disclosures:
+        dt_txt = ""
+        if d.rcept_dt and len(d.rcept_dt) == 8:
+            dt_txt = f"{d.rcept_dt[:4]}-{d.rcept_dt[4:6]}-{d.rcept_dt[6:]}"
+        rows += (
+            f'<li style="margin-bottom:8px;">'
+            f'<span style="font-size:11px;background:#E6F1FB;color:#185FA5;padding:2px 8px;border-radius:8px;">{_esc(d.corp_name)}</span> '
+            f'<a href="{_esc(d.url)}" style="font-size:13px;color:#185FA5;text-decoration:none;">{_esc(d.report_nm)}</a>'
+            f' <span style="color:#999;font-size:12px;">· {dt_txt}</span></li>'
+        )
+    return f'<ul style="margin:0;padding-left:18px;line-height:1.6;">{rows}</ul>'
+
+
 def render_html(cfg: Config, data: list[CompetitorData],
                 comp_summary: dict, kospi_summary: dict,
-                kospi_snap: Optional[StockSnapshot], kospi_news: list[NewsItem]) -> str:
+                kospi_snap: Optional[StockSnapshot], kospi_news: list[NewsItem],
+                disclosures: Optional[list] = None) -> str:
     now = dt.datetime.now(dt.timezone.utc) + dt.timedelta(hours=9)
     total_news = sum(len(d.news) for d in data) + len(kospi_news)
 
@@ -429,6 +611,15 @@ def render_html(cfg: Config, data: list[CompetitorData],
           <p style="font-size:12px;color:{color};margin:0;">{chg_txt}</p>
           {mc_line}
         </div>"""
+
+    # 연초 대비 비교 그래프 데이터 (코스피 + 기업들)
+    comp_rows = []
+    if kospi_snap and kospi_snap.ytd_pct is not None:
+        comp_rows.append(("코스피", kospi_snap.ytd_pct))
+    for d in ordered:
+        if d.stock and d.stock.ytd_pct is not None:
+            comp_rows.append((d.comp.name, d.stock.ytd_pct))
+    comparison_chart = render_comparison_chart(comp_rows)
 
     comp_blocks = [(d.comp.name, d.news) for d in data]
 
@@ -473,9 +664,11 @@ def render_html(cfg: Config, data: list[CompetitorData],
 
     <!-- 주요 이슈 상세: 탭 -->
     <div style="padding:20px 24px;">
-      <div style="display:flex;gap:4px;margin-bottom:16px;">
+      <div style="display:flex;gap:4px;margin-bottom:16px;flex-wrap:wrap;">
         <button class="tab-btn active" onclick="showTab('tab-comp')">건설기계 주요이슈</button>
         <button class="tab-btn" onclick="showTab('tab-kospi')">코스피 주요이슈</button>
+        <button class="tab-btn" onclick="showTab('tab-dart')">공시 (DART)</button>
+        <button class="tab-btn" onclick="showTab('tab-ytd')">연초 대비 비교</button>
       </div>
 
       <div id="tab-comp" class="tab-panel active">
@@ -488,6 +681,15 @@ def render_html(cfg: Config, data: list[CompetitorData],
         {_render_highlights(kospi_summary)}
         <p style="font-size:13px;font-weight:600;color:#666;margin:18px 0 4px;border-top:1px solid #eee;padding-top:14px;">출처 링크</p>
         {_render_source_links([("코스피", kospi_news)])}
+      </div>
+
+      <div id="tab-dart" class="tab-panel">
+        {_render_disclosures(disclosures)}
+      </div>
+
+      <div id="tab-ytd" class="tab-panel">
+        <p style="font-size:13px;color:#666;margin:0 0 12px;">코스피와 각 기업의 올해 누적 주가 수익률 비교입니다.</p>
+        {comparison_chart}
       </div>
     </div>
   </div>
@@ -552,12 +754,13 @@ def main() -> None:
                 print(f"  · {n.title}")
         return
 
-    print("[3/4] LLM 요약 생성 중...", file=sys.stderr)
+    print("[3/4] 공시·LLM 요약 생성 중...", file=sys.stderr)
+    disclosures = collect_disclosures(cfg, data)
     comp_summary = summarize_competitors(cfg, data)
     kospi_summary = summarize_kospi(cfg, kospi_news)
 
     print("[4/4] 리포트 렌더링...", file=sys.stderr)
-    html = render_html(cfg, data, comp_summary, kospi_summary, kospi_snap, kospi_news)
+    html = render_html(cfg, data, comp_summary, kospi_summary, kospi_snap, kospi_news, disclosures)
     with open(args.out, "w", encoding="utf-8") as f:
         f.write(html)
     print(f"  저장 완료 → {args.out}", file=sys.stderr)
