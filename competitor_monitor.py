@@ -95,6 +95,7 @@ class StockSnapshot:
     price: Optional[float] = None
     change_pct: Optional[float] = None
     currency: str = ""
+    market_cap: Optional[float] = None
     error: str = ""
 
 
@@ -134,6 +135,53 @@ def fetch_kospi_news(cfg: Config) -> list[NewsItem]:
                                    cfg.news_lookback_hours, max(cfg.max_news_per_competitor, 6))
 
 
+# 통화별 KRW 환율 캐시 (USD, JPY, CNY 등 → KRW)
+_FX_CACHE: dict[str, Optional[float]] = {"KRW": 1.0}
+
+
+def get_krw_rate(currency: str) -> Optional[float]:
+    """1 단위 외화가 몇 KRW인지 반환. 실패 시 None."""
+    if not currency:
+        return None
+    currency = currency.upper()
+    if currency in _FX_CACHE:
+        return _FX_CACHE[currency]
+    rate = None
+    if yf is not None:
+        try:
+            pair = f"{currency}KRW=X"
+            hist = yf.Ticker(pair).history(period="5d")
+            if hist is not None and not hist.empty:
+                hist = hist.dropna(subset=["Close"])
+                if not hist.empty:
+                    rate = float(hist["Close"].iloc[-1])
+        except Exception:
+            rate = None
+    _FX_CACHE[currency] = rate
+    return rate
+
+
+def market_cap_in_krw(snap: StockSnapshot) -> Optional[float]:
+    """스냅샷의 시총을 KRW로 환산. 환율을 못 구하면 None."""
+    if not snap or snap.market_cap is None:
+        return None
+    rate = get_krw_rate(snap.currency or "KRW")
+    if rate is None:
+        return None
+    return snap.market_cap * rate
+
+
+def format_krw_jo(value_krw: Optional[float]) -> str:
+    """KRW 금액을 '○조' 형식으로. 1조 미만은 '○억'으로 보조 표시."""
+    if value_krw is None:
+        return ""
+    jo = value_krw / 1_0000_0000_0000  # 1조 = 10^12
+    if jo >= 1:
+        return f"{jo:,.1f}조"
+    eok = value_krw / 1_0000_0000  # 1억 = 10^8
+    return f"{eok:,.0f}억"
+
+
 def fetch_stock_by_ticker(ticker: str) -> Optional[StockSnapshot]:
     if not ticker:
         return None
@@ -155,12 +203,16 @@ def fetch_stock_by_ticker(ticker: str) -> Optional[StockSnapshot]:
             if prev:
                 snap.change_pct = round((last - prev) / prev * 100, 2)
         try:
-            snap.currency = yf.Ticker(ticker).fast_info.get("currency", "") or ""
+            fi = yf.Ticker(ticker).fast_info
+            snap.currency = fi.get("currency", "") or ""
+            mc = fi.get("market_cap", None)
+            snap.market_cap = float(mc) if mc else None
         except Exception:
             snap.currency = ""
     except Exception as e:
         snap.error = str(e)[:120]
     return snap
+
 
 
 def fetch_stock(comp: Competitor) -> Optional[StockSnapshot]:
@@ -332,20 +384,28 @@ def render_html(cfg: Config, data: list[CompetitorData],
           <p style="font-size:12px;color:{color};margin:0;">{chg_txt}</p>
         </div>"""
 
-    # 건설기계 기업 카드들
+    # 건설기계 기업 카드들 — 지정 순서로 정렬 (국내 우선)
+    # 코스피 다음: HD건설기계 → 두산밥캣 → 진성티이씨 → 나머지(해외)
+    priority = {"HD건설기계": 0, "두산밥캣": 1, "진성티이씨": 2}
+    ordered = sorted(data, key=lambda d: priority.get(d.comp.name, 99))
+
     stock_cards = ""
-    for d in data:
+    for d in ordered:
         if not (d.stock and d.stock.price is not None):
             continue
         chg = d.stock.change_pct
         color = "#C0392B" if (chg or 0) >= 0 else "#1B6CC4"
         arrow = "▲" if (chg or 0) >= 0 else "▼"
         chg_txt = f"{arrow} {abs(chg):.2f}%" if chg is not None else "—"
+        mc_krw = market_cap_in_krw(d.stock)
+        mc_txt = format_krw_jo(mc_krw)
+        mc_line = f'<p style="font-size:11px;color:#888;margin:4px 0 0;">시총 {mc_txt} 원</p>' if mc_txt else ''
         stock_cards += f"""
         <div style="background:#F7F6F2;border-radius:8px;padding:12px;">
           <p style="font-size:12px;color:#5F5E5A;margin:0;">{_esc(d.comp.name)}</p>
           <p style="font-size:18px;font-weight:500;margin:2px 0;">{d.stock.price:,} <span style="font-size:12px;color:#888;">{_esc(d.stock.currency)}</span></p>
           <p style="font-size:12px;color:{color};margin:0;">{chg_txt}</p>
+          {mc_line}
         </div>"""
 
     comp_blocks = [(d.comp.name, d.news) for d in data]
