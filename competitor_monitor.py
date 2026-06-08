@@ -16,6 +16,8 @@ import feedparser
 import requests
 import yaml
 
+import ir_monitor as irm
+
 try:
     import yfinance as yf
 except ImportError:
@@ -30,6 +32,8 @@ class Competitor:
     region: str = "KR"
     lang: str = ""
     country: str = ""
+    ir_sources: list[str] = field(default_factory=list)  # IR 자료 목록 페이지 URL들
+    cik: str = ""                                          # 미국 상장사 SEC CIK 번호
 
 
 @dataclass
@@ -65,6 +69,8 @@ def load_config(path: str) -> Config:
             region=c.get("region", "KR"),
             lang=c.get("lang", ""),
             country=c.get("country", ""),
+            ir_sources=c.get("ir_sources", []),
+            cik=str(c.get("cik", "")),
         )
         for c in raw["competitors"]
     ]
@@ -398,13 +404,7 @@ def fetch_disclosures(comp: Competitor, cfg: Config, api_key: str) -> list[Discl
         )
         data = resp.json()
         if data.get("status") != "000":
-    print(
-        f"DART ERROR: "
-        f"{data.get('status')} "
-        f"{data.get('message')}",
-        file=sys.stderr,
-    )
-    return []
+            return []
         out = []
         for it in data.get("list", []):
             rcept_no = it.get("rcept_no", "")
@@ -418,6 +418,71 @@ def fetch_disclosures(comp: Competitor, cfg: Config, api_key: str) -> list[Discl
     except Exception as e:
         print(f"  ! {comp.name} 공시 조회 실패: {e}", file=sys.stderr)
         return []
+
+
+CACHE_IR = "cache/ir_updates.json"
+CACHE_HISTORY = "cache/update_history.json"
+
+
+def collect_ir_updates(cfg: Config, data: list[CompetitorData],
+                       disclosures: list) -> tuple[list, list, dict]:
+    """경쟁사별 IR 자료를 수집하고 변경 감지.
+    소스: config의 ir_sources(RSS/HTML) + SEC EDGAR(cik 있으면) + DART 공시.
+    반환: (현재 최신 IRUpdate 전체, 변경분만, 히스토리)."""
+    cache = irm.load_cache(CACHE_IR)
+
+    # DART 공시를 회사별 IRUpdate로 변환해두기 (회사명 → IRUpdate 리스트)
+    disc_by_comp: dict[str, list] = {}
+    for d in disclosures:
+        ir_item = irm.IRUpdate(
+            company=d.corp_name, title=d.report_nm, link=d.url,
+            published=irm._from_iso(None), source_type="dart",
+        )
+        # 접수일자(YYYYMMDD) → datetime
+        if d.rcept_dt and len(d.rcept_dt) == 8:
+            try:
+                ir_item.published = dt.datetime.strptime(d.rcept_dt, "%Y%m%d").replace(tzinfo=dt.timezone.utc)
+            except ValueError:
+                pass
+        disc_by_comp.setdefault(d.corp_name, []).append(ir_item)
+
+    all_current: list = []
+    all_changes: list = []
+
+    for d in data:
+        comp = d.comp
+        fresh: list = []
+        # 1) config의 ir_sources (사용자 검증 URL 최우선)
+        if comp.ir_sources:
+            fresh.extend(irm.fetch_ir_updates(comp.name, comp.ir_sources))
+        else:
+            # Auto Discovery는 로그용으로만 (운영은 config 우선)
+            if comp.ticker:
+                pass  # 홈페이지를 모르면 생략. 필요 시 config에 homepage 추가 가능
+        # 2) SEC EDGAR (미국 상장사)
+        if comp.cik:
+            fresh.extend(irm.fetch_sec_filings(comp.name, comp.cik))
+        # 3) DART 공시 (회사명 매칭)
+        for cn, items in disc_by_comp.items():
+            if cn == comp.name or cn in comp.name or comp.name in cn:
+                fresh.extend(items)
+
+        if not fresh:
+            continue
+        fresh = irm._dedupe(fresh)
+        detected, cache = irm.detect_changes(comp.name, fresh, cache)
+        # 현재 최신 목록(REMOVED 제외) + 변경분 분리
+        for it in detected:
+            if it.is_removed:
+                all_changes.append(it)
+            else:
+                all_current.append(it)
+                if it.is_new or it.is_updated:
+                    all_changes.append(it)
+
+    irm.save_cache(CACHE_IR, cache)
+    history = irm.update_history(CACHE_HISTORY, all_changes)
+    return all_current, all_changes, history
 
 
 def collect_disclosures(cfg: Config, data: list[CompetitorData]) -> list[Disclosure]:
@@ -453,91 +518,16 @@ def collect_for(cfg: Config, comps: list[Competitor]) -> list[CompetitorData]:
     return results
 
 
-SUMMARY_SYSTEM_PROMPT = """\
-당신은 기업 IR팀의 시장·경쟁사 분석 애널리스트입니다.
-수집된 뉴스 제목을 바탕으로, IR 담당자가 1분 안에 읽을 수 있는 간결한 동향 브리핑을 작성하세요.
-
-규칙:
-- 추측하지 말고 제공된 정보에 근거해서만 작성합니다. 정보가 부족하면 "특이사항 없음"으로 표기합니다.
-- 과장된 전망이나 투자 권유성 표현은 쓰지 않습니다.
-- 단순 주가/지수 등락 수치만 다루는 항목은 highlights에 넣지 마세요. 수치는 별도 화면에 이미 표시됩니다.
-- 출력은 아래 JSON 형식만 반환합니다. 다른 텍스트나 마크다운 코드펜스를 넣지 마세요.
-
-{
-  "tldr": ["핵심 한 줄 요약 1", "핵심 한 줄 요약 2", "핵심 한 줄 요약 3"],
-  "highlights": [
-    {"competitor": "주제", "category": "실적|공시|뉴스|시장", "headline": "한 줄 제목", "detail": "2~3문장 상세"}
-  ]
-}
-"""
-
-
-def build_summary_user_prompt(title: str, blocks: list[tuple[str, list[NewsItem]]]) -> str:
-    lines = [f"분석 대상: {title}", "수집된 뉴스:\n"]
-    for name, news in blocks:
-        lines.append(f"### {name}")
-        if news:
-            for n in news:
-                lines.append(f"  · {n.title}")
-        else:
-            lines.append("  (수집된 뉴스 없음)")
-        lines.append("")
-    return "\n".join(lines)
-
-
-def _summarize(title: str, blocks: list[tuple[str, list[NewsItem]]]) -> dict:
-    import json
-    api_key = os.getenv("ANTHROPIC_API_KEY")
-    fallback = _fallback_summary(blocks)
-    if not api_key:
-        print(f"  ! ANTHROPIC_API_KEY 없음 — {title} 폴백 요약 사용", file=sys.stderr)
-        return fallback
-    try:
-        from anthropic import Anthropic
-        client = Anthropic(api_key=api_key)
-        msg = client.messages.create(
-            model="claude-sonnet-4-5",
-            max_tokens=1500,
-            system=SUMMARY_SYSTEM_PROMPT,
-            messages=[{"role": "user", "content": build_summary_user_prompt(title, blocks)}],
-        )
-        text = "".join(b.text for b in msg.content if b.type == "text")
-        text = text.strip().removeprefix("```json").removeprefix("```").removesuffix("```").strip()
-        return json.loads(text)
-    except Exception as e:
-        print(f"  ! {title} LLM 요약 실패 ({e}) — 폴백 사용", file=sys.stderr)
-        return fallback
-
-
-def _fallback_summary(blocks: list[tuple[str, list[NewsItem]]]) -> dict:
-    highlights = []
-    for name, news in blocks:
-        for n in news[:3]:
-            highlights.append({
-                "competitor": name,
-                "category": "뉴스",
-                "headline": n.title,
-                "detail": f"출처: {n.source or '미상'}.",
-            })
-    tldr = [h["headline"] for h in highlights[:3]] or ["특이사항 없음"]
-    return {"tldr": tldr, "highlights": highlights}
-
-
-def summarize_competitors(cfg: Config, data: list[CompetitorData]) -> dict:
-    blocks = [(d.comp.name, d.news) for d in data]
-    return _summarize("건설기계 경쟁사", blocks)
-
-
-def summarize_kospi(cfg: Config, kospi_news: list[NewsItem]) -> dict:
-    return _summarize("코스피 시장", [("코스피", kospi_news)])
-
-
 CATEGORY_COLORS = {
     "실적": ("#FCEBEB", "#A32D2D"),
     "공시": ("#E6F1FB", "#185FA5"),
     "리포트": ("#FAEEDA", "#854F0B"),
     "뉴스": ("#F1EFE8", "#5F5E5A"),
     "시장": ("#EDE9FB", "#4A3F9E"),
+    "IR": ("#E6F1FB", "#185FA5"),
+    "ESG": ("#E1F5EE", "#0F6E56"),
+    "주주환원": ("#FAEEDA", "#854F0B"),
+    "전략": ("#EDE9FB", "#4A3F9E"),
 }
 
 
@@ -545,20 +535,94 @@ def _esc(s: str) -> str:
     return (s or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
-def _render_highlights(summary: dict) -> str:
+def _tag_badges(tags: list) -> str:
     out = ""
-    for h in summary.get("highlights", []):
-        cat = h.get("category", "뉴스")
-        bg, fg = CATEGORY_COLORS.get(cat, CATEGORY_COLORS["뉴스"])
-        out += f"""
-        <div style="margin-bottom:14px;">
-          <div style="margin-bottom:4px;">
-            <span style="font-size:11px;background:{bg};color:{fg};padding:2px 8px;border-radius:8px;">{_esc(cat)}</span>
-            <span style="font-size:14px;font-weight:500;margin-left:6px;">{_esc(h.get('headline',''))}</span>
-          </div>
-          <p style="font-size:13px;color:#5F5E5A;line-height:1.6;margin:0;">{_esc(h.get('detail',''))}</p>
-        </div>"""
-    return out or '<p style="font-size:13px;color:#999;">특이사항 없음</p>'
+    for t in (tags or []):
+        bg, fg = CATEGORY_COLORS.get(t, CATEGORY_COLORS["뉴스"])
+        out += f'<span style="font-size:10px;background:{bg};color:{fg};padding:1px 6px;border-radius:6px;margin-left:4px;">{_esc(t)}</span>'
+    return out
+
+
+def _state_badge(it) -> str:
+    if getattr(it, "is_new", False):
+        return '<span style="font-size:10px;background:#FCEBEB;color:#C0392B;padding:1px 7px;border-radius:6px;font-weight:600;">NEW</span>'
+    if getattr(it, "is_updated", False):
+        return '<span style="font-size:10px;background:#FAEEDA;color:#854F0B;padding:1px 7px;border-radius:6px;font-weight:600;">UPDATED</span>'
+    if getattr(it, "is_removed", False):
+        return '<span style="font-size:10px;background:#EEE;color:#888;padding:1px 7px;border-radius:6px;font-weight:600;">REMOVED</span>'
+    return ""
+
+
+def _ir_line(it) -> str:
+    date_txt = ""
+    if it.published is not None:
+        kst = it.published + dt.timedelta(hours=9)
+        date_txt = f'<span style="color:#999;"> · {kst:%Y-%m-%d}</span>'
+    src = f'<span style="color:#bbb;font-size:11px;"> [{_esc(it.source_type)}]</span>'
+    return (
+        f'<li style="margin-bottom:8px;">{_state_badge(it)} '
+        f'<a href="{_esc(it.link)}" style="color:#185FA5;text-decoration:none;font-size:13px;">{_esc(it.title)}</a>'
+        f'{_tag_badges(it.tags)}{date_txt}{src}</li>'
+    )
+
+
+def _render_change_dashboard(changes: list) -> str:
+    """리포트 최상단 '신규 업데이트 현황'."""
+    if not changes:
+        return ('<div style="padding:14px 18px;background:#E1F5EE;border-radius:8px;">'
+                '<span style="font-size:15px;color:#0F6E56;font-weight:600;">🟢 신규 업데이트 없음</span></div>')
+    n_new = sum(1 for c in changes if c.is_new)
+    n_upd = sum(1 for c in changes if c.is_updated)
+    n_rem = sum(1 for c in changes if c.is_removed)
+    head = (f'<span style="font-size:15px;color:#C0392B;font-weight:600;">🔴 신규 업데이트 {len(changes)}건</span>'
+            f'<span style="font-size:12px;color:#888;margin-left:8px;">NEW {n_new} · UPDATED {n_upd} · REMOVED {n_rem}</span>')
+    rows = ""
+    for c in changes[:30]:
+        rows += (f'<div style="margin:8px 0;">{_state_badge(c)} '
+                 f'<span style="font-size:12px;color:#666;">{_esc(c.company)}</span> '
+                 f'<a href="{_esc(c.link)}" style="color:#185FA5;text-decoration:none;font-size:13px;">{_esc(c.title)}</a>'
+                 f'{_tag_badges(c.tags)}</div>')
+    return (f'<div style="padding:14px 18px;background:#FCF4F2;border-radius:8px;border:1px solid #F0D9D4;">'
+            f'{head}<div style="margin-top:10px;">{rows}</div></div>')
+
+
+def _render_ir_updates(current: list) -> str:
+    """IR Updates 탭: 회사별 최신 자료 (회사당 최대 10건)."""
+    if not current:
+        return '<p style="font-size:13px;color:#999;">수집된 IR 자료가 없습니다. config의 ir_sources 또는 cik를 확인하세요.</p>'
+    by_comp: dict = {}
+    for it in current:
+        by_comp.setdefault(it.company, []).append(it)
+    out = ""
+    for comp, items in by_comp.items():
+        items = sorted(items, key=lambda x: x.published or dt.datetime.min.replace(tzinfo=dt.timezone.utc), reverse=True)[:10]
+        links = "".join(_ir_line(it) for it in items)
+        out += (f'<p style="font-size:13px;font-weight:600;margin:14px 0 4px;">{_esc(comp)} '
+                f'<span style="font-weight:400;color:#999;font-size:11px;">최신 {len(items)}건</span></p>'
+                f'<ul style="margin:0 0 8px;padding-left:18px;line-height:1.6;">{links}</ul>')
+    return out
+
+
+def _render_history(history: list) -> str:
+    """업데이트 히스토리 탭: 최근 30일 변경 이력."""
+    if not history:
+        return '<p style="font-size:13px;color:#999;">최근 30일 내 변경 이력이 없습니다.</p>'
+    hist = sorted(history, key=lambda h: h.get("detected_at", ""), reverse=True)
+    rows = ""
+    for h in hist[:100]:
+        st = h.get("state", "")
+        color = {"NEW": "#C0392B", "UPDATED": "#854F0B", "REMOVED": "#888"}.get(st, "#666")
+        dtxt = ""
+        d = irm._from_iso(h.get("detected_at"))
+        if d:
+            kst = d + dt.timedelta(hours=9)
+            dtxt = f'<span style="color:#999;font-size:11px;"> · {kst:%m-%d %H:%M}</span>'
+        rows += (f'<li style="margin-bottom:6px;">'
+                 f'<span style="font-size:10px;color:{color};font-weight:600;">{st}</span> '
+                 f'<span style="font-size:12px;color:#666;">{_esc(h.get("company",""))}</span> '
+                 f'<a href="{_esc(h.get("link","#"))}" style="color:#185FA5;text-decoration:none;font-size:13px;">{_esc(h.get("title",""))}</a>'
+                 f'{dtxt}</li>')
+    return f'<ul style="margin:0;padding-left:18px;line-height:1.5;">{rows}</ul>'
 
 
 def _render_link(n: NewsItem) -> str:
@@ -622,13 +686,18 @@ def _render_stock_card(d) -> str:
 
 
 def render_html(cfg: Config, data: list[CompetitorData],
-                comp_summary: dict, kospi_summary: dict,
                 kospi_snap: Optional[StockSnapshot], kospi_news: list[NewsItem],
                 disclosures: Optional[list] = None,
                 group_data: Optional[list] = None,
-                group_summary: Optional[dict] = None) -> str:
+                ir_current: Optional[list] = None,
+                ir_changes: Optional[list] = None,
+                history: Optional[list] = None) -> str:
     now = dt.datetime.now(dt.timezone.utc) + dt.timedelta(hours=9)
     total_news = sum(len(d.news) for d in data) + len(kospi_news)
+    ir_current = ir_current or []
+    ir_changes = ir_changes or []
+    history = history or []
+    disclosures = disclosures if disclosures is not None else None
 
     # 코스피 지수 카드 (보라색 강조)
     kospi_card = ""
@@ -644,20 +713,18 @@ def render_html(cfg: Config, data: list[CompetitorData],
           <p style="font-size:12px;color:{color};margin:0;">{chg_txt}</p>
         </div>"""
 
-    # 건설기계 기업 카드들 — 지정 순서로 정렬 (국내 우선)
-    # 코스피 다음: HD건설기계 → 두산밥캣 → 진성티이씨 → 나머지(해외)
+    # 건설기계 기업 카드들 — 국내 우선 정렬
     priority = {"HD건설기계": 0, "두산밥캣": 1, "진성티이씨": 2}
     ordered = sorted(data, key=lambda d: priority.get(d.comp.name, 99))
     stock_cards = "".join(_render_stock_card(d) for d in ordered)
 
-    # 그룹주 카드들 (config 순서 그대로)
+    # 그룹주 카드들
     group_data = group_data or []
-    group_summary = group_summary or {"tldr": [], "highlights": []}
     group_cards = "".join(_render_stock_card(d) for d in group_data)
     group_blocks = [(d.comp.name, d.news) for d in group_data]
     has_group = bool(group_cards)
 
-    # 연초 대비 비교 그래프 데이터 (코스피 + 기업들)
+    # 연초 대비 비교 그래프 데이터
     comp_rows = []
     if kospi_snap and kospi_snap.ytd_pct is not None:
         comp_rows.append(("코스피", kospi_snap.ytd_pct))
@@ -667,6 +734,14 @@ def render_html(cfg: Config, data: list[CompetitorData],
     comparison_chart = render_comparison_chart(comp_rows)
 
     comp_blocks = [(d.comp.name, d.news) for d in data]
+    group_tab_btn = ('<button class="tab-btn" onclick="showTab(\'tab-group\')">그룹주 뉴스</button>'
+                     if has_group else '')
+    group_snapshot = (f'''<div style="padding:20px 24px;border-bottom:1px solid #eee;">
+      <p style="font-size:13px;font-weight:600;color:#666;margin:0 0 12px;">그룹주 주가 스냅샷 (HD현대 그룹)</p>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">{group_cards}</div>
+    </div>''' if has_group else '')
+    group_panel = (f'''<div id="tab-group" class="tab-panel">{_render_source_links(group_blocks)}</div>'''
+                   if has_group else '')
 
     return f"""<!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8">
@@ -675,8 +750,8 @@ def render_html(cfg: Config, data: list[CompetitorData],
 <meta http-equiv="refresh" content="600">
 <title>{_esc(cfg.report_title)}</title>
 <style>
-  .tab-btn {{ flex:1; padding:10px; border:none; background:#EFEDE7; cursor:pointer; font-size:14px; font-weight:500; color:#666; border-radius:8px 8px 0 0; }}
-  .tab-btn.active {{ background:#fff; color:#1a1a1a; }}
+  .tab-btn {{ padding:9px 12px; border:none; background:#EFEDE7; cursor:pointer; font-size:13px; font-weight:500; color:#666; border-radius:8px 8px 0 0; }}
+  .tab-btn.active {{ background:#fff; color:#1a1a1a; box-shadow:inset 0 -2px 0 #4A3F9E; }}
   .tab-panel {{ display:none; }}
   .tab-panel.active {{ display:block; }}
 </style>
@@ -692,10 +767,10 @@ def render_html(cfg: Config, data: list[CompetitorData],
       <p style="font-size:13px;color:#999;margin:8px 0 0;">건설기계 {len(cfg.competitors)}개사 + 코스피 · 수집기간 {(now - dt.timedelta(hours=cfg.news_lookback_hours)):%m월 %d일 %H시} ~ {now:%m월 %d일 %H시} · 뉴스 {total_news}건</p>
     </div>
 
-    <!-- 코스피 핵심 -->
+    <!-- 신규 업데이트 현황 (최상단) -->
     <div style="padding:20px 24px;border-bottom:1px solid #eee;">
-      <p style="font-size:13px;font-weight:600;color:#4A3F9E;margin:0 0 10px;">코스피 핵심 (TL;DR)</p>
-      <ul style="margin:0;padding-left:18px;font-size:14px;line-height:1.7;">{''.join(f'<li>{_esc(t)}</li>' for t in kospi_summary.get('tldr', []))}</ul>
+      <p style="font-size:14px;font-weight:700;color:#333;margin:0 0 12px;">신규 업데이트 현황</p>
+      {_render_change_dashboard(ir_changes)}
     </div>
 
     <!-- 주가 스냅샷 (건설기계) -->
@@ -707,44 +782,45 @@ def render_html(cfg: Config, data: list[CompetitorData],
       </div>
     </div>
 
-    {f'''<!-- 그룹주 주가 스냅샷 -->
-    <div style="padding:20px 24px;border-bottom:1px solid #eee;">
-      <p style="font-size:13px;font-weight:600;color:#666;margin:0 0 12px;">그룹주 주가 스냅샷 (HD현대 그룹)</p>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
-        {group_cards}
-      </div>
-    </div>''' if has_group else ''}
+    {group_snapshot}
 
-    <!-- 주요 이슈 상세: 탭 -->
+    <!-- 탭 -->
     <div style="padding:20px 24px;">
       <div style="display:flex;gap:4px;margin-bottom:16px;flex-wrap:wrap;">
-        <button class="tab-btn active" onclick="showTab('tab-comp')">건설기계 주요이슈</button>
-        <button class="tab-btn" onclick="showTab('tab-kospi')">코스피 주요이슈</button>
-        {'<button class="tab-btn" onclick="showTab(' + chr(39) + 'tab-group' + chr(39) + ')">그룹주 주요이슈</button>' if has_group else ''}
+        <button class="tab-btn active" onclick="showTab('tab-updates')">신규 업데이트</button>
+        <button class="tab-btn" onclick="showTab('tab-ir')">IR Updates</button>
         <button class="tab-btn" onclick="showTab('tab-dart')">공시 (DART)</button>
+        <button class="tab-btn" onclick="showTab('tab-comp')">경쟁사 뉴스</button>
+        <button class="tab-btn" onclick="showTab('tab-kospi')">코스피 뉴스</button>
+        {group_tab_btn}
+        <button class="tab-btn" onclick="showTab('tab-history')">업데이트 히스토리</button>
         <button class="tab-btn" onclick="showTab('tab-ytd')">연초 대비 비교</button>
       </div>
 
-      <div id="tab-comp" class="tab-panel active">
-        {_render_highlights(comp_summary)}
-        <p style="font-size:13px;font-weight:600;color:#666;margin:18px 0 4px;border-top:1px solid #eee;padding-top:14px;">출처 링크</p>
+      <div id="tab-updates" class="tab-panel active">
+        {_render_change_dashboard(ir_changes)}
+      </div>
+
+      <div id="tab-ir" class="tab-panel">
+        {_render_ir_updates(ir_current)}
+      </div>
+
+      <div id="tab-dart" class="tab-panel">
+        {_render_disclosures(disclosures)}
+      </div>
+
+      <div id="tab-comp" class="tab-panel">
         {_render_source_links(comp_blocks)}
       </div>
 
       <div id="tab-kospi" class="tab-panel">
-        {_render_highlights(kospi_summary)}
-        <p style="font-size:13px;font-weight:600;color:#666;margin:18px 0 4px;border-top:1px solid #eee;padding-top:14px;">출처 링크</p>
         {_render_source_links([("코스피", kospi_news)])}
       </div>
 
-      {f'''<div id="tab-group" class="tab-panel">
-        {_render_highlights(group_summary)}
-        <p style="font-size:13px;font-weight:600;color:#666;margin:18px 0 4px;border-top:1px solid #eee;padding-top:14px;">출처 링크</p>
-        {_render_source_links(group_blocks)}
-      </div>''' if has_group else ''}
+      {group_panel}
 
-      <div id="tab-dart" class="tab-panel">
-        {_render_disclosures(disclosures)}
+      <div id="tab-history" class="tab-panel">
+        {_render_history(history)}
       </div>
 
       <div id="tab-ytd" class="tab-panel">
@@ -753,7 +829,7 @@ def render_html(cfg: Config, data: list[CompetitorData],
       </div>
     </div>
   </div>
-  <p style="font-size:11px;color:#999;text-align:center;margin:12px 0 0;">자동 생성 리포트 · 요약은 AI가 생성하므로 원문 확인 권장 · 30분마다 자동 갱신</p>
+  <p style="font-size:11px;color:#999;text-align:center;margin:12px 0 0;">자동 생성 리포트 · 원문 확인 권장 · 2시간마다 자동 갱신</p>
 </div>
 <script>
 function showTab(id) {{
@@ -766,14 +842,35 @@ function showTab(id) {{
 </body></html>"""
 
 
-def send_email(cfg: Config, html: str) -> None:
+def _render_changes_email(ir_changes: list, disclosures: list, data: list) -> str:
+    """이메일 본문: 변경분만 (신규/수정/삭제 IR + 신규 공시 + 신규 뉴스)."""
+    parts = ['<div style="font-family:sans-serif;max-width:600px;">']
+    if ir_changes:
+        parts.append('<h3 style="color:#C0392B;">IR 자료 변경</h3><ul>')
+        for c in ir_changes[:40]:
+            st = "NEW" if c.is_new else ("UPDATED" if c.is_updated else "REMOVED")
+            parts.append(f'<li>[{st}] {_esc(c.company)} — <a href="{_esc(c.link)}">{_esc(c.title)}</a></li>')
+        parts.append('</ul>')
+    if disclosures:
+        parts.append('<h3 style="color:#185FA5;">신규 공시 (DART)</h3><ul>')
+        for d in disclosures[:20]:
+            parts.append(f'<li>{_esc(d.corp_name)} — <a href="{_esc(d.url)}">{_esc(d.report_nm)}</a></li>')
+        parts.append('</ul>')
+    if not ir_changes and not disclosures:
+        parts.append('<p style="color:#0F6E56;font-weight:600;">신규 업데이트 없음</p>')
+    parts.append('</div>')
+    return "".join(parts)
+
+
+def send_email(cfg: Config, html: str, has_changes: bool) -> None:
     import smtplib
     from email.mime.multipart import MIMEMultipart
     from email.mime.text import MIMEText
     if not (cfg.smtp_host and cfg.mail_from and cfg.mail_to):
         raise RuntimeError("SMTP 설정이 비어 있습니다.")
+    subj_tag = "신규 업데이트" if has_changes else "변경 없음"
     msg = MIMEMultipart("alternative")
-    msg["Subject"] = f"{cfg.report_title} — {dt.datetime.now():%Y-%m-%d}"
+    msg["Subject"] = f"[{subj_tag}] {cfg.report_title} — {dt.datetime.now():%Y-%m-%d}"
     msg["From"] = cfg.mail_from
     msg["To"] = ", ".join(cfg.mail_to)
     msg.attach(MIMEText(html, "html", "utf-8"))
@@ -786,7 +883,7 @@ def send_email(cfg: Config, html: str) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="경쟁사 모니터링 MVP")
+    parser = argparse.ArgumentParser(description="경쟁사 IR 변경 감지 모니터")
     parser.add_argument("--config", default="config.yaml")
     parser.add_argument("--send", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
@@ -794,7 +891,7 @@ def main() -> None:
     args = parser.parse_args()
 
     cfg = load_config(args.config)
-    print(f"[1/4] 설정 로드 완료 — 건설기계 {len(cfg.competitors)}개사 + 코스피", file=sys.stderr)
+    print(f"[1/4] 설정 로드 — 건설기계 {len(cfg.competitors)}개사 + 코스피", file=sys.stderr)
 
     print("[2/4] 데이터 수집 중...", file=sys.stderr)
     data = collect_all(cfg)
@@ -808,29 +905,26 @@ def main() -> None:
         print("\n=== DRY RUN ===")
         if kospi_snap:
             print(f"[코스피] {kospi_snap.price} ({kospi_snap.change_pct})")
-        for n in kospi_news[:5]:
-            print(f"  · {n.title}")
         for d in data + group_data:
-            print(f"\n[{d.comp.name}] 주가={d.stock.price if d.stock else None}")
-            for n in d.news:
-                print(f"  · {n.title}")
+            print(f"[{d.comp.name}] 주가={d.stock.price if d.stock else None} 뉴스={len(d.news)}건")
         return
 
-    print("[3/4] 공시·LLM 요약 생성 중...", file=sys.stderr)
+    print("[3/4] 공시 수집 + IR 변경 감지 중...", file=sys.stderr)
     disclosures = collect_disclosures(cfg, data)
-    comp_summary = summarize_competitors(cfg, data)
-    kospi_summary = summarize_kospi(cfg, kospi_news)
-    group_summary = _summarize("HD현대 그룹주", [(d.comp.name, d.news) for d in group_data])
+    ir_current, ir_changes, history = collect_ir_updates(cfg, data, disclosures)
+    print(f"  - IR 자료 {len(ir_current)}건, 변경 {len(ir_changes)}건 감지", file=sys.stderr)
 
     print("[4/4] 리포트 렌더링...", file=sys.stderr)
-    html = render_html(cfg, data, comp_summary, kospi_summary, kospi_snap, kospi_news,
-                       disclosures, group_data, group_summary)
+    html = render_html(cfg, data, kospi_snap, kospi_news,
+                       disclosures, group_data, ir_current, ir_changes, history)
     with open(args.out, "w", encoding="utf-8") as f:
         f.write(html)
     print(f"  저장 완료 → {args.out}", file=sys.stderr)
 
     if args.send:
-        send_email(cfg, html)
+        has_changes = bool(ir_changes or disclosures)
+        email_html = _render_changes_email(ir_changes, disclosures or [], data)
+        send_email(cfg, email_html, has_changes)
 
 
 if __name__ == "__main__":
