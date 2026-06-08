@@ -2,8 +2,12 @@ name: 리포트를 GitHub Pages에 게시
 
 on:
   schedule:
-    # 2시간마다 자동 갱신 (UTC 기준, 24시간 내내)
-    - cron: "0 */2 * * *"
+    # 평일(월~금) 한국 장중 09:00~15:30 KST에 30분 간격 갱신
+    # GitHub Actions는 UTC 기준 → KST 09:00~15:30 = UTC 00:00~06:30
+    - cron: "0,30 0-5 * * 1-5"
+    - cron: "0,30 6 * * 1-5"
+    # 장 시작 전 08:30 KST = UTC 23:30 (전날) → 한국 월~금은 UTC 일~목(0-4)
+    - cron: "30 23 * * 0-4"
   workflow_dispatch: {}   # 수동 실행 버튼
 
 permissions:
