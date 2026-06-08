@@ -44,6 +44,8 @@ class Config:
     # 코스피 트랙 설정
     kospi_ticker: str = "^KS11"
     kospi_keywords: list[str] = field(default_factory=lambda: ["코스피", "KOSPI"])
+    # 그룹주 트랙 (HD현대 그룹)
+    group_stocks: list[Competitor] = field(default_factory=list)
     smtp_host: str = field(default_factory=lambda: os.getenv("SMTP_HOST", ""))
     smtp_port: int = field(default_factory=lambda: int(os.getenv("SMTP_PORT", "587")))
     smtp_user: str = field(default_factory=lambda: os.getenv("SMTP_USER", ""))
@@ -67,6 +69,17 @@ def load_config(path: str) -> Config:
         for c in raw["competitors"]
     ]
     kospi = raw.get("kospi", {})
+    group_stocks = [
+        Competitor(
+            name=c["name"],
+            keywords=c.get("keywords", [c["name"]]),
+            ticker=c.get("ticker", ""),
+            region="KR",
+            lang="ko",
+            country="KR",
+        )
+        for c in raw.get("group_stocks", [])
+    ]
     return Config(
         company_name=raw["company_name"],
         competitors=competitors,
@@ -77,6 +90,7 @@ def load_config(path: str) -> Config:
         report_title=raw.get("report_title", "경쟁사 동향 데일리 브리핑"),
         kospi_ticker=kospi.get("ticker", "^KS11"),
         kospi_keywords=kospi.get("keywords", ["코스피", "KOSPI"]),
+        group_stocks=group_stocks,
         mail_to=raw.get("mail_to", []),
     )
 
@@ -132,9 +146,20 @@ def fetch_news(comp: Competitor, cfg: Config) -> list[NewsItem]:
 
 
 def fetch_kospi_news(cfg: Config) -> list[NewsItem]:
-    # 코스피 관련 뉴스는 한국어로 더 많이 모이도록 넉넉히 수집
-    return _fetch_news_by_keywords(cfg.kospi_keywords, "ko", "KR",
-                                   cfg.news_lookback_hours, max(cfg.max_news_per_competitor, 6))
+    # 코스피 뉴스: 한국어(ko/KR)와 영어(en/US) 양쪽에서 모아 합친다.
+    # "코스피"는 한국어 매체, "KOSPI"는 영문 매체에서 더 잘 잡히기 때문.
+    per = max(cfg.max_news_per_competitor, 6)
+    ko = _fetch_news_by_keywords(cfg.kospi_keywords, "ko", "KR", cfg.news_lookback_hours, per)
+    en = _fetch_news_by_keywords(["KOSPI"], "en", "US", cfg.news_lookback_hours, per)
+    # 링크 기준 중복 제거 후 합치기
+    seen = set()
+    merged: list[NewsItem] = []
+    for n in ko + en:
+        if n.link in seen:
+            continue
+        seen.add(n.link)
+        merged.append(n)
+    return merged
 
 
 # 통화별 KRW 환율 캐시 (USD, JPY, CNY 등 → KRW)
@@ -411,8 +436,12 @@ class CompetitorData:
 
 
 def collect_all(cfg: Config) -> list[CompetitorData]:
+    return collect_for(cfg, cfg.competitors)
+
+
+def collect_for(cfg: Config, comps: list[Competitor]) -> list[CompetitorData]:
     results: list[CompetitorData] = []
-    for comp in cfg.competitors:
+    for comp in comps:
         print(f"  - {comp.name} 수집 중...", file=sys.stderr)
         results.append(CompetitorData(comp=comp, news=fetch_news(comp, cfg), stock=fetch_stock(comp)))
     return results
@@ -567,10 +596,31 @@ def _render_disclosures(disclosures: Optional[list]) -> str:
     return f'<ul style="margin:0;padding-left:18px;line-height:1.6;">{rows}</ul>'
 
 
+def _render_stock_card(d) -> str:
+    """기업 한 곳의 주가 스냅샷 카드 (이름·현재가·통화·등락률·시총)."""
+    if not (d.stock and d.stock.price is not None):
+        return ""
+    chg = d.stock.change_pct
+    color = "#C0392B" if (chg or 0) >= 0 else "#1B6CC4"
+    arrow = "▲" if (chg or 0) >= 0 else "▼"
+    chg_txt = f"{arrow} {abs(chg):.2f}%" if chg is not None else "—"
+    mc_txt = format_krw_jo(market_cap_in_krw(d.stock))
+    mc_line = f'<p style="font-size:11px;color:#888;margin:4px 0 0;">시총 {mc_txt} 원</p>' if mc_txt else ''
+    return f"""
+        <div style="background:#F7F6F2;border-radius:8px;padding:12px;">
+          <p style="font-size:12px;color:#5F5E5A;margin:0;">{_esc(d.comp.name)}</p>
+          <p style="font-size:18px;font-weight:500;margin:2px 0;">{d.stock.price:,} <span style="font-size:12px;color:#888;">{_esc(d.stock.currency)}</span></p>
+          <p style="font-size:12px;color:{color};margin:0;">{chg_txt}</p>
+          {mc_line}
+        </div>"""
+
+
 def render_html(cfg: Config, data: list[CompetitorData],
                 comp_summary: dict, kospi_summary: dict,
                 kospi_snap: Optional[StockSnapshot], kospi_news: list[NewsItem],
-                disclosures: Optional[list] = None) -> str:
+                disclosures: Optional[list] = None,
+                group_data: Optional[list] = None,
+                group_summary: Optional[dict] = None) -> str:
     now = dt.datetime.now(dt.timezone.utc) + dt.timedelta(hours=9)
     total_news = sum(len(d.news) for d in data) + len(kospi_news)
 
@@ -592,25 +642,14 @@ def render_html(cfg: Config, data: list[CompetitorData],
     # 코스피 다음: HD건설기계 → 두산밥캣 → 진성티이씨 → 나머지(해외)
     priority = {"HD건설기계": 0, "두산밥캣": 1, "진성티이씨": 2}
     ordered = sorted(data, key=lambda d: priority.get(d.comp.name, 99))
+    stock_cards = "".join(_render_stock_card(d) for d in ordered)
 
-    stock_cards = ""
-    for d in ordered:
-        if not (d.stock and d.stock.price is not None):
-            continue
-        chg = d.stock.change_pct
-        color = "#C0392B" if (chg or 0) >= 0 else "#1B6CC4"
-        arrow = "▲" if (chg or 0) >= 0 else "▼"
-        chg_txt = f"{arrow} {abs(chg):.2f}%" if chg is not None else "—"
-        mc_krw = market_cap_in_krw(d.stock)
-        mc_txt = format_krw_jo(mc_krw)
-        mc_line = f'<p style="font-size:11px;color:#888;margin:4px 0 0;">시총 {mc_txt} 원</p>' if mc_txt else ''
-        stock_cards += f"""
-        <div style="background:#F7F6F2;border-radius:8px;padding:12px;">
-          <p style="font-size:12px;color:#5F5E5A;margin:0;">{_esc(d.comp.name)}</p>
-          <p style="font-size:18px;font-weight:500;margin:2px 0;">{d.stock.price:,} <span style="font-size:12px;color:#888;">{_esc(d.stock.currency)}</span></p>
-          <p style="font-size:12px;color:{color};margin:0;">{chg_txt}</p>
-          {mc_line}
-        </div>"""
+    # 그룹주 카드들 (config 순서 그대로)
+    group_data = group_data or []
+    group_summary = group_summary or {"tldr": [], "highlights": []}
+    group_cards = "".join(_render_stock_card(d) for d in group_data)
+    group_blocks = [(d.comp.name, d.news) for d in group_data]
+    has_group = bool(group_cards)
 
     # 연초 대비 비교 그래프 데이터 (코스피 + 기업들)
     comp_rows = []
@@ -644,7 +683,7 @@ def render_html(cfg: Config, data: list[CompetitorData],
         <span style="font-size:18px;font-weight:600;">📡 {_esc(cfg.report_title)}</span>
         <span style="font-size:13px;color:#777;">갱신 {now:%Y년 %m월 %d일} {now:%H:%M} KST</span>
       </div>
-      <p style="font-size:13px;color:#999;margin:8px 0 0;">건설기계 {len(cfg.competitors)}개사 + 코스피 · 지난 {cfg.news_lookback_hours}시간 · 뉴스 {total_news}건 수집</p>
+      <p style="font-size:13px;color:#999;margin:8px 0 0;">건설기계 {len(cfg.competitors)}개사 + 코스피 · 수집기간 {(now - dt.timedelta(hours=cfg.news_lookback_hours)):%m월 %d일 %H시} ~ {now:%m월 %d일 %H시} · 뉴스 {total_news}건</p>
     </div>
 
     <!-- 코스피 핵심 -->
@@ -653,20 +692,29 @@ def render_html(cfg: Config, data: list[CompetitorData],
       <ul style="margin:0;padding-left:18px;font-size:14px;line-height:1.7;">{''.join(f'<li>{_esc(t)}</li>' for t in kospi_summary.get('tldr', []))}</ul>
     </div>
 
-    <!-- 주가 스냅샷 -->
+    <!-- 주가 스냅샷 (건설기계) -->
     <div style="padding:20px 24px;border-bottom:1px solid #eee;">
-      <p style="font-size:13px;font-weight:600;color:#666;margin:0 0 12px;">주가 스냅샷</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;">
+      <p style="font-size:13px;font-weight:600;color:#666;margin:0 0 12px;">주가 스냅샷 (건설기계)</p>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
         {kospi_card}
         {stock_cards}
       </div>
     </div>
+
+    {f'''<!-- 그룹주 주가 스냅샷 -->
+    <div style="padding:20px 24px;border-bottom:1px solid #eee;">
+      <p style="font-size:13px;font-weight:600;color:#666;margin:0 0 12px;">그룹주 주가 스냅샷 (HD현대 그룹)</p>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+        {group_cards}
+      </div>
+    </div>''' if has_group else ''}
 
     <!-- 주요 이슈 상세: 탭 -->
     <div style="padding:20px 24px;">
       <div style="display:flex;gap:4px;margin-bottom:16px;flex-wrap:wrap;">
         <button class="tab-btn active" onclick="showTab('tab-comp')">건설기계 주요이슈</button>
         <button class="tab-btn" onclick="showTab('tab-kospi')">코스피 주요이슈</button>
+        {'<button class="tab-btn" onclick="showTab(' + chr(39) + 'tab-group' + chr(39) + ')">그룹주 주요이슈</button>' if has_group else ''}
         <button class="tab-btn" onclick="showTab('tab-dart')">공시 (DART)</button>
         <button class="tab-btn" onclick="showTab('tab-ytd')">연초 대비 비교</button>
       </div>
@@ -682,6 +730,12 @@ def render_html(cfg: Config, data: list[CompetitorData],
         <p style="font-size:13px;font-weight:600;color:#666;margin:18px 0 4px;border-top:1px solid #eee;padding-top:14px;">출처 링크</p>
         {_render_source_links([("코스피", kospi_news)])}
       </div>
+
+      {f'''<div id="tab-group" class="tab-panel">
+        {_render_highlights(group_summary)}
+        <p style="font-size:13px;font-weight:600;color:#666;margin:18px 0 4px;border-top:1px solid #eee;padding-top:14px;">출처 링크</p>
+        {_render_source_links(group_blocks)}
+      </div>''' if has_group else ''}
 
       <div id="tab-dart" class="tab-panel">
         {_render_disclosures(disclosures)}
@@ -741,6 +795,8 @@ def main() -> None:
     print("  - 코스피 지수·뉴스 수집 중...", file=sys.stderr)
     kospi_snap = fetch_stock_by_ticker(cfg.kospi_ticker)
     kospi_news = fetch_kospi_news(cfg)
+    print("  - 그룹주 수집 중...", file=sys.stderr)
+    group_data = collect_for(cfg, cfg.group_stocks)
 
     if args.dry_run:
         print("\n=== DRY RUN ===")
@@ -748,7 +804,7 @@ def main() -> None:
             print(f"[코스피] {kospi_snap.price} ({kospi_snap.change_pct})")
         for n in kospi_news[:5]:
             print(f"  · {n.title}")
-        for d in data:
+        for d in data + group_data:
             print(f"\n[{d.comp.name}] 주가={d.stock.price if d.stock else None}")
             for n in d.news:
                 print(f"  · {n.title}")
@@ -758,9 +814,11 @@ def main() -> None:
     disclosures = collect_disclosures(cfg, data)
     comp_summary = summarize_competitors(cfg, data)
     kospi_summary = summarize_kospi(cfg, kospi_news)
+    group_summary = _summarize("HD현대 그룹주", [(d.comp.name, d.news) for d in group_data])
 
     print("[4/4] 리포트 렌더링...", file=sys.stderr)
-    html = render_html(cfg, data, comp_summary, kospi_summary, kospi_snap, kospi_news, disclosures)
+    html = render_html(cfg, data, comp_summary, kospi_summary, kospi_snap, kospi_news,
+                       disclosures, group_data, group_summary)
     with open(args.out, "w", encoding="utf-8") as f:
         f.write(html)
     print(f"  저장 완료 → {args.out}", file=sys.stderr)
