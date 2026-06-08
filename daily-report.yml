@@ -1,0 +1,36 @@
+name: 경쟁사 동향 일일 리포트
+
+on:
+  schedule:
+    # 매주 월~금 오전 8시 KST (UTC 23:00, 전일)
+    - cron: "0 23 * * 0-4"
+  workflow_dispatch: {}   # 수동 실행 버튼
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 의존성 설치
+        run: pip install -r requirements.txt
+
+      - name: 리포트 생성 및 발송
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          MAIL_FROM: ${{ secrets.MAIL_FROM }}
+        run: python competitor_monitor.py --send
+
+      - name: 리포트 아카이브 (선택)
+        uses: actions/upload-artifact@v4
+        with:
+          name: report-${{ github.run_id }}
+          path: report.html
