@@ -1,4 +1,4 @@
-# 경쟁사 모니터링 설정 — 건설기계 업종
+# 경쟁사 모니터링 설정 — 건설기계 업종 + 코스피
 # ─────────────────────────────────────────────
 
 company_name: "우리회사"
@@ -8,23 +8,21 @@ news_language: "en"
 news_country: "US"
 
 # 수집 범위
-news_lookback_hours: 168       # 최근 N시간 내 뉴스만 (168 = 7일)
-max_news_per_competitor: 8     # 경쟁사별 최대 뉴스 건수
+news_lookback_hours: 168       # 최근 N시간 (168 = 7일)
+max_news_per_competitor: 8
 
-report_title: "건설기계 경쟁사 동향 위클리 브리핑"
+report_title: "건설기계·코스피 동향 브리핑"
 
-# 메일 수신자 (--send 사용 시). SMTP 접속정보는 환경변수로 설정.
+# 코스피 트랙 설정 (별도 탭/핵심/스냅샷으로 표시)
+kospi:
+  ticker: "^KS11"              # 코스피 종합지수
+  keywords: ["코스피", "KOSPI", "코스피 지수"]
+
 mail_to:
   - "ir-team@ourcompany.com"
 
 # ─────────────────────────────────────────────
 # 모니터링 대상 경쟁사 (건설기계)
-#   name     : 리포트 표시 이름
-#   keywords : 뉴스 검색 키워드 (여러 개 가능, OR 조건)
-#   ticker   : 주가 티커 (yfinance 형식)
-#   region   : 표시용 지역 태그
-#   lang/country : 이 회사 전용 뉴스 언어/국가 (비우면 위 기본값 사용)
-#                  국내사는 ko/KR, 해외사는 en/US 식으로 지정
 # ─────────────────────────────────────────────
 competitors:
   - name: "캐터필러"
@@ -68,3 +66,10 @@ competitors:
     region: "CN"
     lang: "en"
     country: "US"
+
+  - name: "진성티이씨"
+    keywords: ["진성티이씨", "진성티이씨 건설기계"]
+    ticker: "036890.KQ"
+    region: "KR"
+    lang: "ko"
+    country: "KR"
