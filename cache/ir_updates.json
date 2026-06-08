@@ -1,1 +1,56 @@
-{}
+{
+  "캐터필러": {
+    "https://www.sec.gov/Archives/edgar/data/18230/000110465926066860/xslF345X06/tm2615789-1_4seq1.xml": {
+      "title": "[4] OWNERSHIP DOCUMENT",
+      "published": "2026-05-27T00:00:00+00:00",
+      "first_seen": "2026-06-08T06:36:52.401182+00:00",
+      "last_seen": "2026-06-08T06:36:52.401182+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://www.sec.gov/Archives/edgar/data/18230/000110465926065592/tm2614442d1_sd.htm": {
+      "title": "[SD] FORM SD",
+      "published": "2026-05-22T00:00:00+00:00",
+      "first_seen": "2026-06-08T06:36:52.401182+00:00",
+      "last_seen": "2026-06-08T06:36:52.401182+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://www.sec.gov/Archives/edgar/data/18230/000195004726004544/xsl144X01/primary_doc.xml": {
+      "title": "[144] 144",
+      "published": "2026-05-14T00:00:00+00:00",
+      "first_seen": "2026-06-08T06:36:52.401182+00:00",
+      "last_seen": "2026-06-08T06:36:52.401182+00:00",
+      "miss_count": 0,
+      "tags": []
+    }
+  },
+  "HD건설기계": {
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260602000487": {
+      "title": "[기재정정]분기보고서 (2026.03)",
+      "published": "2026-06-02T00:00:00+00:00",
+      "first_seen": "2026-06-08T06:36:52.401392+00:00",
+      "last_seen": "2026-06-08T06:36:52.401392+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260602000456": {
+      "title": "[기재정정]사업보고서 (2025.12)",
+      "published": "2026-06-02T00:00:00+00:00",
+      "first_seen": "2026-06-08T06:36:52.401392+00:00",
+      "last_seen": "2026-06-08T06:36:52.401392+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601800528": {
+      "title": "지속가능경영보고서등관련사항(자율공시)              ",
+      "published": "2026-06-01T00:00:00+00:00",
+      "first_seen": "2026-06-08T06:36:52.401392+00:00",
+      "last_seen": "2026-06-08T06:36:52.401392+00:00",
+      "miss_count": 0,
+      "tags": [
+        "ESG"
+      ]
+    }
+  }
+}
