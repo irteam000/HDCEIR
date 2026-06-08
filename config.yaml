@@ -22,6 +22,32 @@ mail_to:
   - "ir-team@ourcompany.com"
 
 # ─────────────────────────────────────────────
+# 그룹주 (HD현대 그룹) — 별도 스냅샷·주요이슈 탭으로 표시
+# ─────────────────────────────────────────────
+group_stocks:
+  - name: "HD현대"
+    keywords: ["HD현대"]
+    ticker: "267250.KS"
+  - name: "HD한국조선해양"
+    keywords: ["HD한국조선해양", "한국조선해양"]
+    ticker: "009540.KS"
+  - name: "HD현대일렉트릭"
+    keywords: ["HD현대일렉트릭"]
+    ticker: "267260.KS"
+  - name: "HD현대마린솔루션"
+    keywords: ["HD현대마린솔루션"]
+    ticker: "443060.KS"
+  - name: "HD현대마린엔진"
+    keywords: ["HD현대마린엔진"]
+    ticker: "071970.KS"
+  - name: "HD현대에너지솔루션"
+    keywords: ["HD현대에너지솔루션"]
+    ticker: "322000.KS"
+  - name: "HD현대중공업"
+    keywords: ["HD현대중공업"]
+    ticker: "329180.KS"
+
+# ─────────────────────────────────────────────
 # 모니터링 대상 경쟁사 (건설기계)
 # ─────────────────────────────────────────────
 competitors:
