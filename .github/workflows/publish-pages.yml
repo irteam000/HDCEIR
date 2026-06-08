@@ -2,7 +2,7 @@ name: 리포트를 GitHub Pages에 게시
 
 on:
   schedule:
-  - cron: "0 */2 * * *"
+  - cron: "*/30 0-9 * * 1-5"
   workflow_dispatch: {}
 
 permissions:
