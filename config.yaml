@@ -57,6 +57,9 @@ competitors:
     region: "US"
     lang: "en"
     country: "US"
+    cik: "18230"
+    ir_sources:
+      - "https://www.caterpillar.com/en/news/corporate-press-releases.html"
 
   - name: "고마쓰"
     keywords: ["Komatsu", "Komatsu construction"]
