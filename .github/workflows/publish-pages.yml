@@ -28,7 +28,8 @@ jobs:
 
       - name: 리포트 생성
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }} 
+          DART_API_KEY: ${{ secrets.DART_API_KEY }}
         run: |
           SECRET_PATH="xl9UUV5MldV6S_ba"
           mkdir -p "site/${SECRET_PATH}"
