@@ -50,6 +50,10 @@ class Config:
     kospi_keywords: list[str] = field(default_factory=lambda: ["코스피", "KOSPI"])
     # 그룹주 트랙 (HD현대 그룹)
     group_stocks: list[Competitor] = field(default_factory=list)
+    # 공시(DART) 설정
+    disclosure_lookback_days: int = 30                 # 공시 조회 기간 (뉴스와 별도, 길게)
+    disclosure_types: list[str] = field(default_factory=lambda: ["A", "B", "I"])  # 정기공시·주요사항·거래소공시만
+    disclosure_max_per_company: int = 15
     smtp_host: str = field(default_factory=lambda: os.getenv("SMTP_HOST", ""))
     smtp_port: int = field(default_factory=lambda: int(os.getenv("SMTP_PORT", "587")))
     smtp_user: str = field(default_factory=lambda: os.getenv("SMTP_USER", ""))
@@ -97,6 +101,9 @@ def load_config(path: str) -> Config:
         kospi_ticker=kospi.get("ticker", "^KS11"),
         kospi_keywords=kospi.get("keywords", ["코스피", "KOSPI"]),
         group_stocks=group_stocks,
+        disclosure_lookback_days=raw.get("disclosure_lookback_days", 30),
+        disclosure_types=raw.get("disclosure_types", ["A", "B", "I"]),
+        disclosure_max_per_company=raw.get("disclosure_max_per_company", 15),
         mail_to=raw.get("mail_to", []),
     )
 
@@ -348,6 +355,28 @@ class Disclosure:
     report_nm: str
     rcept_dt: str       # 접수일자 YYYYMMDD
     url: str
+    pblntf_ty: str = ""     # 공시 대분류 코드 (A/B/I 등)
+    is_important: bool = False  # 중요 공시 강조 여부
+    tag: str = ""           # 표시용 태그 (실적/주요사항/수주 등)
+
+
+# IR 관점 중요 공시 키워드 → 태그 매핑 (report_nm 부분일치)
+DISCLOSURE_TAGS = {
+    "실적": ["분기보고서", "반기보고서", "사업보고서", "매출액", "영업(잠정)", "손익구조", "실적"],
+    "수주·계약": ["공급계약", "수주", "단일판매"],
+    "투자·증설": ["유형자산", "신규시설", "투자판단", "타법인주식"],
+    "지배구조": ["합병", "분할", "주식교환", "영업양수도"],
+    "주주환원": ["자기주식", "배당", "현금ㆍ현물배당"],
+    "자금": ["유상증자", "전환사채", "신주인수권", "교환사채", "회사채"],
+}
+
+
+def _classify_disclosure(report_nm: str) -> tuple[str, bool]:
+    """공시 제목으로 태그와 중요도 판정."""
+    for tag, kws in DISCLOSURE_TAGS.items():
+        if any(kw in report_nm for kw in kws):
+            return tag, True
+    return "기타", False
 
 
 _DART_CORP_MAP: Optional[dict[str, str]] = None  # 종목코드(6자리) → corp_code(8자리)
@@ -380,44 +409,59 @@ def _load_dart_corp_map(api_key: str) -> dict[str, str]:
 
 
 def fetch_disclosures(comp: Competitor, cfg: Config, api_key: str) -> list[Disclosure]:
-    """국내 상장사(.KS/.KQ)의 최근 공시를 DART에서 조회."""
+    """국내 상장사(.KS/.KQ)의 최근 공시를 DART에서 조회. 중요 유형만, 별도 기간 사용."""
     if not comp.ticker.endswith((".KS", ".KQ")):
         return []  # 해외 종목은 DART 대상 아님
     stock_code = comp.ticker.split(".")[0]
     corp_map = _load_dart_corp_map(api_key)
     corp_code = corp_map.get(stock_code)
     if not corp_code:
+        print(f"  ! {comp.name}({stock_code}) DART corp_code 매핑 실패", file=sys.stderr)
         return []
     end = dt.datetime.now()
-    bgn = end - dt.timedelta(hours=cfg.news_lookback_hours)
-    try:
-        resp = requests.get(
-            "https://opendart.fss.or.kr/api/list.json",
-            params={
+    bgn = end - dt.timedelta(days=cfg.disclosure_lookback_days)
+    out: list[Disclosure] = []
+    # 공시 유형별로 조회 (A=정기, B=주요사항, I=거래소공시 등)
+    for ty in (cfg.disclosure_types or [""]):
+        try:
+            params = {
                 "crtfc_key": api_key,
                 "corp_code": corp_code,
                 "bgn_de": bgn.strftime("%Y%m%d"),
                 "end_de": end.strftime("%Y%m%d"),
-                "page_count": 20,
-            },
-            timeout=20,
-        )
-        data = resp.json()
-        if data.get("status") != "000":
-            return []
-        out = []
-        for it in data.get("list", []):
-            rcept_no = it.get("rcept_no", "")
-            out.append(Disclosure(
-                corp_name=it.get("corp_name", comp.name),
-                report_nm=it.get("report_nm", ""),
-                rcept_dt=it.get("rcept_dt", ""),
-                url=f"https://dart.fss.or.kr/dsaf001/main.do?rcpNo={rcept_no}",
-            ))
-        return out
-    except Exception as e:
-        print(f"  ! {comp.name} 공시 조회 실패: {e}", file=sys.stderr)
-        return []
+                "page_count": 100,
+            }
+            if ty:
+                params["pblntf_ty"] = ty
+            resp = requests.get("https://opendart.fss.or.kr/api/list.json", params=params, timeout=20)
+            data = resp.json()
+            if data.get("status") != "000":
+                continue  # 해당 유형 공시 없음(013) 등은 조용히 넘어감
+            for it in data.get("list", []):
+                rcept_no = it.get("rcept_no", "")
+                report_nm = it.get("report_nm", "")
+                tag, important = _classify_disclosure(report_nm)
+                out.append(Disclosure(
+                    corp_name=it.get("corp_name", comp.name),
+                    report_nm=report_nm,
+                    rcept_dt=it.get("rcept_dt", ""),
+                    url=f"https://dart.fss.or.kr/dsaf001/main.do?rcpNo={rcept_no}",
+                    pblntf_ty=ty,
+                    is_important=important,
+                    tag=tag,
+                ))
+        except Exception as e:
+            print(f"  ! {comp.name} 공시 조회 실패({ty}): {str(e)[:60]}", file=sys.stderr)
+            continue
+    # 중복 제거(접수번호 기준) + 최신순 + 회사별 상한
+    seen = set()
+    uniq = []
+    for d in sorted(out, key=lambda x: x.rcept_dt, reverse=True):
+        if d.url in seen:
+            continue
+        seen.add(d.url)
+        uniq.append(d)
+    return uniq[:cfg.disclosure_max_per_company]
 
 
 CACHE_IR = "cache/ir_updates.json"
@@ -651,19 +695,43 @@ def _render_disclosures(disclosures: Optional[list]) -> str:
     if disclosures is None:
         return '<p style="font-size:13px;color:#999;">DART_API_KEY가 설정되지 않아 공시를 수집하지 않았습니다.</p>'
     if not disclosures:
-        return '<p style="font-size:13px;color:#999;">해당 기간 내 신규 공시가 없습니다.</p>'
-    rows = ""
+        return '<p style="font-size:13px;color:#999;">해당 기간 내 공시가 없습니다.</p>'
+
+    # 회사별 그룹핑
+    by_comp: dict = {}
     for d in disclosures:
-        dt_txt = ""
-        if d.rcept_dt and len(d.rcept_dt) == 8:
-            dt_txt = f"{d.rcept_dt[:4]}-{d.rcept_dt[4:6]}-{d.rcept_dt[6:]}"
-        rows += (
-            f'<li style="margin-bottom:8px;">'
-            f'<span style="font-size:11px;background:#E6F1FB;color:#185FA5;padding:2px 8px;border-radius:8px;">{_esc(d.corp_name)}</span> '
-            f'<a href="{_esc(d.url)}" style="font-size:13px;color:#185FA5;text-decoration:none;">{_esc(d.report_nm)}</a>'
-            f' <span style="color:#999;font-size:12px;">· {dt_txt}</span></li>'
-        )
-    return f'<ul style="margin:0;padding-left:18px;line-height:1.6;">{rows}</ul>'
+        by_comp.setdefault(d.corp_name, []).append(d)
+
+    # 중요 공시가 있는 회사를 위로
+    def comp_sort_key(item):
+        name, items = item
+        return (-sum(1 for x in items if x.is_important), name)
+
+    out = ""
+    for name, items in sorted(by_comp.items(), key=comp_sort_key):
+        items = sorted(items, key=lambda x: (not x.is_important, x.rcept_dt and -int(x.rcept_dt or 0)))
+        n_imp = sum(1 for x in items if x.is_important)
+        head = (f'<p style="font-size:13px;font-weight:600;margin:14px 0 4px;">{_esc(name)} '
+                f'<span style="font-weight:400;color:#999;font-size:11px;">{len(items)}건'
+                f'{" · 중요 " + str(n_imp) + "건" if n_imp else ""}</span></p>')
+        rows = ""
+        for d in items:
+            dt_txt = ""
+            if d.rcept_dt and len(d.rcept_dt) == 8:
+                dt_txt = f"{d.rcept_dt[:4]}-{d.rcept_dt[4:6]}-{d.rcept_dt[6:]}"
+            tag_badge = ""
+            if d.is_important and d.tag and d.tag != "기타":
+                bg, fg = CATEGORY_COLORS.get("실적" if d.tag == "실적" else "전략", ("#FCEBEB", "#C0392B"))
+                tag_badge = f'<span style="font-size:10px;background:{bg};color:{fg};padding:1px 6px;border-radius:6px;margin-right:4px;">{_esc(d.tag)}</span>'
+            star = '🔴 ' if d.is_important else ''
+            weight = "600" if d.is_important else "400"
+            rows += (
+                f'<li style="margin-bottom:6px;">{star}{tag_badge}'
+                f'<a href="{_esc(d.url)}" style="font-size:13px;color:#185FA5;text-decoration:none;font-weight:{weight};">{_esc(d.report_nm)}</a>'
+                f' <span style="color:#999;font-size:12px;">· {dt_txt}</span></li>'
+            )
+        out += head + f'<ul style="margin:0 0 8px;padding-left:18px;line-height:1.5;">{rows}</ul>'
+    return out
 
 
 def _render_stock_card(d) -> str:
@@ -910,8 +978,8 @@ def main() -> None:
         return
 
     print("[3/4] 공시 수집 + IR 변경 감지 중...", file=sys.stderr)
-    disclosures = collect_disclosures(cfg, data)
-    ir_current, ir_changes, history = collect_ir_updates(cfg, data, disclosures)
+    disclosures = collect_disclosures(cfg, data + group_data)
+    ir_current, ir_changes, history = collect_ir_updates(cfg, data + group_data, disclosures)
     print(f"  - IR 자료 {len(ir_current)}건, 변경 {len(ir_changes)}건 감지", file=sys.stderr)
 
     print("[4/4] 리포트 렌더링...", file=sys.stderr)
