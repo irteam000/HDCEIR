@@ -1,0 +1,49 @@
+name: 리포트를 GitHub Pages에 게시
+
+on:
+  schedule:
+    - cron: "0 23 * * 0-4"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 의존성 설치
+        run: pip install -r requirements.txt
+
+      - name: 리포트 생성
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          SECRET_PATH="xl9UUV5MldV6S_ba"
+          mkdir -p "site/${SECRET_PATH}"
+          python competitor_monitor.py --out "site/${SECRET_PATH}/index.html"
+          printf 'User-agent: *\nDisallow: /\n' > site/robots.txt
+          echo '<!doctype html><meta name="robots" content="noindex"><title>.</title>' > site/index.html
+
+      - name: Pages 설정
+        uses: actions/configure-pages@v5
+
+      - name: 산출물 업로드
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: 배포
+        id: deployment
+        uses: actions/deploy-pages@v4
