@@ -262,7 +262,7 @@ def render_html(cfg: Config, data: list[CompetitorData], summary: dict) -> str:
         if not (d.stock and d.stock.price is not None):
             continue
         chg = d.stock.change_pct
-        color = "#0F6E56" if (chg or 0) >= 0 else "#A32D2D"
+        color = "#C0392B" if (chg or 0) >= 0 else "#1B6CC4"
         arrow = "▲" if (chg or 0) >= 0 else "▼"
         chg_txt = f"{arrow} {abs(chg):.2f}%" if chg is not None else "—"
         stock_cards += f"""
