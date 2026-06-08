@@ -398,7 +398,13 @@ def fetch_disclosures(comp: Competitor, cfg: Config, api_key: str) -> list[Discl
         )
         data = resp.json()
         if data.get("status") != "000":
-            return []
+    print(
+        f"DART ERROR: "
+        f"{data.get('status')} "
+        f"{data.get('message')}",
+        file=sys.stderr,
+    )
+    return []
         out = []
         for it in data.get("list", []):
             rcept_no = it.get("rcept_no", "")
