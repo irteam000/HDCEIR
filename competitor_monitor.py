@@ -610,8 +610,34 @@ def _ir_line(it) -> str:
     )
 
 
+def _render_oneline_summary(changes: list, disclosures, kospi_snap, now) -> str:
+    """최상단 얇은 한 줄 상태 표시줄."""
+    parts = []
+    # 신규 변경 건수
+    n_changes = len(changes or [])
+    if n_changes:
+        parts.append(f'<span style="color:#C0392B;font-weight:600;">🔴 신규 {n_changes}건</span>')
+    else:
+        parts.append('<span style="color:#0F6E56;font-weight:600;">🟢 신규 없음</span>')
+    # 신규 공시 건수
+    if disclosures:
+        n_imp = sum(1 for d in disclosures if getattr(d, "is_important", False))
+        parts.append(f'<span style="color:#666;">공시 {len(disclosures)}건' + (f' (중요 {n_imp})' if n_imp else '') + '</span>')
+    # 코스피
+    if kospi_snap and kospi_snap.price is not None:
+        chg = kospi_snap.change_pct
+        col = "#C0392B" if (chg or 0) >= 0 else "#1B6CC4"
+        arr = "▲" if (chg or 0) >= 0 else "▼"
+        chg_txt = f'{arr} {abs(chg):.2f}%' if chg is not None else ''
+        parts.append(f'<span style="color:#666;">코스피 {kospi_snap.price:,.0f} <span style="color:{col};">{chg_txt}</span></span>')
+    parts.append(f'<span style="color:#999;">갱신 {now:%H:%M} KST</span>')
+    sep = '<span style="color:#ddd;margin:0 8px;">·</span>'
+    return ('<div style="padding:10px 14px;background:#F7F6F2;border-radius:8px;font-size:13px;">'
+            + sep.join(parts) + '</div>')
+
+
 def _render_change_dashboard(changes: list) -> str:
-    """리포트 최상단 '신규 업데이트 현황'."""
+    """(미사용) 이전 최상단 대시보드 — 호환을 위해 유지."""
     if not changes:
         return ('<div style="padding:14px 18px;background:#E1F5EE;border-radius:8px;">'
                 '<span style="font-size:15px;color:#0F6E56;font-weight:600;">🟢 신규 업데이트 없음</span></div>')
@@ -691,7 +717,8 @@ def _render_source_links(blocks: list[tuple[str, list[NewsItem]]]) -> str:
     return out or '<p style="font-size:12px;color:#999;">수집된 뉴스 없음</p>'
 
 
-def _render_disclosures(disclosures: Optional[list]) -> str:
+def _render_disclosures(disclosures: Optional[list], new_links: Optional[set] = None) -> str:
+    new_links = new_links or set()
     if disclosures is None:
         return '<p style="font-size:13px;color:#999;">DART_API_KEY가 설정되지 않아 공시를 수집하지 않았습니다.</p>'
     if not disclosures:
@@ -723,10 +750,13 @@ def _render_disclosures(disclosures: Optional[list]) -> str:
             if d.is_important and d.tag and d.tag != "기타":
                 bg, fg = CATEGORY_COLORS.get("실적" if d.tag == "실적" else "전략", ("#FCEBEB", "#C0392B"))
                 tag_badge = f'<span style="font-size:10px;background:{bg};color:{fg};padding:1px 6px;border-radius:6px;margin-right:4px;">{_esc(d.tag)}</span>'
+            new_badge = ""
+            if d.url in new_links:
+                new_badge = '<span style="font-size:10px;background:#FCEBEB;color:#C0392B;padding:1px 6px;border-radius:6px;font-weight:600;margin-right:4px;">NEW</span>'
             star = '🔴 ' if d.is_important else ''
             weight = "600" if d.is_important else "400"
             rows += (
-                f'<li style="margin-bottom:6px;">{star}{tag_badge}'
+                f'<li style="margin-bottom:6px;">{new_badge}{star}{tag_badge}'
                 f'<a href="{_esc(d.url)}" style="font-size:13px;color:#185FA5;text-decoration:none;font-weight:{weight};">{_esc(d.report_nm)}</a>'
                 f' <span style="color:#999;font-size:12px;">· {dt_txt}</span></li>'
             )
@@ -835,10 +865,9 @@ def render_html(cfg: Config, data: list[CompetitorData],
       <p style="font-size:13px;color:#999;margin:8px 0 0;">건설기계 {len(cfg.competitors)}개사 + 코스피 · 수집기간 {(now - dt.timedelta(hours=cfg.news_lookback_hours)):%m월 %d일 %H시} ~ {now:%m월 %d일 %H시} · 뉴스 {total_news}건</p>
     </div>
 
-    <!-- 신규 업데이트 현황 (최상단) -->
-    <div style="padding:20px 24px;border-bottom:1px solid #eee;">
-      <p style="font-size:14px;font-weight:700;color:#333;margin:0 0 12px;">신규 업데이트 현황</p>
-      {_render_change_dashboard(ir_changes)}
+    <!-- 한 줄 요약 (최상단) -->
+    <div style="padding:14px 24px;border-bottom:1px solid #eee;">
+      {_render_oneline_summary(ir_changes, disclosures, kospi_snap, now)}
     </div>
 
     <!-- 주가 스냅샷 (건설기계) -->
@@ -855,9 +884,7 @@ def render_html(cfg: Config, data: list[CompetitorData],
     <!-- 탭 -->
     <div style="padding:20px 24px;">
       <div style="display:flex;gap:4px;margin-bottom:16px;flex-wrap:wrap;">
-        <button class="tab-btn active" onclick="showTab('tab-updates')">신규 업데이트</button>
-        <button class="tab-btn" onclick="showTab('tab-ir')">IR Updates</button>
-        <button class="tab-btn" onclick="showTab('tab-dart')">공시 (DART)</button>
+        <button class="tab-btn active" onclick="showTab('tab-dart')">공시 (DART)</button>
         <button class="tab-btn" onclick="showTab('tab-comp')">경쟁사 뉴스</button>
         <button class="tab-btn" onclick="showTab('tab-kospi')">코스피 뉴스</button>
         {group_tab_btn}
@@ -865,16 +892,8 @@ def render_html(cfg: Config, data: list[CompetitorData],
         <button class="tab-btn" onclick="showTab('tab-ytd')">연초 대비 비교</button>
       </div>
 
-      <div id="tab-updates" class="tab-panel active">
-        {_render_change_dashboard(ir_changes)}
-      </div>
-
-      <div id="tab-ir" class="tab-panel">
-        {_render_ir_updates(ir_current)}
-      </div>
-
-      <div id="tab-dart" class="tab-panel">
-        {_render_disclosures(disclosures)}
+      <div id="tab-dart" class="tab-panel active">
+        {_render_disclosures(disclosures, {c.link for c in (ir_changes or []) if (c.is_new or c.is_updated) and getattr(c, 'source_type', '') == 'dart'})}
       </div>
 
       <div id="tab-comp" class="tab-panel">
