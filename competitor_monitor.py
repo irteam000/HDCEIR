@@ -897,7 +897,7 @@ def render_html(cfg: Config, data: list[CompetitorData],
       </div>
     </div>
   </div>
-  <p style="font-size:11px;color:#999;text-align:center;margin:12px 0 0;">자동 생성 리포트 · 원문 확인 권장 · 30분마다 자동 갱신</p>
+  <p style="font-size:11px;color:#999;text-align:center;margin:12px 0 0;">자동 생성 리포트 · 원문 확인 권장 · 평일 08:30 및 장중(09:00~15:30) 30분마다 갱신</p>
 </div>
 <script>
 function showTab(id) {{
