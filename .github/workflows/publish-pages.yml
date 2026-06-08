@@ -2,13 +2,19 @@ name: 리포트를 GitHub Pages에 게시
 
 on:
   schedule:
-  - cron: "*/30 0-9 * * 1-5"
-  workflow_dispatch: {}
+    # 2시간마다 자동 갱신 (UTC 기준, 24시간 내내)
+    - cron: "0 */2 * * *"
+  workflow_dispatch: {}   # 수동 실행 버튼
 
 permissions:
-  contents: read
+  contents: write    # 캐시(cache/) 커밋을 위해 write
   pages: write
   id-token: write
+
+# 동시 실행 방지 (캐시 커밋 충돌 방지)
+concurrency:
+  group: "pages-ir-monitor"
+  cancel-in-progress: false
 
 jobs:
   build-and-deploy:
@@ -26,9 +32,8 @@ jobs:
       - name: 의존성 설치
         run: pip install -r requirements.txt
 
-      - name: 리포트 생성
+      - name: 리포트 생성 (IR 변경 감지)
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }} 
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
         run: |
           SECRET_PATH="xl9UUV5MldV6S_ba"
@@ -36,6 +41,18 @@ jobs:
           python competitor_monitor.py --out "site/${SECRET_PATH}/index.html"
           printf 'User-agent: *\nDisallow: /\n' > site/robots.txt
           echo '<!doctype html><meta name="robots" content="noindex"><title>.</title>' > site/index.html
+
+      - name: 캐시 저장 (변경 감지 상태 유지)
+        run: |
+          git config user.name "ir-monitor-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add cache/ir_updates.json cache/update_history.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "update IR cache [skip ci]"
+            git push
+          else
+            echo "캐시 변경 없음"
+          fi
 
       - name: Pages 설정
         uses: actions/configure-pages@v5
