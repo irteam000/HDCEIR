@@ -2776,5 +2776,687 @@
     "tags": [
       "실적"
     ]
+  },
+  {
+    "company": "두산밥캣",
+    "title": "기업지배구조보고서공시              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260528800590",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.050939+00:00",
+    "tags": []
+  },
+  {
+    "company": "두산밥캣",
+    "title": "해산사유발생(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260521800521",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.050939+00:00",
+    "tags": []
+  },
+  {
+    "company": "두산밥캣",
+    "title": "분기보고서 (2026.03)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260514001068",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.050939+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD건설기계",
+    "title": "[기재정정]분기보고서 (2026.03)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260602000487",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.051583+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD건설기계",
+    "title": "[기재정정]사업보고서 (2025.12)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260602000456",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.051583+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD건설기계",
+    "title": "지속가능경영보고서등관련사항(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601800528",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.051583+00:00",
+    "tags": [
+      "ESG"
+    ]
+  },
+  {
+    "company": "HD건설기계",
+    "title": "기업지배구조보고서공시              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260529801688",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.051583+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD건설기계",
+    "title": "분기보고서 (2026.03)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515001815",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.051583+00:00",
+    "tags": []
+  },
+  {
+    "company": "진성티이씨",
+    "title": "교환청구권행사              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260519900175",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.051787+00:00",
+    "tags": []
+  },
+  {
+    "company": "진성티이씨",
+    "title": "분기보고서 (2026.03)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515000004",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.051787+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "단일판매ㆍ공급계약체결(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260608800378",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "기업지배구조보고서공시              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601800769",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "단일판매ㆍ공급계약체결              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601800384",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "풍문또는보도에대한해명(미확정)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260522800243",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "영업(잠정)실적(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260520800414",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "분기보고서 (2026.03)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515001837",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "[기재정정]벌금등의부과(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260604800617",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260521800367",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513800543",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "현금ㆍ현물배당결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513800524",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513800488",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513800475",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대마린엔진",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260604800356",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.065344+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린엔진",
+    "title": "[기재정정]분기보고서 (2026.03)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260519000171",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.065344+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "기업지배구조보고서공시              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601800634",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.058663+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601800400",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.058663+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "영업(잠정)실적(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260520800468",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.058663+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "영업(잠정)실적(공정공시)(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260520800458",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.058663+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "분기보고서 (2026.03)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515001799",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.058663+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "[기재정정]벌금등의부과(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260604800617",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "기업지배구조보고서공시              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601800698",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.066971+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260521800367",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "분기보고서 (2026.03)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515002071",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.066971+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513800543",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "현금ㆍ현물배당결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513800524",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513800488",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513800475",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260529801230",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.060851+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "[기재정정]벌금등의부과(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260604800617",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "기업지배구조보고서공시              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601800698",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.066971+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260521800367",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "분기보고서 (2026.03)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515002071",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.066971+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513800543",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "현금ㆍ현물배당결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513800524",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513800488",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513800475",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "[기재정정]분기보고서 (2026.03)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515001212",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.062749+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "[기재정정]벌금등의부과(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260604800617",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "기업지배구조보고서공시              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601800698",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.066971+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260521800367",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "분기보고서 (2026.03)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515002071",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.066971+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513800543",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "현금ㆍ현물배당결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513800524",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513800488",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513800475",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대마린엔진",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260604800356",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.065344+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린엔진",
+    "title": "단일판매ㆍ공급계약체결              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260529800510",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.065344+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린엔진",
+    "title": "[기재정정]분기보고서 (2026.03)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260519000171",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.065344+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "[기재정정]벌금등의부과(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260604800617",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "기업지배구조보고서공시              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601800698",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.066971+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260521800367",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "분기보고서 (2026.03)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515002071",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.066971+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513800543",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "현금ㆍ현물배당결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513800524",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513800488",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513800475",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "단일판매ㆍ공급계약체결(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260608800378",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "기업지배구조보고서공시              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601800769",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "단일판매ㆍ공급계약체결              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601800384",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "풍문또는보도에대한해명(미확정)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260522800243",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "영업(잠정)실적(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260520800414",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "분기보고서 (2026.03)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515001837",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "[기재정정]벌금등의부과(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260604800617",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260521800367",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513800543",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "현금ㆍ현물배당결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513800524",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513800488",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513800475",
+    "state": "NEW",
+    "detected_at": "2026-06-10T12:45:40.069952+00:00",
+    "tags": [
+      "실적"
+    ]
   }
 ]
