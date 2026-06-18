@@ -686,26 +686,41 @@ def format_krw_jo(value_krw: Optional[float]) -> str:
     return f"{eok:,.0f}억"
 
 
-def render_sparkline(values: list[float], up: bool, width: int = 110, height: int = 32) -> str:
-    """종가 리스트를 작은 SVG 라인 차트(스파크라인)로. 색은 등락 방향에 따라."""
+def render_sparkline(values: list[float], up: bool, width: int = 140, height: int = 46) -> str:
+    """종가 리스트를 작은 SVG 라인 차트로. 기간 내 최저(파랑)·최고(빨강) 점과 값 표시."""
     if not values or len(values) < 2:
         return ""
     lo, hi = min(values), max(values)
     span = (hi - lo) or 1.0
     n = len(values)
-    pts = []
-    for i, v in enumerate(values):
-        x = i / (n - 1) * (width - 4) + 2
-        y = height - 2 - (v - lo) / span * (height - 4)
-        pts.append(f"{x:.1f},{y:.1f}")
+    lo_i = values.index(lo)
+    hi_i = values.index(hi)
+    pad_top, pad_bot = 12, 4  # 위/아래 라벨 공간
+    plot_h = height - pad_top - pad_bot
+
+    def px(i): return i / (n - 1) * (width - 8) + 4
+    def py(v): return pad_top + plot_h - (v - lo) / span * plot_h
+
+    pts = " ".join(f"{px(i):.1f},{py(v):.1f}" for i, v in enumerate(values))
     color = "#C0392B" if up else "#1B6CC4"
-    points = " ".join(pts)
-    return (
+    parts = [
         f'<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" '
-        f'style="display:block;margin-top:6px;">'
-        f'<polyline points="{points}" fill="none" stroke="{color}" stroke-width="1.5" '
-        f'stroke-linejoin="round" stroke-linecap="round"/></svg>'
-    )
+        f'style="display:block;margin-top:6px;">',
+        f'<polyline points="{pts}" fill="none" stroke="{color}" stroke-width="1.5" '
+        f'stroke-linejoin="round" stroke-linecap="round"/>',
+    ]
+    # 최고점 (빨강) — 위쪽 라벨
+    hx, hy = px(hi_i), py(hi)
+    parts.append(f'<circle cx="{hx:.1f}" cy="{hy:.1f}" r="2.2" fill="#C0392B"/>')
+    ha = "start" if hi_i < n / 2 else "end"
+    parts.append(f'<text x="{hx:.1f}" y="{hy-4:.1f}" text-anchor="{ha}" font-size="9" fill="#C0392B">{hi:,.0f}</text>')
+    # 최저점 (파랑) — 아래쪽 라벨
+    lx, ly = px(lo_i), py(lo)
+    parts.append(f'<circle cx="{lx:.1f}" cy="{ly:.1f}" r="2.2" fill="#1B6CC4"/>')
+    la = "start" if lo_i < n / 2 else "end"
+    parts.append(f'<text x="{lx:.1f}" y="{ly+9:.1f}" text-anchor="{la}" font-size="9" fill="#1B6CC4">{lo:,.0f}</text>')
+    parts.append('</svg>')
+    return "".join(parts)
 
 
 def render_comparison_chart(rows: list[tuple[str, float]]) -> str:
@@ -776,7 +791,7 @@ def render_valuation_table(data: list) -> str:
 
 
 def render_flow_chart(trend: list, title: str, width: int = 620, height: int = 200) -> str:
-    """외국인·기관 일별 순매수(억원) 추이를 누적 라인으로. 빨강=외국인, 파랑=기관."""
+    """외국인·기관 일별 순매수 누적 추이. 초록=외국인, 보라=기관. 날짜 2주 간격 표시."""
     if not trend:
         return '<p style="font-size:13px;color:#999;">수급 데이터가 없습니다.</p>'
     # 누적합으로 경향성 표현
@@ -789,7 +804,7 @@ def render_flow_chart(trend: list, title: str, width: int = 620, height: int = 2
     allv = f_cum + i_cum + [0.0]
     lo, hi = min(allv), max(allv)
     span = (hi - lo) or 1.0
-    pad_l, pad_b = 50, 24
+    pad_l, pad_b = 50, 28
     plot_w, plot_h = width - pad_l - 10, height - pad_b - 16
 
     def x(i): return pad_l + (i / (n - 1 or 1)) * plot_w
@@ -799,19 +814,32 @@ def render_flow_chart(trend: list, title: str, width: int = 620, height: int = 2
         pts = " ".join(f"{x(i):.1f},{y(v):.1f}" for i, v in enumerate(vals))
         return f'<polyline points="{pts}" fill="none" stroke="{color}" stroke-width="2"/>'
 
+    COL_F = "#0F9D58"  # 외국인 = 초록
+    COL_I = "#7E57C2"  # 기관 = 보라
     zero_y = y(0)
     parts = [f'<svg width="100%" viewBox="0 0 {width} {height}" style="max-width:100%;">']
     parts.append(f'<line x1="{pad_l}" y1="{zero_y:.1f}" x2="{width-10}" y2="{zero_y:.1f}" stroke="#ddd" stroke-dasharray="3,3"/>')
     parts.append(f'<text x="{pad_l-6}" y="{zero_y+3:.1f}" text-anchor="end" font-size="10" fill="#aaa">0</text>')
-    parts.append(line(f_cum, "#C0392B"))
-    parts.append(line(i_cum, "#1B6CC4"))
+    parts.append(line(f_cum, COL_F))
+    parts.append(line(i_cum, COL_I))
     # 범례
-    parts.append(f'<rect x="{pad_l}" y="2" width="10" height="10" fill="#C0392B"/><text x="{pad_l+14}" y="11" font-size="11" fill="#666">외국인 누적</text>')
-    parts.append(f'<rect x="{pad_l+110}" y="2" width="10" height="10" fill="#1B6CC4"/><text x="{pad_l+124}" y="11" font-size="11" fill="#666">기관 누적</text>')
-    # 날짜 축(시작/끝)
-    sd, ed = trend[0]["date"], trend[-1]["date"]
-    parts.append(f'<text x="{pad_l}" y="{height-6}" font-size="10" fill="#aaa">{sd[4:6]}/{sd[6:8]}</text>')
-    parts.append(f'<text x="{width-10}" y="{height-6}" text-anchor="end" font-size="10" fill="#aaa">{ed[4:6]}/{ed[6:8]}</text>')
+    parts.append(f'<rect x="{pad_l}" y="2" width="10" height="10" fill="{COL_F}"/><text x="{pad_l+14}" y="11" font-size="11" fill="#666">외국인 누적</text>')
+    parts.append(f'<rect x="{pad_l+110}" y="2" width="10" height="10" fill="{COL_I}"/><text x="{pad_l+124}" y="11" font-size="11" fill="#666">기관 누적</text>')
+    # 날짜 축: 약 2주(10거래일) 간격으로 눈금+레이블
+    tick_y = height - pad_b + 16
+    step = 10  # 거래일 기준 약 2주
+    shown = set()
+    for i in range(0, n, step):
+        d = trend[i]["date"]
+        xi = x(i)
+        parts.append(f'<line x1="{xi:.1f}" y1="{12+plot_h:.1f}" x2="{xi:.1f}" y2="{12+plot_h+4:.1f}" stroke="#ccc"/>')
+        anchor = "start" if i == 0 else ("end" if i >= n - step else "middle")
+        parts.append(f'<text x="{xi:.1f}" y="{tick_y:.1f}" text-anchor="{anchor}" font-size="10" fill="#aaa">{d[4:6]}/{d[6:8]}</text>')
+        shown.add(i)
+    # 마지막 날짜가 안 찍혔으면 끝점 추가
+    if (n - 1) not in shown:
+        d = trend[-1]["date"]
+        parts.append(f'<text x="{width-10}" y="{tick_y:.1f}" text-anchor="end" font-size="10" fill="#aaa">{d[4:6]}/{d[6:8]}</text>')
     parts.append('</svg>')
     f_total, i_total = f_cum[-1], i_cum[-1]
     summary = (f'<p style="font-size:12px;color:#666;margin:8px 0 0;">'
@@ -1368,11 +1396,12 @@ def render_html(cfg: Config, data: list[CompetitorData],
         (market_cap_in_krw(d.stock) or 0)
         for d in group_data if d.stock and d.stock.price is not None
     )
-    group_total_txt = (f'<span style="font-weight:400;color:#185FA5;font-size:12px;margin-left:8px;">'
+    group_total_txt = (f'<span style="font-weight:700;font-size:16px;color:#1a1a1a;'
+                       f'background:#FFE680;padding:2px 8px;border-radius:6px;margin-left:10px;">'
                        f'총 시총 {format_krw_jo(group_total_krw)}원</span>'
                        if group_total_krw else '')
     group_snapshot = (f'''<div style="padding:20px 24px;border-bottom:1px solid #eee;">
-      <p style="font-size:13px;font-weight:600;color:#666;margin:0 0 12px;">그룹주 주가 스냅샷 (HD현대 그룹){group_total_txt}</p>
+      <p style="font-size:13px;font-weight:600;color:#666;margin:0 0 12px;">그룹주 주가 스냅샷 (HD현대 그룹){group_total_txt}<span style="font-weight:400;color:#aaa;font-size:11px;display:block;margin-top:4px;">차트는 최근 약 1개월 일별 종가 흐름</span></p>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">{group_cards}</div>
     </div>''' if has_group else '')
     group_panel = (f'''<div id="tab-group" class="tab-panel">{_render_source_links(group_blocks)}</div>'''
@@ -1382,7 +1411,7 @@ def render_html(cfg: Config, data: list[CompetitorData],
 <html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<meta http-equiv="refresh" content="900">
+<meta name="data-version" content="{now:%Y%m%d%H%M%S}">
 <title>{_esc(cfg.report_title)}</title>
 <style>
   .tab-btn {{ padding:9px 12px; border:none; background:#EFEDE7; cursor:pointer; font-size:13px; font-weight:500; color:#666; border-radius:8px 8px 0 0; }}
@@ -1404,7 +1433,7 @@ def render_html(cfg: Config, data: list[CompetitorData],
 
     <!-- 주가 스냅샷 (건설기계) -->
     <div style="padding:20px 24px;border-bottom:1px solid #eee;">
-      <p style="font-size:13px;font-weight:600;color:#666;margin:0 0 12px;">주가 스냅샷 (건설기계)</p>
+      <p style="font-size:13px;font-weight:600;color:#666;margin:0 0 12px;">주가 스냅샷 (건설기계) <span style="font-weight:400;color:#aaa;font-size:11px;">· 차트는 최근 약 1개월 일별 종가 흐름</span></p>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
         {kospi_card}
         {stock_cards}
@@ -1452,7 +1481,7 @@ def render_html(cfg: Config, data: list[CompetitorData],
       {flow_panel}
     </div>
   </div>
-  <p style="font-size:11px;color:#999;text-align:center;margin:12px 0 0;">자동 생성 리포트 · 원문 확인 권장 · 평일 08:30 및 장중(09:00~15:30) 30분마다 갱신</p>
+  <p style="font-size:11px;color:#999;text-align:center;margin:12px 0 0;">자동 생성 리포트 · 원문 확인 권장 · 이 화면은 약 10분 단위로 갱신된 값을 보여줍니다(실시간 시세 아님). 데이터 기준 시각은 상단 ‘갱신 시각’ 참고.</p>
 </div>
 <script>
 function showTab(id) {{
@@ -1461,6 +1490,26 @@ function showTab(id) {{
   document.getElementById(id).classList.add('active');
   event.target.classList.add('active');
 }}
+
+// 데이터가 새로 올라오면 자동 새로고침 (고정 주기 X, 새 데이터 감지 시에만)
+(function() {{
+  var meta = document.querySelector('meta[name="data-version"]');
+  var current = meta ? meta.getAttribute('content') : null;
+  if (!current) return;
+  function check() {{
+    // 페이지 자신을 캐시 우회로 가볍게 다시 받아 data-version만 비교
+    fetch(window.location.pathname + '?_=' + Date.now(), {{ cache: 'no-store' }})
+      .then(function(r) {{ return r.text(); }})
+      .then(function(html) {{
+        var m = html.match(/name="data-version" content="(\\d+)"/);
+        if (m && m[1] !== current) {{
+          window.location.reload();
+        }}
+      }})
+      .catch(function() {{}});  // 네트워크 오류는 조용히 무시
+  }}
+  setInterval(check, 60000);  // 1분마다 확인
+}})();
 </script>
 </body></html>"""
 
