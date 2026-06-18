@@ -131,6 +131,9 @@ class StockSnapshot:
     market_cap: Optional[float] = None
     history: list[float] = field(default_factory=list)   # 최근 1개월 종가 (미니 차트용)
     ytd_pct: Optional[float] = None                       # 연초 대비 수익률 (비교 그래프용)
+    per: Optional[float] = None                           # 주가수익비율
+    pbr: Optional[float] = None                           # 주가순자산비율
+    div_yield: Optional[float] = None                     # 배당수익률(%)
     error: str = ""
 
 
@@ -295,8 +298,14 @@ def _naver_index_prices(index_code: str = "KOSPI", count: int = 400) -> Optional
     return out
 
 
-def _naver_market_cap(code: str) -> Optional[float]:
-    """네이버 종목 통합정보에서 시가총액(원). 실패 시 None."""
+_INTEGRATION_CACHE: dict[str, Optional[dict]] = {}
+
+
+def _naver_integration(code: str) -> Optional[dict]:
+    """네이버 종목 통합정보 JSON (1종목 1회 캐시)."""
+    if code in _INTEGRATION_CACHE:
+        return _INTEGRATION_CACHE[code]
+
     def _call():
         url = f"https://m.stock.naver.com/api/stock/{code}/integration"
         resp = _SESSION.get(url, timeout=15)
@@ -306,18 +315,77 @@ def _naver_market_cap(code: str) -> Optional[float]:
 
     try:
         data = _retry(_call)
-        if not data:
-            return None
-        # totalInfos 안에 'marketValue'(시가총액, 억원 단위 문자열)가 들어옴
-        for row in data.get("totalInfos", []):
-            if row.get("code") in ("marketValue", "marketSum", "시가총액"):
-                v = _to_float(row.get("value"))
-                if v is not None:
-                    # 네이버는 보통 '억' 단위로 줌 → 원으로 환산
-                    return v * 1_0000_0000
     except Exception:
+        data = None
+    _INTEGRATION_CACHE[code] = data
+    return data
+
+
+def _total_info_value(data: dict, *codes: str) -> Optional[float]:
+    """totalInfos에서 주어진 code 키들 중 하나의 값을 float로."""
+    if not data:
         return None
+    for row in data.get("totalInfos", []):
+        if row.get("code") in codes:
+            v = _to_float(row.get("value"))
+            if v is not None:
+                return v
     return None
+
+
+def _naver_market_cap(code: str) -> Optional[float]:
+    """네이버 종목 통합정보에서 시가총액(원). 실패 시 None."""
+    data = _naver_integration(code)
+    v = _total_info_value(data, "marketValue", "marketSum", "시가총액")
+    # 네이버는 보통 '억' 단위로 줌 → 원으로 환산
+    return v * 1_0000_0000 if v is not None else None
+
+
+def _naver_valuation(code: str) -> tuple[Optional[float], Optional[float], Optional[float]]:
+    """(PER, PBR, 배당수익률%) 추출. 실패한 항목은 None."""
+    data = _naver_integration(code)
+    if not data:
+        return None, None, None
+    per = _total_info_value(data, "per", "PER")
+    pbr = _total_info_value(data, "pbr", "PBR")
+    dy = _total_info_value(data, "dividendYield", "dvr", "배당수익률")
+    return per, pbr, dy
+
+
+# ---------------------------------------------------------------------------
+# 외국인·기관 수급 (네이버) — 일별 순매수 추이
+# ---------------------------------------------------------------------------
+def _naver_trend(code: str, count: int = 65) -> Optional[list[dict]]:
+    """[(날짜, 외국인 순매수, 기관 순매수)] 최근 count거래일. 단위는 응답 그대로.
+    반환 항목: {'date','foreign','inst'}. 실패 시 None."""
+    def _call():
+        url = (f"https://m.stock.naver.com/api/stock/{code}/trend"
+               f"?pageSize={count}&page=1")
+        resp = _SESSION.get(url, timeout=15)
+        if resp.status_code != 200:
+            return None
+        return resp.json()
+
+    data = _retry(_call)
+    if not data:
+        return None
+    rows = data if isinstance(data, list) else (
+        data.get("trends") or data.get("dealTrendInfos") or data.get("result") or [])
+    out: list[dict] = []
+    for r in rows:
+        d = r.get("bizdate") or r.get("localDate") or r.get("date")
+        # 외국인/기관 순매수: 여러 키 후보
+        foreign = _to_float(r.get("foreignerPureBuyQuant") or r.get("foreignPureBuy")
+                            or r.get("frgnPureBuy") or r.get("foreigner"))
+        inst = _to_float(r.get("organPureBuyQuant") or r.get("organPureBuy")
+                         or r.get("institutionPureBuy") or r.get("organ"))
+        if d and (foreign is not None or inst is not None):
+            out.append({"date": str(d)[:8].replace("-", ""),
+                        "foreign": foreign or 0.0, "inst": inst or 0.0})
+    if not out:
+        return None
+    out.sort(key=lambda x: x["date"])  # 오래된→최신
+    return out
 
 
 def _build_snapshot_from_series(series: list[tuple[str, float]], ticker: str,
@@ -431,6 +499,7 @@ def fetch_stock_by_ticker(ticker: str) -> Optional[StockSnapshot]:
                     mc = _naver_market_cap(naver_code)
                     if mc:
                         snap.market_cap = mc
+                    snap.per, snap.pbr, snap.div_yield = _naver_valuation(naver_code)
                 return snap
         except Exception as e:
             print(f"  ! 네이버 조회 실패 {ticker}: {str(e)[:80]}", file=sys.stderr)
@@ -552,7 +621,109 @@ def render_comparison_chart(rows: list[tuple[str, float]]) -> str:
     return "".join(parts)
 
 
-# ---------------------------------------------------------------------------
+def render_valuation_table(data: list) -> str:
+    """한국 종목 밸류에이션 표 (현재가/PER/PBR/배당수익률/시총). PER 오름차순."""
+    rows = []
+    for d in data:
+        s = d.stock
+        if not (s and s.price is not None):
+            continue
+        if not (s.ticker.endswith((".KS", ".KQ"))):
+            continue  # 한국 종목만 (밸류에이션 데이터 존재)
+        rows.append((d.comp.name, s))
+    if not rows:
+        return '<p style="font-size:13px;color:#999;">밸류에이션 데이터가 없습니다.</p>'
+    rows.sort(key=lambda r: (r[1].per is None, r[1].per or 0))  # PER 오름차순, None은 뒤로
+
+    def cell(v, suffix="", dec=2):
+        if v is None:
+            return '<td style="padding:8px 10px;color:#bbb;text-align:right;">—</td>'
+        return f'<td style="padding:8px 10px;text-align:right;">{v:,.{dec}f}{suffix}</td>'
+
+    head = ('<tr style="background:#F7F6F2;font-size:12px;color:#666;">'
+            '<th style="padding:8px 10px;text-align:left;">종목</th>'
+            '<th style="padding:8px 10px;text-align:right;">현재가</th>'
+            '<th style="padding:8px 10px;text-align:right;">PER</th>'
+            '<th style="padding:8px 10px;text-align:right;">PBR</th>'
+            '<th style="padding:8px 10px;text-align:right;">배당수익률</th>'
+            '<th style="padding:8px 10px;text-align:right;">시총</th></tr>')
+    body = ""
+    for name, s in rows:
+        mc_txt = format_krw_jo(market_cap_in_krw(s))
+        body += (f'<tr style="font-size:13px;border-bottom:1px solid #eee;">'
+                 f'<td style="padding:8px 10px;">{_esc(name)}</td>'
+                 f'<td style="padding:8px 10px;text-align:right;">{s.price:,.0f}</td>'
+                 f'{cell(s.per)}{cell(s.pbr)}{cell(s.div_yield, "%")}'
+                 f'<td style="padding:8px 10px;text-align:right;">{mc_txt}원</td></tr>')
+    return (f'<table style="width:100%;border-collapse:collapse;">{head}{body}</table>'
+            f'<p style="font-size:11px;color:#999;margin:8px 0 0;">* PER 오름차순. 해외 종목은 제외.</p>')
+
+
+def render_flow_chart(trend: list, title: str, width: int = 620, height: int = 200) -> str:
+    """외국인·기관 일별 순매수(억원) 추이를 누적 라인으로. 빨강=외국인, 파랑=기관."""
+    if not trend:
+        return '<p style="font-size:13px;color:#999;">수급 데이터가 없습니다.</p>'
+    # 누적합으로 경향성 표현
+    f_cum, i_cum = [], []
+    fs = is_ = 0.0
+    for r in trend:
+        fs += r["foreign"]; is_ += r["inst"]
+        f_cum.append(fs); i_cum.append(is_)
+    n = len(trend)
+    allv = f_cum + i_cum + [0.0]
+    lo, hi = min(allv), max(allv)
+    span = (hi - lo) or 1.0
+    pad_l, pad_b = 50, 24
+    plot_w, plot_h = width - pad_l - 10, height - pad_b - 16
+
+    def x(i): return pad_l + (i / (n - 1 or 1)) * plot_w
+    def y(v): return 12 + plot_h - (v - lo) / span * plot_h
+
+    def line(vals, color):
+        pts = " ".join(f"{x(i):.1f},{y(v):.1f}" for i, v in enumerate(vals))
+        return f'<polyline points="{pts}" fill="none" stroke="{color}" stroke-width="2"/>'
+
+    zero_y = y(0)
+    parts = [f'<svg width="100%" viewBox="0 0 {width} {height}" style="max-width:100%;">']
+    parts.append(f'<line x1="{pad_l}" y1="{zero_y:.1f}" x2="{width-10}" y2="{zero_y:.1f}" stroke="#ddd" stroke-dasharray="3,3"/>')
+    parts.append(f'<text x="{pad_l-6}" y="{zero_y+3:.1f}" text-anchor="end" font-size="10" fill="#aaa">0</text>')
+    parts.append(line(f_cum, "#C0392B"))
+    parts.append(line(i_cum, "#1B6CC4"))
+    # 범례
+    parts.append(f'<rect x="{pad_l}" y="2" width="10" height="10" fill="#C0392B"/><text x="{pad_l+14}" y="11" font-size="11" fill="#666">외국인 누적</text>')
+    parts.append(f'<rect x="{pad_l+110}" y="2" width="10" height="10" fill="#1B6CC4"/><text x="{pad_l+124}" y="11" font-size="11" fill="#666">기관 누적</text>')
+    # 날짜 축(시작/끝)
+    sd, ed = trend[0]["date"], trend[-1]["date"]
+    parts.append(f'<text x="{pad_l}" y="{height-6}" font-size="10" fill="#aaa">{sd[4:6]}/{sd[6:8]}</text>')
+    parts.append(f'<text x="{width-10}" y="{height-6}" text-anchor="end" font-size="10" fill="#aaa">{ed[4:6]}/{ed[6:8]}</text>')
+    parts.append('</svg>')
+    f_total, i_total = f_cum[-1], i_cum[-1]
+    summary = (f'<p style="font-size:12px;color:#666;margin:8px 0 0;">'
+               f'기간 누적 — 외국인 <span style="color:#C0392B;">{f_total:+,.0f}억</span> · '
+               f'기관 <span style="color:#1B6CC4;">{i_total:+,.0f}억</span></p>')
+    return f'<p style="font-size:13px;font-weight:600;margin:0 0 8px;">{_esc(title)}</p>' + "".join(parts) + summary
+
+
+# 수급 분석 대상 종목코드 (HD건설기계만)
+FLOW_TARGETS = {"267270": "HD건설기계"}
+
+
+def collect_flow(data: list) -> dict:
+    """FLOW_TARGETS에 해당하는 종목의 수급 추이 수집. {code: trend}."""
+    out = {}
+    for d in data:
+        code = d.comp.ticker.split(".")[0] if d.comp.ticker else ""
+        if code in FLOW_TARGETS:
+            try:
+                tr = _naver_trend(code, count=65)  # 약 3개월(거래일)
+                if tr:
+                    out[code] = tr
+            except Exception as e:
+                print(f"  ! {d.comp.name} 수급 조회 실패: {str(e)[:60]}", file=sys.stderr)
+    return out
+
+
+
 # DART 공시 수집
 # ---------------------------------------------------------------------------
 
@@ -1006,7 +1177,8 @@ def render_html(cfg: Config, data: list[CompetitorData],
                 group_data: Optional[list] = None,
                 ir_current: Optional[list] = None,
                 ir_changes: Optional[list] = None,
-                history: Optional[list] = None) -> str:
+                history: Optional[list] = None,
+                flows: Optional[dict] = None) -> str:
     now = dt.datetime.now(dt.timezone.utc) + dt.timedelta(hours=9)
     total_news = sum(len(d.news) for d in data) + len(kospi_news)
     ir_current = ir_current or []
@@ -1054,6 +1226,24 @@ def render_html(cfg: Config, data: list[CompetitorData],
         if d.stock and d.stock.ytd_pct is not None:
             comp_rows.append((d.comp.name, d.stock.ytd_pct))
     comparison_chart = render_comparison_chart(comp_rows)
+
+    # 밸류에이션 표 (건설기계 + 그룹주 한국 종목 전체)
+    valuation_table = render_valuation_table(list(data) + list(group_data))
+
+    # 수급 그래프 (HD건설기계만)
+    flows = flows or {}
+    flow_html = ""
+    for code, name in FLOW_TARGETS.items():
+        if code in flows:
+            flow_html += render_flow_chart(flows[code], f"{name} 외국인·기관 순매수 추이 (최근 3개월, 누적·억원)")
+    if not flow_html:
+        flow_html = '<p style="font-size:13px;color:#999;">수급 데이터가 없습니다.</p>'
+    has_flow = bool(flows)
+    flow_tab_btn = '<button class="tab-btn" onclick="showTab(\'tab-flow\')">외국인·기관 수급</button>'
+    flow_panel = f'''<div id="tab-flow" class="tab-panel">
+        <p style="font-size:13px;color:#666;margin:0 0 12px;">HD건설기계의 외국인·기관 순매수 추이입니다. 페이지 갱신 시 함께 업데이트됩니다.</p>
+        {flow_html}
+      </div>'''
 
     comp_blocks = [(d.comp.name, d.news) for d in data]
     group_tab_btn = ('<button class="tab-btn" onclick="showTab(\'tab-group\')">그룹주 뉴스</button>'
@@ -1115,6 +1305,8 @@ def render_html(cfg: Config, data: list[CompetitorData],
         <button class="tab-btn" onclick="showTab('tab-kospi')">코스피 뉴스</button>
         {group_tab_btn}
         <button class="tab-btn" onclick="showTab('tab-ytd')">연초 대비 비교</button>
+        <button class="tab-btn" onclick="showTab('tab-val')">밸류에이션</button>
+        {flow_tab_btn}
       </div>
 
       <div id="tab-dart" class="tab-panel active">
@@ -1135,6 +1327,13 @@ def render_html(cfg: Config, data: list[CompetitorData],
         <p style="font-size:13px;color:#666;margin:0 0 12px;">코스피와 각 기업의 올해 누적 주가 수익률 비교입니다.</p>
         {comparison_chart}
       </div>
+
+      <div id="tab-val" class="tab-panel">
+        <p style="font-size:13px;color:#666;margin:0 0 12px;">국내 종목 밸류에이션 비교 (네이버 금융 기준).</p>
+        {valuation_table}
+      </div>
+
+      {flow_panel}
     </div>
   </div>
   <p style="font-size:11px;color:#999;text-align:center;margin:12px 0 0;">자동 생성 리포트 · 원문 확인 권장 · 평일 08:30 및 장중(09:00~15:30) 30분마다 갱신</p>
@@ -1234,9 +1433,11 @@ def main() -> None:
     ir_current, ir_changes, history = collect_ir_updates(cfg, data + group_data, disclosures)
     print(f"  - IR 자료 {len(ir_current)}건, 변경 {len(ir_changes)}건 감지", file=sys.stderr)
 
-    print("[4/4] 리포트 렌더링...", file=sys.stderr)
+    print("[4/4] 수급 수집 + 리포트 렌더링...", file=sys.stderr)
+    flows = collect_flow(data + group_data)
     html = render_html(cfg, data, kospi_snap, kospi_news,
-                       disclosures, group_data, ir_current, ir_changes, history)
+                       disclosures, group_data, ir_current, ir_changes, history,
+                       flows=flows)
     with open(args.out, "w", encoding="utf-8") as f:
         f.write(html)
     print(f"  저장 완료 → {args.out}", file=sys.stderr)
