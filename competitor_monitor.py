@@ -1265,7 +1265,7 @@ def _render_disclosures(disclosures: Optional[list], new_links: Optional[set] = 
     # HD건설기계 최상단 고정, 그다음 중요 공시 많은 순
     def comp_sort_key(item):
         name, items = item
-        is_hd_ce = 0 if ("건설기계" in name) else 1
+        is_hd_ce = 0 if (name == "HD건설기계") else 1
         return (is_hd_ce, -sum(1 for x in items if x.is_important), name)
 
     out = ""
@@ -1415,7 +1415,7 @@ def render_html(cfg: Config, data: list[CompetitorData],
       </div>'''
 
     def _hd_ce_first(blocks):
-        return sorted(blocks, key=lambda b: 0 if "건설기계" in b[0] else 1)
+        return sorted(blocks, key=lambda b: 0 if b[0] == "HD건설기계" else 1)
 
     comp_blocks = _hd_ce_first([(d.comp.name, d.news) for d in data])
     group_tab_btn = ('<button class="tab-btn" onclick="showTab(\'tab-group\')">그룹주 뉴스</button>'
