@@ -686,8 +686,10 @@ def format_krw_jo(value_krw: Optional[float]) -> str:
     return f"{eok:,.0f}억"
 
 
-def render_sparkline(values: list[float], up: bool, width: int = 140, height: int = 52) -> str:
-    """종가 리스트를 작은 SVG 라인 차트로. 기간 내 최저(파랑)·최고(빨강) 점과 값 표시."""
+def render_sparkline(values: list[float], up: bool, width: int = 140, height: int = 52,
+                     stroke: str = "") -> str:
+    """종가 리스트를 작은 SVG 라인 차트로. 기간 내 최저(파랑)·최고(빨강) 점과 값 표시.
+    stroke 지정 시 선 색 강제."""
     if not values or len(values) < 2:
         return ""
     lo, hi = min(values), max(values)
@@ -702,7 +704,7 @@ def render_sparkline(values: list[float], up: bool, width: int = 140, height: in
     def py(v): return pad_top + plot_h - (v - lo) / span * plot_h
 
     pts = " ".join(f"{px(i):.1f},{py(v):.1f}" for i, v in enumerate(values))
-    color = "#C0392B" if up else "#1B6CC4"
+    color = stroke or ("#C0392B" if up else "#1B6CC4")
     parts = [
         f'<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" '
         f'style="display:block;margin-top:6px;overflow:visible;">',
@@ -753,7 +755,7 @@ def render_comparison_chart(rows: list[tuple[str, float]]) -> str:
 
 
 def render_valuation_table(data: list) -> str:
-    """한국 종목 밸류에이션 표 (현재가/PER/PBR/배당수익률/시총). PER 오름차순."""
+    """한국 종목 밸류에이션 표 (현재가/PER/PBR/배당수익률/시총). PER 내림차순."""
     rows = []
     for d in data:
         s = d.stock
@@ -764,12 +766,14 @@ def render_valuation_table(data: list) -> str:
         rows.append((d.comp.name, s))
     if not rows:
         return '<p style="font-size:13px;color:#999;">밸류에이션 데이터가 없습니다.</p>'
-    rows.sort(key=lambda r: (r[1].per is None, r[1].per or 0))  # PER 오름차순, None은 뒤로
+    # PER 내림차순 (None은 뒤로)
+    rows.sort(key=lambda r: (r[1].per is None, -(r[1].per or 0)))
 
-    def cell(v, suffix="", dec=2):
+    def cell(v, suffix="", dec=2, bold=False):
+        w = "font-weight:700;" if bold else ""
         if v is None:
-            return '<td style="padding:8px 10px;color:#bbb;text-align:right;">—</td>'
-        return f'<td style="padding:8px 10px;text-align:right;">{v:,.{dec}f}{suffix}</td>'
+            return f'<td style="padding:8px 10px;color:#bbb;text-align:right;{w}">—</td>'
+        return f'<td style="padding:8px 10px;text-align:right;{w}">{v:,.{dec}f}{suffix}</td>'
 
     head = ('<tr style="background:#F7F6F2;font-size:12px;color:#666;">'
             '<th style="padding:8px 10px;text-align:left;">종목</th>'
@@ -781,13 +785,18 @@ def render_valuation_table(data: list) -> str:
     body = ""
     for name, s in rows:
         mc_txt = format_krw_jo(market_cap_in_krw(s))
-        body += (f'<tr style="font-size:13px;border-bottom:1px solid #eee;">'
-                 f'<td style="padding:8px 10px;">{_esc(name)}</td>'
-                 f'<td style="padding:8px 10px;text-align:right;">{s.price:,.0f}</td>'
-                 f'{cell(s.per)}{cell(s.pbr)}{cell(s.div_yield, "%")}'
-                 f'<td style="padding:8px 10px;text-align:right;">{mc_txt}원</td></tr>')
+        is_hd = (name == "HD건설기계")
+        # HD건설기계 행은 전체 볼드 + 옅은 초록 배경 강조
+        tr_style = ("font-size:13px;border-bottom:1px solid #eee;font-weight:700;"
+                    "background:#E3F4EA;") if is_hd else "font-size:13px;border-bottom:1px solid #eee;"
+        w = "font-weight:700;" if is_hd else ""
+        body += (f'<tr style="{tr_style}">'
+                 f'<td style="padding:8px 10px;{w}">{_esc(name)}</td>'
+                 f'<td style="padding:8px 10px;text-align:right;{w}">{s.price:,.0f}</td>'
+                 f'{cell(s.per, bold=is_hd)}{cell(s.pbr, bold=is_hd)}{cell(s.div_yield, "%", bold=is_hd)}'
+                 f'<td style="padding:8px 10px;text-align:right;{w}">{mc_txt}원</td></tr>')
     return (f'<table style="width:100%;border-collapse:collapse;">{head}{body}</table>'
-            f'<p style="font-size:11px;color:#999;margin:8px 0 0;">* PER 오름차순. 해외 종목은 제외.</p>')
+            f'<p style="font-size:11px;color:#999;margin:8px 0 0;">* PER 내림차순. 해외 종목은 제외.</p>')
 
 
 def render_flow_chart(trend: list, title: str, width: int = 620, height: int = 200) -> str:
@@ -1253,10 +1262,11 @@ def _render_disclosures(disclosures: Optional[list], new_links: Optional[set] = 
     for d in disclosures:
         by_comp.setdefault(d.corp_name, []).append(d)
 
-    # 중요 공시가 있는 회사를 위로
+    # HD건설기계 최상단 고정, 그다음 중요 공시 많은 순
     def comp_sort_key(item):
         name, items = item
-        return (-sum(1 for x in items if x.is_important), name)
+        is_hd_ce = 0 if ("건설기계" in name) else 1
+        return (is_hd_ce, -sum(1 for x in items if x.is_important), name)
 
     out = ""
     for name, items in sorted(by_comp.items(), key=comp_sort_key):
@@ -1288,14 +1298,22 @@ def _render_disclosures(disclosures: Optional[list], new_links: Optional[set] = 
     return out
 
 
-def _render_stock_card(d) -> str:
-    """기업 한 곳의 주가 스냅샷 카드. 가격을 못 받았으면 '데이터 없음'으로 표시."""
+def _render_stock_card(d, highlight: str = "") -> str:
+    """기업 한 곳의 주가 스냅샷 카드. 가격을 못 받았으면 '데이터 없음'으로 표시.
+    highlight='green'이면 초록 톤 강조(HD건설기계용)."""
     name = _esc(d.comp.name)
-    # 가격 수집 실패 시: 카드를 숨기지 않고 '데이터 없음' 표시 (조용히 사라지는 것 방지)
+    # 강조 스타일 (코스피 보라 카드와 유사한 톤의 초록)
+    if highlight == "green":
+        box = "background:#E3F4EA;border:1px solid #B6E0C4;border-radius:8px;padding:12px;"
+        name_style = "font-size:12px;color:#0F7A43;margin:0;font-weight:600;"
+    else:
+        box = "background:#F7F6F2;border-radius:8px;padding:12px;"
+        name_style = "font-size:12px;color:#5F5E5A;margin:0;"
+    # 가격 수집 실패 시: 카드를 숨기지 않고 '데이터 없음' 표시
     if not (d.stock and d.stock.price is not None):
         return f"""
-        <div style="background:#F7F6F2;border-radius:8px;padding:12px;opacity:0.6;">
-          <p style="font-size:12px;color:#5F5E5A;margin:0;">{name}</p>
+        <div style="{box}opacity:0.6;">
+          <p style="{name_style}">{name}</p>
           <p style="font-size:14px;color:#aaa;margin:6px 0 0;">데이터 없음</p>
         </div>"""
     chg = d.stock.change_pct
@@ -1306,8 +1324,8 @@ def _render_stock_card(d) -> str:
     mc_line = f'<p style="font-size:11px;color:#888;margin:4px 0 0;">시총 {mc_txt} 원</p>' if mc_txt else ''
     spark = render_sparkline(d.stock.history, (chg or 0) >= 0) if d.stock.history else ''
     return f"""
-        <div style="background:#F7F6F2;border-radius:8px;padding:12px;">
-          <p style="font-size:12px;color:#5F5E5A;margin:0;">{name}</p>
+        <div style="{box}">
+          <p style="{name_style}">{name}</p>
           <p style="font-size:18px;font-weight:500;margin:2px 0;">{d.stock.price:,} <span style="font-size:12px;color:#888;">{_esc(d.stock.currency)}</span></p>
           <p style="font-size:12px;color:{color};margin:0;">{chg_txt}</p>
           {mc_line}
@@ -1337,11 +1355,13 @@ def render_html(cfg: Config, data: list[CompetitorData],
         color = "#C0392B" if (chg or 0) >= 0 else "#1B6CC4"
         arrow = "▲" if (chg or 0) >= 0 else "▼"
         chg_txt = f"{arrow} {abs(chg):.2f}%" if chg is not None else "—"
+        kospi_spark = render_sparkline(kospi_snap.history, (chg or 0) >= 0, stroke="#7E57C2") if kospi_snap.history else ''
         kospi_card = f"""
         <div style="background:#EDE9FB;border:1px solid #C9BEF2;border-radius:8px;padding:12px;">
           <p style="font-size:12px;color:#4A3F9E;margin:0;font-weight:600;">📊 코스피 (KOSPI)</p>
           <p style="font-size:18px;font-weight:500;margin:2px 0;">{kospi_snap.price:,.2f}</p>
           <p style="font-size:12px;color:{color};margin:0;">{chg_txt}</p>
+          {kospi_spark}
         </div>"""
     else:
         # 코스피도 실패하면 표시
@@ -1351,15 +1371,20 @@ def render_html(cfg: Config, data: list[CompetitorData],
           <p style="font-size:14px;color:#aaa;margin:6px 0 0;">데이터 없음</p>
         </div>"""
 
-    # 건설기계 기업 카드들 — 국내 우선 정렬
+    # 건설기계 기업 카드들 — HD건설기계 최우선, 초록 강조
     priority = {"HD건설기계": 0, "두산밥캣": 1, "진성티이씨": 2}
     ordered = sorted(data, key=lambda d: priority.get(d.comp.name, 99))
-    stock_cards = "".join(_render_stock_card(d) for d in ordered)
+    stock_cards = "".join(
+        _render_stock_card(d, highlight="green" if d.comp.name == "HD건설기계" else "")
+        for d in ordered
+    )
 
     # 그룹주 카드들
     group_data = group_data or []
     group_cards = "".join(_render_stock_card(d) for d in group_data)
-    group_blocks = [(d.comp.name, d.news) for d in group_data]
+    # 그룹주 뉴스 최상단에 HD건설기계(경쟁사 data에 있음) 뉴스를 끼워넣음
+    _hd_ce_news = [(d.comp.name, d.news) for d in data if d.comp.name == "HD건설기계"]
+    group_blocks = _hd_ce_news + [(d.comp.name, d.news) for d in group_data]
     has_group = bool(group_cards)
 
     # 연초 대비 비교 그래프 데이터
@@ -1383,25 +1408,31 @@ def render_html(cfg: Config, data: list[CompetitorData],
     if not flow_html:
         flow_html = '<p style="font-size:13px;color:#999;">수급 데이터가 없습니다.</p>'
     has_flow = bool(flows)
-    flow_tab_btn = '<button class="tab-btn" onclick="showTab(\'tab-flow\')">외국인·기관 수급</button>'
+    flow_tab_btn = '<button class="tab-btn" onclick="showTab(\'tab-flow\')">HD건설기계 외국인 기관 수급</button>'
     flow_panel = f'''<div id="tab-flow" class="tab-panel">
         <p style="font-size:13px;color:#666;margin:0 0 12px;">HD건설기계의 외국인·기관 순매수 추이입니다. 페이지 갱신 시 함께 업데이트됩니다.</p>
         {flow_html}
       </div>'''
 
-    comp_blocks = [(d.comp.name, d.news) for d in data]
+    def _hd_ce_first(blocks):
+        return sorted(blocks, key=lambda b: 0 if "건설기계" in b[0] else 1)
+
+    comp_blocks = _hd_ce_first([(d.comp.name, d.news) for d in data])
     group_tab_btn = ('<button class="tab-btn" onclick="showTab(\'tab-group\')">그룹주 뉴스</button>'
                      if has_group else '')
+    # 그룹주 7개 + HD건설기계까지 총 8개사 시총 합산
+    hd_ce = [d for d in data if d.comp.name == "HD건설기계"]
+    group_plus = list(group_data) + hd_ce
     group_total_krw = sum(
         (market_cap_in_krw(d.stock) or 0)
-        for d in group_data if d.stock and d.stock.price is not None
+        for d in group_plus if d.stock and d.stock.price is not None
     )
     group_total_txt = (f'<span style="font-weight:700;font-size:16px;color:#1a1a1a;'
                        f'background:#FFE680;padding:2px 8px;border-radius:6px;margin-left:10px;">'
-                       f'총 시총 {format_krw_jo(group_total_krw)}원</span>'
+                       f'HD현대그룹 시총 {format_krw_jo(group_total_krw)}원</span>'
                        if group_total_krw else '')
     group_snapshot = (f'''<div style="padding:20px 24px;border-bottom:1px solid #eee;">
-      <p style="font-size:13px;font-weight:600;color:#666;margin:0 0 12px;">그룹주 주가 스냅샷 (HD현대 그룹){group_total_txt}<span style="font-weight:400;color:#aaa;font-size:11px;display:block;margin-top:4px;">차트는 최근 약 1개월 일별 종가 흐름</span></p>
+      <p style="font-size:14px;font-weight:700;color:#1a1a1a;margin:0 0 12px;">그룹주 주가 스냅샷 (HD현대 그룹){group_total_txt}<span style="font-weight:400;color:#aaa;font-size:11px;display:block;margin-top:4px;">차트는 최근 약 1개월 일별 종가 흐름</span></p>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;">{group_cards}</div>
     </div>''' if has_group else '')
     group_panel = (f'''<div id="tab-group" class="tab-panel">{_render_source_links(group_blocks)}</div>'''
@@ -1414,7 +1445,7 @@ def render_html(cfg: Config, data: list[CompetitorData],
 <meta name="data-version" content="{now:%Y%m%d%H%M%S}">
 <title>{_esc(cfg.report_title)}</title>
 <style>
-  .tab-btn {{ padding:9px 12px; border:none; background:#EFEDE7; cursor:pointer; font-size:13px; font-weight:500; color:#666; border-radius:8px 8px 0 0; }}
+  .tab-btn {{ padding:9px 12px; border:none; background:#EFEDE7; cursor:pointer; font-size:13px; font-weight:700; color:#444; border-radius:8px 8px 0 0; }}
   .tab-btn.active {{ background:#fff; color:#1a1a1a; box-shadow:inset 0 -2px 0 #4A3F9E; }}
   .tab-panel {{ display:none; }}
   .tab-panel.active {{ display:block; }}
@@ -1433,7 +1464,7 @@ def render_html(cfg: Config, data: list[CompetitorData],
 
     <!-- 주가 스냅샷 (건설기계) -->
     <div style="padding:20px 24px;border-bottom:1px solid #eee;">
-      <p style="font-size:13px;font-weight:600;color:#666;margin:0 0 12px;">주가 스냅샷 (건설기계) <span style="font-weight:400;color:#aaa;font-size:11px;">· 차트는 최근 약 1개월 일별 종가 흐름</span></p>
+      <p style="font-size:14px;font-weight:700;color:#1a1a1a;margin:0 0 12px;">주가 스냅샷 (건설기계) <span style="font-weight:400;color:#aaa;font-size:11px;">· 차트는 최근 약 1개월 일별 종가 흐름</span></p>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;">
         {kospi_card}
         {stock_cards}
@@ -1446,10 +1477,10 @@ def render_html(cfg: Config, data: list[CompetitorData],
     <div style="padding:20px 24px;">
       <div style="display:flex;gap:4px;margin-bottom:16px;flex-wrap:wrap;">
         <button class="tab-btn active" onclick="showTab('tab-dart')">공시 (DART)</button>
-        <button class="tab-btn" onclick="showTab('tab-comp')">경쟁사 뉴스</button>
+        <button class="tab-btn" onclick="showTab('tab-comp')">건설기계 Peer 뉴스</button>
         <button class="tab-btn" onclick="showTab('tab-kospi')">코스피 뉴스</button>
         {group_tab_btn}
-        <button class="tab-btn" onclick="showTab('tab-ytd')">연초 대비 비교</button>
+        <button class="tab-btn" onclick="showTab('tab-ytd')">연초 대비 주가 상승률 비교</button>
         <button class="tab-btn" onclick="showTab('tab-val')">밸류에이션</button>
         {flow_tab_btn}
       </div>
