@@ -1058,8 +1058,15 @@ def render_html(cfg: Config, data: list[CompetitorData],
     comp_blocks = [(d.comp.name, d.news) for d in data]
     group_tab_btn = ('<button class="tab-btn" onclick="showTab(\'tab-group\')">그룹주 뉴스</button>'
                      if has_group else '')
+    group_total_krw = sum(
+        (market_cap_in_krw(d.stock) or 0)
+        for d in group_data if d.stock and d.stock.price is not None
+    )
+    group_total_txt = (f'<span style="font-weight:400;color:#185FA5;font-size:12px;margin-left:8px;">'
+                       f'총 시총 {format_krw_jo(group_total_krw)}원</span>'
+                       if group_total_krw else '')
     group_snapshot = (f'''<div style="padding:20px 24px;border-bottom:1px solid #eee;">
-      <p style="font-size:13px;font-weight:600;color:#666;margin:0 0 12px;">그룹주 주가 스냅샷 (HD현대 그룹)</p>
+      <p style="font-size:13px;font-weight:600;color:#666;margin:0 0 12px;">그룹주 주가 스냅샷 (HD현대 그룹){group_total_txt}</p>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">{group_cards}</div>
     </div>''' if has_group else '')
     group_panel = (f'''<div id="tab-group" class="tab-panel">{_render_source_links(group_blocks)}</div>'''
@@ -1089,11 +1096,6 @@ def render_html(cfg: Config, data: list[CompetitorData],
       <p style="font-size:13px;color:#999;margin:8px 0 0;">건설기계 {len(cfg.competitors)}개사 + 코스피 · 수집기간 {(now - dt.timedelta(hours=cfg.news_lookback_hours)):%m월 %d일 %H시} ~ {now:%m월 %d일 %H시} · 뉴스 {total_news}건</p>
     </div>
 
-    <!-- 한 줄 요약 (최상단) -->
-    <div style="padding:14px 24px;border-bottom:1px solid #eee;">
-      {_render_oneline_summary(ir_changes, disclosures, kospi_snap, now)}
-    </div>
-
     <!-- 주가 스냅샷 (건설기계) -->
     <div style="padding:20px 24px;border-bottom:1px solid #eee;">
       <p style="font-size:13px;font-weight:600;color:#666;margin:0 0 12px;">주가 스냅샷 (건설기계)</p>
@@ -1112,7 +1114,6 @@ def render_html(cfg: Config, data: list[CompetitorData],
         <button class="tab-btn" onclick="showTab('tab-comp')">경쟁사 뉴스</button>
         <button class="tab-btn" onclick="showTab('tab-kospi')">코스피 뉴스</button>
         {group_tab_btn}
-        <button class="tab-btn" onclick="showTab('tab-history')">업데이트 히스토리</button>
         <button class="tab-btn" onclick="showTab('tab-ytd')">연초 대비 비교</button>
       </div>
 
@@ -1129,10 +1130,6 @@ def render_html(cfg: Config, data: list[CompetitorData],
       </div>
 
       {group_panel}
-
-      <div id="tab-history" class="tab-panel">
-        {_render_history(history)}
-      </div>
 
       <div id="tab-ytd" class="tab-panel">
         <p style="font-size:13px;color:#666;margin:0 0 12px;">코스피와 각 기업의 올해 누적 주가 수익률 비교입니다.</p>
