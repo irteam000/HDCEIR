@@ -228,8 +228,14 @@ def _to_float(v) -> Optional[float]:
         return None
     if isinstance(v, (int, float)):
         return float(v)
+    s = str(v).strip()
+    # 숫자/부호/소수점만 남기고 제거 (콤마, '배', '원', '%', '주', 공백 등)
+    import re
+    m = re.search(r"[-+]?[\d,]*\.?\d+", s)
+    if not m:
+        return None
     try:
-        return float(str(v).replace(",", "").replace("%", "").strip())
+        return float(m.group(0).replace(",", ""))
     except (ValueError, TypeError):
         return None
 
@@ -246,26 +252,56 @@ def _ticker_to_naver_code(ticker: str) -> Optional[str]:
 
 
 def _naver_daily_prices(code: str, count: int = 400) -> Optional[list[tuple[str, float]]]:
-    """네이버 종목 일봉 차트 → [(YYYYMMDD, 종가)] 오래된→최신. 실패 시 None."""
+    """네이버 종목 일봉 → [(YYYYMMDD, 종가)] 오래된→최신. 실패 시 None.
+    실제 엔드포인트: api.finance.naver.com/siseJson.naver (텍스트 배열 응답).
+    응답 형식: [['날짜','시가','고가','저가','종가','거래량','외국인소진율'], ['20240102', 75000, ...], ...]"""
+    end = dt.datetime.now()
+    start = end - dt.timedelta(days=int(count * 1.6) + 10)  # 거래일 여유분
+
     def _call():
-        url = (f"https://api.stock.naver.com/chart/domestic/item/{code}/day"
-               f"?startDateTime=&endDateTime=&count={count}")
+        url = ("https://api.finance.naver.com/siseJson.naver"
+               f"?symbol={code}&requestType=1"
+               f"&startTime={start:%Y%m%d}&endTime={end:%Y%m%d}&timeframe=day")
         resp = _SESSION.get(url, timeout=15)
         if resp.status_code != 200:
             return None
-        return resp.json()
+        return resp.text
 
-    data = _retry(_call)
-    if not data:
+    text = _retry(_call)
+    if not text:
         return None
-    rows = data if isinstance(data, list) else (
-        data.get("priceInfos") or data.get("prices") or data.get("dealTrendInfos") or [])
+    return _parse_sise_json(text)
+
+
+def _parse_sise_json(text: str) -> Optional[list[tuple[str, float]]]:
+    """siseJson 텍스트 배열을 (YYYYMMDD, 종가) 리스트로. 안전 파싱(ast)."""
+    import ast
+    try:
+        # 응답은 작은따옴표 + 줄바꿈 포함된 파이썬 리스트 리터럴 형태
+        cleaned = text.strip()
+        rows = ast.literal_eval(cleaned)
+    except (ValueError, SyntaxError):
+        return None
+    if not rows or len(rows) < 2:
+        return None
+    header = rows[0]
+    # 날짜/종가 컬럼 인덱스 찾기 (보통 0=날짜, 4=종가)
+    try:
+        date_i = header.index("날짜")
+    except ValueError:
+        date_i = 0
+    try:
+        close_i = header.index("종가")
+    except ValueError:
+        close_i = 4
     out: list[tuple[str, float]] = []
-    for r in rows:
-        d = r.get("localDate") or r.get("localDateTime") or r.get("date")
-        c = _to_float(r.get("closePrice") or r.get("close"))
+    for r in rows[1:]:
+        if not isinstance(r, (list, tuple)) or len(r) <= max(date_i, close_i):
+            continue
+        d = str(r[date_i]).strip().replace("-", "")[:8]
+        c = _to_float(r[close_i])
         if d and c is not None:
-            out.append((str(d)[:8].replace("-", ""), c))
+            out.append((d, c))
     if not out:
         return None
     out.sort(key=lambda x: x[0])
@@ -273,29 +309,39 @@ def _naver_daily_prices(code: str, count: int = 400) -> Optional[list[tuple[str,
 
 
 def _naver_index_prices(index_code: str = "KOSPI", count: int = 400) -> Optional[list[tuple[str, float]]]:
-    """네이버 지수 일봉 → [(YYYYMMDD, 종가)]. 실패 시 None."""
-    def _call():
-        url = (f"https://api.stock.naver.com/chart/domestic/index/{index_code}/day"
-               f"?startDateTime=&endDateTime=&count={count}")
-        resp = _SESSION.get(url, timeout=15)
-        if resp.status_code != 200:
-            return None
-        return resp.json()
-
-    data = _retry(_call)
-    if not data:
-        return None
-    rows = data if isinstance(data, list) else (data.get("priceInfos") or data.get("prices") or [])
+    """네이버 지수 일봉 → [(YYYYMMDD, 종가)]. 실제 엔드포인트: m.stock.naver.com index price.
+    페이지네이션으로 count개까지 수집 (페이지당 ~100)."""
     out: list[tuple[str, float]] = []
-    for r in rows:
-        d = r.get("localDate") or r.get("localDateTime") or r.get("date")
-        c = _to_float(r.get("closePrice") or r.get("close"))
-        if d and c is not None:
-            out.append((str(d)[:8].replace("-", ""), c))
+    page = 1
+    page_size = 100
+    while len(out) < count and page <= 6:
+        def _call(p=page):
+            url = (f"https://m.stock.naver.com/api/index/{index_code}/price"
+                   f"?pageSize={page_size}&page={p}")
+            resp = _SESSION.get(url, timeout=15)
+            if resp.status_code != 200:
+                return None
+            return resp.json()
+
+        data = _retry(_call)
+        if not data or not isinstance(data, list):
+            break
+        added = 0
+        for r in data:
+            d = r.get("localTradedAt") or r.get("localDate")
+            c = _to_float(r.get("closePrice"))
+            if d and c is not None:
+                out.append((str(d).replace("-", "")[:8], c))
+                added += 1
+        if added == 0:
+            break
+        page += 1
     if not out:
         return None
-    out.sort(key=lambda x: x[0])
-    return out
+    # 중복 제거 + 정렬
+    uniq = dict(out)  # 날짜→종가 (뒤가 덮어씀, 동일값이라 무방)
+    series = sorted(uniq.items(), key=lambda x: x[0])
+    return series
 
 
 _INTEGRATION_CACHE: dict[str, Optional[dict]] = {}
@@ -333,59 +379,129 @@ def _total_info_value(data: dict, *codes: str) -> Optional[float]:
     return None
 
 
+def _parse_kr_amount(s: str) -> Optional[float]:
+    """'7조 206억' / '64,632,619'(백만 아님, 원) 같은 네이버 시총 문자열 → 원 단위 float."""
+    if not s:
+        return None
+    s = str(s).strip()
+    # '조'/'억' 한글 표기
+    if "조" in s or "억" in s:
+        total = 0.0
+        import re
+        m_jo = re.search(r"([\d,\.]+)\s*조", s)
+        m_eok = re.search(r"([\d,\.]+)\s*억", s)
+        if m_jo:
+            total += float(m_jo.group(1).replace(",", "")) * 1_0000_0000_0000
+        if m_eok:
+            total += float(m_eok.group(1).replace(",", "")) * 1_0000_0000
+        return total or None
+    # 순수 숫자면 그대로 원 (industryCompareInfo의 marketValue는 백만원 단위)
+    v = _to_float(s)
+    return v
+
+
 def _naver_market_cap(code: str) -> Optional[float]:
-    """네이버 종목 통합정보에서 시가총액(원). 실패 시 None."""
+    """네이버 통합정보 marketValue('7조 206억') → 원. 실패 시 None."""
     data = _naver_integration(code)
-    v = _total_info_value(data, "marketValue", "marketSum", "시가총액")
-    # 네이버는 보통 '억' 단위로 줌 → 원으로 환산
-    return v * 1_0000_0000 if v is not None else None
+    if not data:
+        return None
+    for row in data.get("totalInfos", []):
+        if row.get("code") == "marketValue":
+            return _parse_kr_amount(row.get("value"))
+    return None
 
 
 def _naver_valuation(code: str) -> tuple[Optional[float], Optional[float], Optional[float]]:
-    """(PER, PBR, 배당수익률%) 추출. 실패한 항목은 None."""
+    """(PER, PBR, 배당수익률%) — 실제 키: per/pbr/dividendYieldRatio. '14.92배'/'0.38%' 파싱."""
     data = _naver_integration(code)
     if not data:
         return None, None, None
-    per = _total_info_value(data, "per", "PER")
-    pbr = _total_info_value(data, "pbr", "PBR")
-    dy = _total_info_value(data, "dividendYield", "dvr", "배당수익률")
+    vals = {row.get("code"): row.get("value") for row in data.get("totalInfos", [])}
+    per = _to_float(vals.get("per"))            # '14.92배' → 14.92
+    pbr = _to_float(vals.get("pbr"))            # '1.49배' → 1.49
+    dy = _to_float(vals.get("dividendYieldRatio"))  # '0.38%' → 0.38
     return per, pbr, dy
 
 
 # ---------------------------------------------------------------------------
 # 외국인·기관 수급 (네이버) — 일별 순매수 추이
 # ---------------------------------------------------------------------------
-def _naver_trend(code: str, count: int = 65) -> Optional[list[dict]]:
-    """[(날짜, 외국인 순매수, 기관 순매수)] 최근 count거래일. 단위는 응답 그대로.
-    반환 항목: {'date','foreign','inst'}. 실패 시 None."""
-    def _call():
-        url = (f"https://m.stock.naver.com/api/stock/{code}/trend"
-               f"?pageSize={count}&page=1")
-        resp = _SESSION.get(url, timeout=15)
-        if resp.status_code != 200:
-            return None
-        return resp.json()
+def _naver_trend(code: str, count: int = 65, max_pages: int = 5) -> Optional[list[dict]]:
+    """일별 외국인·기관 순매매. finance.naver.com/item/frgn HTML 파싱.
+    [{date, foreign, inst}] 오래된→최신. 한 페이지 ~20일, max_pages까지 (약 3개월)."""
+    from bs4 import BeautifulSoup
 
-    data = _retry(_call)
-    if not data:
-        return None
-    rows = data if isinstance(data, list) else (
-        data.get("trends") or data.get("dealTrendInfos") or data.get("result") or [])
     out: list[dict] = []
-    for r in rows:
-        d = r.get("bizdate") or r.get("localDate") or r.get("date")
-        # 외국인/기관 순매수: 여러 키 후보
-        foreign = _to_float(r.get("foreignerPureBuyQuant") or r.get("foreignPureBuy")
-                            or r.get("frgnPureBuy") or r.get("foreigner"))
-        inst = _to_float(r.get("organPureBuyQuant") or r.get("organPureBuy")
-                         or r.get("institutionPureBuy") or r.get("organ"))
-        if d and (foreign is not None or inst is not None):
-            out.append({"date": str(d)[:8].replace("-", ""),
-                        "foreign": foreign or 0.0, "inst": inst or 0.0})
+    for page in range(1, max_pages + 1):
+        def _call(p=page):
+            url = f"https://finance.naver.com/item/frgn.naver?code={code}&page={p}"
+            # 이 페이지는 EUC-KR(cp949) 인코딩
+            resp = _SESSION.get(url, timeout=15)
+            if resp.status_code != 200:
+                return None
+            resp.encoding = "euc-kr"
+            return resp.text
+
+        html = None
+        try:
+            html = _retry(_call)
+        except Exception:
+            html = None
+        if not html:
+            break
+
+        soup = BeautifulSoup(html, "html.parser")
+        # 외국인·기관 순매매 표: summary 속성으로 식별
+        table = soup.find("table", summary=lambda s: s and "외국인" in s and "기관" in s)
+        if table is None:
+            # 폴백: 날짜 형식이 있는 행을 가진 표 탐색
+            tables = soup.find_all("table")
+            table = next((t for t in tables if t.find(string=lambda x: x and "." in str(x)
+                          and len(str(x).strip()) == 10 and str(x).strip()[4] == ".")), None)
+        if table is None:
+            break
+
+        page_rows = 0
+        for tr in table.find_all("tr"):
+            tds = tr.find_all("td")
+            if len(tds) < 6:
+                continue
+            date_txt = tds[0].get_text(strip=True)  # 'YYYY.MM.DD'
+            if not (len(date_txt) == 10 and date_txt[4] == "."):
+                continue
+            ymd = date_txt.replace(".", "")
+            # 표 컬럼: 날짜|종가|전일비|등락률|거래량|기관순매매|외국인순매매|외국인보유주수|외국인보유율
+            # 인덱스는 레이아웃에 따라 다를 수 있어, 부호 포함 숫자 셀들을 뒤에서 찾음
+            nums = [_to_float(td.get_text(strip=True)) for td in tds]
+            # 기관/외국인 순매매는 보통 인덱스 5,6 (음수 가능)
+            inst = nums[5] if len(nums) > 5 else None
+            foreign = nums[6] if len(nums) > 6 else None
+            if foreign is None and inst is None:
+                continue
+            out.append({"date": ymd, "foreign": foreign or 0.0, "inst": inst or 0.0})
+            page_rows += 1
+        if page_rows == 0:
+            break
+        if len(out) >= count:
+            break
+        time.sleep(0.3)  # 과도한 연속 요청 방지
+
     if not out:
-        return None
-    out.sort(key=lambda x: x["date"])  # 오래된→최신
-    return out
+        # 최후 폴백: integration의 dealTrendInfos(최근 5일)
+        integ = _naver_integration(code)
+        if integ:
+            for r in integ.get("dealTrendInfos", []) or []:
+                d = str(r.get("bizdate", "")).replace("-", "")[:8]
+                f = _to_float(r.get("foreignerPureBuyQuant"))
+                i = _to_float(r.get("organPureBuyQuant"))
+                if d and (f is not None or i is not None):
+                    out.append({"date": d, "foreign": f or 0.0, "inst": i or 0.0})
+        if not out:
+            return None
+
+    uniq = {r["date"]: r for r in out}
+    series = [uniq[k] for k in sorted(uniq)]
+    return series[-count:]  # 최근 count일
 
 
 def _build_snapshot_from_series(series: list[tuple[str, float]], ticker: str,
@@ -699,8 +815,8 @@ def render_flow_chart(trend: list, title: str, width: int = 620, height: int = 2
     parts.append('</svg>')
     f_total, i_total = f_cum[-1], i_cum[-1]
     summary = (f'<p style="font-size:12px;color:#666;margin:8px 0 0;">'
-               f'기간 누적 — 외국인 <span style="color:#C0392B;">{f_total:+,.0f}억</span> · '
-               f'기관 <span style="color:#1B6CC4;">{i_total:+,.0f}억</span></p>')
+               f'기간 누적 순매수 — 외국인 <span style="color:#C0392B;">{f_total:+,.0f}주</span> · '
+               f'기관 <span style="color:#1B6CC4;">{i_total:+,.0f}주</span></p>')
     return f'<p style="font-size:13px;font-weight:600;margin:0 0 8px;">{_esc(title)}</p>' + "".join(parts) + summary
 
 
@@ -1235,7 +1351,7 @@ def render_html(cfg: Config, data: list[CompetitorData],
     flow_html = ""
     for code, name in FLOW_TARGETS.items():
         if code in flows:
-            flow_html += render_flow_chart(flows[code], f"{name} 외국인·기관 순매수 추이 (최근 3개월, 누적·억원)")
+            flow_html += render_flow_chart(flows[code], f"{name} 외국인·기관 순매수 추이 (누적·주)")
     if not flow_html:
         flow_html = '<p style="font-size:13px;color:#999;">수급 데이터가 없습니다.</p>'
     has_flow = bool(flows)
@@ -1266,7 +1382,7 @@ def render_html(cfg: Config, data: list[CompetitorData],
 <html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<meta http-equiv="refresh" content="600">
+<meta http-equiv="refresh" content="900">
 <title>{_esc(cfg.report_title)}</title>
 <style>
   .tab-btn {{ padding:9px 12px; border:none; background:#EFEDE7; cursor:pointer; font-size:13px; font-weight:500; color:#666; border-radius:8px 8px 0 0; }}
