@@ -686,7 +686,7 @@ def format_krw_jo(value_krw: Optional[float]) -> str:
     return f"{eok:,.0f}억"
 
 
-def render_sparkline(values: list[float], up: bool, width: int = 140, height: int = 46) -> str:
+def render_sparkline(values: list[float], up: bool, width: int = 140, height: int = 52) -> str:
     """종가 리스트를 작은 SVG 라인 차트로. 기간 내 최저(파랑)·최고(빨강) 점과 값 표시."""
     if not values or len(values) < 2:
         return ""
@@ -695,7 +695,7 @@ def render_sparkline(values: list[float], up: bool, width: int = 140, height: in
     n = len(values)
     lo_i = values.index(lo)
     hi_i = values.index(hi)
-    pad_top, pad_bot = 12, 4  # 위/아래 라벨 공간
+    pad_top, pad_bot = 12, 12  # 위/아래 라벨이 잘리지 않도록 충분히
     plot_h = height - pad_top - pad_bot
 
     def px(i): return i / (n - 1) * (width - 8) + 4
@@ -705,20 +705,20 @@ def render_sparkline(values: list[float], up: bool, width: int = 140, height: in
     color = "#C0392B" if up else "#1B6CC4"
     parts = [
         f'<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" '
-        f'style="display:block;margin-top:6px;">',
+        f'style="display:block;margin-top:6px;overflow:visible;">',
         f'<polyline points="{pts}" fill="none" stroke="{color}" stroke-width="1.5" '
         f'stroke-linejoin="round" stroke-linecap="round"/>',
     ]
-    # 최고점 (빨강) — 위쪽 라벨
+    # 최고점 (빨강) — 점 위쪽 라벨
     hx, hy = px(hi_i), py(hi)
     parts.append(f'<circle cx="{hx:.1f}" cy="{hy:.1f}" r="2.2" fill="#C0392B"/>')
     ha = "start" if hi_i < n / 2 else "end"
     parts.append(f'<text x="{hx:.1f}" y="{hy-4:.1f}" text-anchor="{ha}" font-size="9" fill="#C0392B">{hi:,.0f}</text>')
-    # 최저점 (파랑) — 아래쪽 라벨
+    # 최저점 (파랑) — 점 아래쪽 라벨 (pad_bot 확보로 안 잘림)
     lx, ly = px(lo_i), py(lo)
     parts.append(f'<circle cx="{lx:.1f}" cy="{ly:.1f}" r="2.2" fill="#1B6CC4"/>')
     la = "start" if lo_i < n / 2 else "end"
-    parts.append(f'<text x="{lx:.1f}" y="{ly+9:.1f}" text-anchor="{la}" font-size="9" fill="#1B6CC4">{lo:,.0f}</text>')
+    parts.append(f'<text x="{lx:.1f}" y="{ly+10:.1f}" text-anchor="{la}" font-size="9" fill="#1B6CC4">{lo:,.0f}</text>')
     parts.append('</svg>')
     return "".join(parts)
 
@@ -1402,7 +1402,7 @@ def render_html(cfg: Config, data: list[CompetitorData],
                        if group_total_krw else '')
     group_snapshot = (f'''<div style="padding:20px 24px;border-bottom:1px solid #eee;">
       <p style="font-size:13px;font-weight:600;color:#666;margin:0 0 12px;">그룹주 주가 스냅샷 (HD현대 그룹){group_total_txt}<span style="font-weight:400;color:#aaa;font-size:11px;display:block;margin-top:4px;">차트는 최근 약 1개월 일별 종가 흐름</span></p>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">{group_cards}</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;">{group_cards}</div>
     </div>''' if has_group else '')
     group_panel = (f'''<div id="tab-group" class="tab-panel">{_render_source_links(group_blocks)}</div>'''
                    if has_group else '')
@@ -1434,7 +1434,7 @@ def render_html(cfg: Config, data: list[CompetitorData],
     <!-- 주가 스냅샷 (건설기계) -->
     <div style="padding:20px 24px;border-bottom:1px solid #eee;">
       <p style="font-size:13px;font-weight:600;color:#666;margin:0 0 12px;">주가 스냅샷 (건설기계) <span style="font-weight:400;color:#aaa;font-size:11px;">· 차트는 최근 약 1개월 일별 종가 흐름</span></p>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;">
         {kospi_card}
         {stock_cards}
       </div>
