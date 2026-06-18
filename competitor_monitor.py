@@ -1,5 +1,10 @@
 """
 경쟁사 모니터링 자동화 MVP (코스피 트랙 + 건설기계 트랙)
+
+[주가 수집 개선판]
+- 한국 종목(.KS/.KQ)·코스피 지수: 네이버 금융 API 1순위 → 실패 시 yfinance 폴백
+- 해외 종목(CAT/6301.T/600031.SS 등)·환율: yfinance + 재시도/백오프/User-Agent
+- 가격을 못 받아도 카드를 숨기지 않고 "데이터 없음"으로 표시
 """
 
 from __future__ import annotations
@@ -8,6 +13,7 @@ import argparse
 import datetime as dt
 import os
 import sys
+import time
 import urllib.parse
 from dataclasses import dataclass, field
 from typing import Optional
@@ -175,12 +181,280 @@ def fetch_kospi_news(cfg: Config) -> list[NewsItem]:
     return merged
 
 
+# ===========================================================================
+# 주가 수집 (개선판) — 네이버 금융 + yfinance 하이브리드
+# ===========================================================================
+
+_UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+       "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36")
+
+
+def _make_session() -> requests.Session:
+    s = requests.Session()
+    s.headers.update({
+        "User-Agent": _UA,
+        "Accept": "application/json, text/plain, */*",
+        "Accept-Language": "ko-KR,ko;q=0.9,en;q=0.8",
+        "Referer": "https://m.stock.naver.com/",
+    })
+    return s
+
+
+_SESSION = _make_session()
+
+
+def _retry(fn, tries: int = 3, base_delay: float = 1.5):
+    """fn()을 tries번까지 시도. 예외 또는 None이면 백오프 후 재시도."""
+    last_exc = None
+    for i in range(tries):
+        try:
+            r = fn()
+            if r is not None:
+                return r
+        except Exception as e:  # noqa
+            last_exc = e
+        if i < tries - 1:
+            time.sleep(base_delay * (2 ** i))
+    if isinstance(last_exc, Exception):
+        raise last_exc
+    return None
+
+
+def _to_float(v) -> Optional[float]:
+    if v is None:
+        return None
+    if isinstance(v, (int, float)):
+        return float(v)
+    try:
+        return float(str(v).replace(",", "").replace("%", "").strip())
+    except (ValueError, TypeError):
+        return None
+
+
+def _ticker_to_naver_code(ticker: str) -> Optional[str]:
+    """'241560.KS' -> '241560'. 코스피지수 '^KS11' -> 'KOSPI'. 해외는 None."""
+    if not ticker:
+        return None
+    if ticker.upper() in ("^KS11", "KS11"):
+        return "KOSPI"
+    if ticker.endswith((".KS", ".KQ")):
+        return ticker.split(".")[0]
+    return None
+
+
+def _naver_daily_prices(code: str, count: int = 400) -> Optional[list[tuple[str, float]]]:
+    """네이버 종목 일봉 차트 → [(YYYYMMDD, 종가)] 오래된→최신. 실패 시 None."""
+    def _call():
+        url = (f"https://api.stock.naver.com/chart/domestic/item/{code}/day"
+               f"?startDateTime=&endDateTime=&count={count}")
+        resp = _SESSION.get(url, timeout=15)
+        if resp.status_code != 200:
+            return None
+        return resp.json()
+
+    data = _retry(_call)
+    if not data:
+        return None
+    rows = data if isinstance(data, list) else (
+        data.get("priceInfos") or data.get("prices") or data.get("dealTrendInfos") or [])
+    out: list[tuple[str, float]] = []
+    for r in rows:
+        d = r.get("localDate") or r.get("localDateTime") or r.get("date")
+        c = _to_float(r.get("closePrice") or r.get("close"))
+        if d and c is not None:
+            out.append((str(d)[:8].replace("-", ""), c))
+    if not out:
+        return None
+    out.sort(key=lambda x: x[0])
+    return out
+
+
+def _naver_index_prices(index_code: str = "KOSPI", count: int = 400) -> Optional[list[tuple[str, float]]]:
+    """네이버 지수 일봉 → [(YYYYMMDD, 종가)]. 실패 시 None."""
+    def _call():
+        url = (f"https://api.stock.naver.com/chart/domestic/index/{index_code}/day"
+               f"?startDateTime=&endDateTime=&count={count}")
+        resp = _SESSION.get(url, timeout=15)
+        if resp.status_code != 200:
+            return None
+        return resp.json()
+
+    data = _retry(_call)
+    if not data:
+        return None
+    rows = data if isinstance(data, list) else (data.get("priceInfos") or data.get("prices") or [])
+    out: list[tuple[str, float]] = []
+    for r in rows:
+        d = r.get("localDate") or r.get("localDateTime") or r.get("date")
+        c = _to_float(r.get("closePrice") or r.get("close"))
+        if d and c is not None:
+            out.append((str(d)[:8].replace("-", ""), c))
+    if not out:
+        return None
+    out.sort(key=lambda x: x[0])
+    return out
+
+
+def _naver_market_cap(code: str) -> Optional[float]:
+    """네이버 종목 통합정보에서 시가총액(원). 실패 시 None."""
+    def _call():
+        url = f"https://m.stock.naver.com/api/stock/{code}/integration"
+        resp = _SESSION.get(url, timeout=15)
+        if resp.status_code != 200:
+            return None
+        return resp.json()
+
+    try:
+        data = _retry(_call)
+        if not data:
+            return None
+        # totalInfos 안에 'marketValue'(시가총액, 억원 단위 문자열)가 들어옴
+        for row in data.get("totalInfos", []):
+            if row.get("code") in ("marketValue", "marketSum", "시가총액"):
+                v = _to_float(row.get("value"))
+                if v is not None:
+                    # 네이버는 보통 '억' 단위로 줌 → 원으로 환산
+                    return v * 1_0000_0000
+    except Exception:
+        return None
+    return None
+
+
+def _build_snapshot_from_series(series: list[tuple[str, float]], ticker: str,
+                                currency: str = "KRW") -> Optional[StockSnapshot]:
+    """(날짜,종가) 시계열 → StockSnapshot (현재가/등락/1개월history/YTD)."""
+    if not series:
+        return None
+    snap = StockSnapshot(ticker=ticker)
+    snap.currency = currency
+    last_date, last = series[-1]
+    snap.price = round(last, 2)
+    if len(series) >= 2:
+        prev = series[-2][1]
+        if prev:
+            snap.change_pct = round((last - prev) / prev * 100, 2)
+    snap.history = [c for _, c in series[-22:]]   # 최근 약 1개월(거래일)
+    year = last_date[:4]
+    ytd_series = [c for d, c in series if d[:4] == year]
+    if ytd_series:
+        first = ytd_series[0]
+        if first:
+            snap.ytd_pct = round((last - first) / first * 100, 2)
+    return snap
+
+
+def _yf_snapshot(ticker: str) -> StockSnapshot:
+    """yfinance 경로 (해외 종목/폴백). 재시도 적용. 항상 StockSnapshot 반환."""
+    snap = StockSnapshot(ticker=ticker)
+    if yf is None:
+        snap.error = "yfinance 미설치"
+        return snap
+    try:
+        def _h():
+            h = yf.Ticker(ticker).history(period="1mo")
+            return h if (h is not None and not h.empty) else None
+        hist = _retry(_h, tries=3)
+    except Exception as e:
+        snap.error = f"yf: {str(e)[:100]}"
+        return snap
+    if hist is None or hist.empty:
+        snap.error = "yf: 가격 데이터 없음"
+        return snap
+    hist = hist.dropna(subset=["Close"])
+    if hist.empty:
+        snap.error = "yf: 가격 데이터 없음"
+        return snap
+    last = float(hist["Close"].iloc[-1])
+    snap.price = round(last, 2)
+    if len(hist) >= 2:
+        prev = float(hist["Close"].iloc[-2])
+        if prev:
+            snap.change_pct = round((last - prev) / prev * 100, 2)
+    snap.history = [float(x) for x in hist["Close"].tolist()]
+    try:
+        ytd = yf.Ticker(ticker).history(period="ytd")
+        if ytd is not None and not ytd.empty:
+            ytd = ytd.dropna(subset=["Close"])
+            if not ytd.empty:
+                first = float(ytd["Close"].iloc[0])
+                if first:
+                    snap.ytd_pct = round((last - first) / first * 100, 2)
+    except Exception:
+        pass
+    # 통화 + 시총
+    try:
+        tk = yf.Ticker(ticker)
+        fi = tk.fast_info
+        snap.currency = (fi.get("currency", "") or "")
+        mc = fi.get("market_cap", None)
+        if not mc:
+            shares = fi.get("shares", None)
+            if shares and snap.price:
+                mc = snap.price * float(shares)
+        snap.market_cap = float(mc) if mc else None
+    except Exception:
+        snap.currency = snap.currency or ""
+    if snap.market_cap is None:
+        try:
+            info = yf.Ticker(ticker).get_info()
+            if not snap.currency:
+                snap.currency = info.get("currency", "") or ""
+            mc = info.get("marketCap", None)
+            if not mc:
+                shares = info.get("sharesOutstanding", None)
+                if shares and snap.price:
+                    mc = snap.price * float(shares)
+            snap.market_cap = float(mc) if mc else None
+        except Exception:
+            pass
+    return snap
+
+
+def fetch_stock_by_ticker(ticker: str) -> Optional[StockSnapshot]:
+    """주가 스냅샷. 한국=네이버 우선·yf 폴백, 해외=yf. 가격 못 받으면 error만 채움."""
+    if not ticker:
+        return None
+
+    naver_code = _ticker_to_naver_code(ticker)
+
+    if naver_code:
+        # 1) 네이버 우선
+        try:
+            if naver_code == "KOSPI":
+                series = _naver_index_prices("KOSPI")
+            else:
+                series = _naver_daily_prices(naver_code)
+            snap = _build_snapshot_from_series(series, ticker, currency="KRW") if series else None
+            if snap and snap.price is not None:
+                # 종목이면 시총 보강(지수는 시총 없음)
+                if naver_code != "KOSPI":
+                    mc = _naver_market_cap(naver_code)
+                    if mc:
+                        snap.market_cap = mc
+                return snap
+        except Exception as e:
+            print(f"  ! 네이버 조회 실패 {ticker}: {str(e)[:80]}", file=sys.stderr)
+        # 2) 네이버 실패 → yfinance 폴백
+        print(f"  ! {ticker} 네이버 실패 → yfinance 폴백", file=sys.stderr)
+        snap = _yf_snapshot(ticker)
+        if snap.error and snap.price is None:
+            snap.error = "네이버·yfinance 모두 실패"
+        return snap
+
+    # 해외 종목 → yfinance
+    return _yf_snapshot(ticker)
+
+
+def fetch_stock(comp: Competitor) -> Optional[StockSnapshot]:
+    return fetch_stock_by_ticker(comp.ticker)
+
+
 # 통화별 KRW 환율 캐시 (USD, JPY, CNY 등 → KRW)
 _FX_CACHE: dict[str, Optional[float]] = {"KRW": 1.0}
 
 
 def get_krw_rate(currency: str) -> Optional[float]:
-    """1 단위 외화가 몇 KRW인지 반환. 실패 시 None."""
+    """1 단위 외화가 몇 KRW인지 반환. 실패 시 None. yfinance 재시도 적용."""
     if not currency:
         return None
     currency = currency.upper()
@@ -190,7 +464,12 @@ def get_krw_rate(currency: str) -> Optional[float]:
     if yf is not None:
         try:
             pair = f"{currency}KRW=X"
-            hist = yf.Ticker(pair).history(period="5d")
+
+            def _h():
+                h = yf.Ticker(pair).history(period="5d")
+                return h if (h is not None and not h.empty) else None
+
+            hist = _retry(_h, tries=3)
             if hist is not None and not hist.empty:
                 hist = hist.dropna(subset=["Close"])
                 if not hist.empty:
@@ -271,78 +550,6 @@ def render_comparison_chart(rows: list[tuple[str, float]]) -> str:
         parts.append(f'<text x="{tx:.0f}" y="{cy+4:.0f}" text-anchor="{anchor}" font-size="12" fill="{color}" font-weight="500">{sign}{pct:.1f}%</text>')
     parts.append('</svg>')
     return "".join(parts)
-
-
-def fetch_stock_by_ticker(ticker: str) -> Optional[StockSnapshot]:
-    if not ticker:
-        return None
-    snap = StockSnapshot(ticker=ticker)
-    if yf is None:
-        snap.error = "yfinance 미설치"
-        return snap
-    try:
-        hist = yf.Ticker(ticker).history(period="1mo")
-        if hist is not None and not hist.empty:
-            hist = hist.dropna(subset=["Close"])
-        if hist is None or hist.empty:
-            snap.error = "가격 데이터 없음"
-            return snap
-        last = float(hist["Close"].iloc[-1])
-        snap.price = round(last, 2)
-        if len(hist) >= 2:
-            prev = float(hist["Close"].iloc[-2])
-            if prev:
-                snap.change_pct = round((last - prev) / prev * 100, 2)
-        # 미니 차트용: 최근 1개월 종가 흐름 저장
-        snap.history = [float(x) for x in hist["Close"].tolist()]
-        # 연초 대비 수익률(YTD): 올해 첫 거래일 종가 대비
-        try:
-            ytd = yf.Ticker(ticker).history(period="ytd")
-            if ytd is not None and not ytd.empty:
-                ytd = ytd.dropna(subset=["Close"])
-                if not ytd.empty:
-                    first = float(ytd["Close"].iloc[0])
-                    if first:
-                        snap.ytd_pct = round((last - first) / first * 100, 2)
-        except Exception:
-            pass
-        tk = yf.Ticker(ticker)
-        # 통화 + 시총 수집: 여러 경로를 순서대로 시도
-        try:
-            fi = tk.fast_info
-            snap.currency = (fi.get("currency", "") or "")
-            # 1) fast_info의 market_cap 직접 제공
-            mc = fi.get("market_cap", None)
-            # 2) 없으면 주가 × 발행주식수로 계산
-            if not mc:
-                shares = fi.get("shares", None)
-                if shares and snap.price:
-                    mc = snap.price * float(shares)
-            snap.market_cap = float(mc) if mc else None
-        except Exception:
-            snap.currency = ""
-        # 3) 그래도 없으면 info 딕셔너리에서 시도 (느리지만 보강)
-        if snap.market_cap is None:
-            try:
-                info = tk.get_info()
-                if not snap.currency:
-                    snap.currency = info.get("currency", "") or ""
-                mc = info.get("marketCap", None)
-                if not mc:
-                    shares = info.get("sharesOutstanding", None)
-                    if shares and snap.price:
-                        mc = snap.price * float(shares)
-                snap.market_cap = float(mc) if mc else None
-            except Exception:
-                pass
-    except Exception as e:
-        snap.error = str(e)[:120]
-    return snap
-
-
-
-def fetch_stock(comp: Competitor) -> Optional[StockSnapshot]:
-    return fetch_stock_by_ticker(comp.ticker)
 
 
 # ---------------------------------------------------------------------------
@@ -468,7 +675,7 @@ CACHE_IR = "cache/ir_updates.json"
 CACHE_HISTORY = "cache/update_history.json"
 
 
-def collect_ir_updates(cfg: Config, data: list[CompetitorData],
+def collect_ir_updates(cfg: Config, data: list["CompetitorData"],
                        disclosures: list) -> tuple[list, list, dict]:
     """경쟁사별 IR 자료를 수집하고 변경 감지.
     소스: config의 ir_sources(RSS/HTML) + SEC EDGAR(cik 있으면) + DART 공시.
@@ -529,7 +736,7 @@ def collect_ir_updates(cfg: Config, data: list[CompetitorData],
     return all_current, all_changes, history
 
 
-def collect_disclosures(cfg: Config, data: list[CompetitorData]) -> list[Disclosure]:
+def collect_disclosures(cfg: Config, data: list["CompetitorData"]) -> list[Disclosure]:
     api_key = os.getenv("DART_API_KEY")
     if not api_key:
         print("  ! DART_API_KEY 없음 — 공시 수집 생략", file=sys.stderr)
@@ -540,7 +747,6 @@ def collect_disclosures(cfg: Config, data: list[CompetitorData]) -> list[Disclos
     # 최신순 정렬
     all_disc.sort(key=lambda x: x.rcept_dt, reverse=True)
     return all_disc
-
 
 
 @dataclass
@@ -558,7 +764,10 @@ def collect_for(cfg: Config, comps: list[Competitor]) -> list[CompetitorData]:
     results: list[CompetitorData] = []
     for comp in comps:
         print(f"  - {comp.name} 수집 중...", file=sys.stderr)
-        results.append(CompetitorData(comp=comp, news=fetch_news(comp, cfg), stock=fetch_stock(comp)))
+        stock = fetch_stock(comp)
+        if stock and stock.price is None and stock.error:
+            print(f"    · 주가 실패: {comp.name} ({stock.error})", file=sys.stderr)
+        results.append(CompetitorData(comp=comp, news=fetch_news(comp, cfg), stock=stock))
     return results
 
 
@@ -765,21 +974,29 @@ def _render_disclosures(disclosures: Optional[list], new_links: Optional[set] = 
 
 
 def _render_stock_card(d) -> str:
-    """기업 한 곳의 주가 스냅샷 카드 (이름·현재가·통화·등락률·시총)."""
+    """기업 한 곳의 주가 스냅샷 카드. 가격을 못 받았으면 '데이터 없음'으로 표시."""
+    name = _esc(d.comp.name)
+    # 가격 수집 실패 시: 카드를 숨기지 않고 '데이터 없음' 표시 (조용히 사라지는 것 방지)
     if not (d.stock and d.stock.price is not None):
-        return ""
+        return f"""
+        <div style="background:#F7F6F2;border-radius:8px;padding:12px;opacity:0.6;">
+          <p style="font-size:12px;color:#5F5E5A;margin:0;">{name}</p>
+          <p style="font-size:14px;color:#aaa;margin:6px 0 0;">데이터 없음</p>
+        </div>"""
     chg = d.stock.change_pct
     color = "#C0392B" if (chg or 0) >= 0 else "#1B6CC4"
     arrow = "▲" if (chg or 0) >= 0 else "▼"
     chg_txt = f"{arrow} {abs(chg):.2f}%" if chg is not None else "—"
     mc_txt = format_krw_jo(market_cap_in_krw(d.stock))
     mc_line = f'<p style="font-size:11px;color:#888;margin:4px 0 0;">시총 {mc_txt} 원</p>' if mc_txt else ''
+    spark = render_sparkline(d.stock.history, (chg or 0) >= 0) if d.stock.history else ''
     return f"""
         <div style="background:#F7F6F2;border-radius:8px;padding:12px;">
-          <p style="font-size:12px;color:#5F5E5A;margin:0;">{_esc(d.comp.name)}</p>
+          <p style="font-size:12px;color:#5F5E5A;margin:0;">{name}</p>
           <p style="font-size:18px;font-weight:500;margin:2px 0;">{d.stock.price:,} <span style="font-size:12px;color:#888;">{_esc(d.stock.currency)}</span></p>
           <p style="font-size:12px;color:{color};margin:0;">{chg_txt}</p>
           {mc_line}
+          {spark}
         </div>"""
 
 
@@ -809,6 +1026,13 @@ def render_html(cfg: Config, data: list[CompetitorData],
           <p style="font-size:12px;color:#4A3F9E;margin:0;font-weight:600;">📊 코스피 (KOSPI)</p>
           <p style="font-size:18px;font-weight:500;margin:2px 0;">{kospi_snap.price:,.2f}</p>
           <p style="font-size:12px;color:{color};margin:0;">{chg_txt}</p>
+        </div>"""
+    else:
+        # 코스피도 실패하면 표시
+        kospi_card = """
+        <div style="background:#EDE9FB;border:1px solid #C9BEF2;border-radius:8px;padding:12px;opacity:0.6;">
+          <p style="font-size:12px;color:#4A3F9E;margin:0;font-weight:600;">📊 코스피 (KOSPI)</p>
+          <p style="font-size:14px;color:#aaa;margin:6px 0 0;">데이터 없음</p>
         </div>"""
 
     # 건설기계 기업 카드들 — 국내 우선 정렬
@@ -988,12 +1212,24 @@ def main() -> None:
     print("  - 그룹주 수집 중...", file=sys.stderr)
     group_data = collect_for(cfg, cfg.group_stocks)
 
+    # 주가 수집 상태 요약 (디버깅에 도움)
+    all_stock = [d.stock for d in (data + group_data) if d.stock] + ([kospi_snap] if kospi_snap else [])
+    ok = sum(1 for s in all_stock if s and s.price is not None)
+    fail = len(all_stock) - ok
+    print(f"  → 주가 수집 결과: 성공 {ok} / 실패 {fail}", file=sys.stderr)
+    if fail and ok == 0:
+        # 전부 실패면 명확히 경고 (워크플로우 로그에서 눈에 띄게)
+        print("  !! 경고: 모든 주가 수집 실패 — 소스 차단 또는 네트워크 문제 가능", file=sys.stderr)
+
     if args.dry_run:
         print("\n=== DRY RUN ===")
         if kospi_snap:
-            print(f"[코스피] {kospi_snap.price} ({kospi_snap.change_pct})")
+            print(f"[코스피] {kospi_snap.price} ({kospi_snap.change_pct}) err={kospi_snap.error}")
         for d in data + group_data:
-            print(f"[{d.comp.name}] 주가={d.stock.price if d.stock else None} 뉴스={len(d.news)}건")
+            st = d.stock
+            print(f"[{d.comp.name}] 주가={st.price if st else None} "
+                  f"YTD={st.ytd_pct if st else None} 뉴스={len(d.news)}건 "
+                  f"{'err=' + st.error if st and st.error else ''}")
         return
 
     print("[3/4] 공시 수집 + IR 변경 감지 중...", file=sys.stderr)
