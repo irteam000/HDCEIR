@@ -5952,5 +5952,69 @@
     "state": "NEW",
     "detected_at": "2026-06-18T19:30:41.531122+00:00",
     "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "풍문또는보도에대한해명(미확정)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260619800395",
+    "state": "UPDATED",
+    "detected_at": "2026-06-19T01:41:05.428484+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "기업지배구조보고서공시              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601800769",
+    "state": "UPDATED",
+    "detected_at": "2026-06-19T01:41:05.428484+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "단일판매ㆍ공급계약체결              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601800384",
+    "state": "UPDATED",
+    "detected_at": "2026-06-19T01:41:05.428484+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "타인에대한채무보증결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260618800741",
+    "state": "NEW",
+    "detected_at": "2026-06-19T01:41:05.426785+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "타인에대한채무보증결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260618800741",
+    "state": "NEW",
+    "detected_at": "2026-06-19T01:41:05.426785+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "풍문또는보도에대한해명(미확정)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260619800395",
+    "state": "UPDATED",
+    "detected_at": "2026-06-19T01:41:05.428484+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "기업지배구조보고서공시              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601800769",
+    "state": "UPDATED",
+    "detected_at": "2026-06-19T01:41:05.428484+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "단일판매ㆍ공급계약체결              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601800384",
+    "state": "UPDATED",
+    "detected_at": "2026-06-19T01:41:05.428484+00:00",
+    "tags": []
   }
 ]
