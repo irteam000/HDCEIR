@@ -6016,5 +6016,21 @@
     "state": "UPDATED",
     "detected_at": "2026-06-19T01:41:05.428484+00:00",
     "tags": []
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "타인에대한채무보증결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260618800741",
+    "state": "NEW",
+    "detected_at": "2026-06-19T02:00:39.602119+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "타인에대한채무보증결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260618800741",
+    "state": "NEW",
+    "detected_at": "2026-06-19T02:00:39.602119+00:00",
+    "tags": []
   }
 ]
