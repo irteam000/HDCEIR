@@ -17384,5 +17384,35 @@
     "tags": [
       "실적"
     ]
+  },
+  {
+    "company": "HD건설기계",
+    "title": "[첨부정정]지속가능경영보고서등관련사항(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260703800558",
+    "state": "NEW",
+    "detected_at": "2026-07-09T23:07:42.270623+00:00",
+    "tags": [
+      "ESG"
+    ]
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
+    "state": "NEW",
+    "detected_at": "2026-07-09T23:07:42.277844+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
+    "state": "NEW",
+    "detected_at": "2026-07-09T23:07:42.277844+00:00",
+    "tags": [
+      "실적"
+    ]
   }
 ]
