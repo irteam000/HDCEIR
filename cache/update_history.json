@@ -1,149 +1,5 @@
 [
   {
-    "company": "HD현대중공업",
-    "title": "풍문또는보도에대한해명(미확정)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260619800395",
-    "state": "UPDATED",
-    "detected_at": "2026-06-19T01:41:05.428484+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "기업지배구조보고서공시              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601800769",
-    "state": "UPDATED",
-    "detected_at": "2026-06-19T01:41:05.428484+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "단일판매ㆍ공급계약체결              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601800384",
-    "state": "UPDATED",
-    "detected_at": "2026-06-19T01:41:05.428484+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "타인에대한채무보증결정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260618800741",
-    "state": "NEW",
-    "detected_at": "2026-06-19T01:41:05.426785+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "타인에대한채무보증결정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260618800741",
-    "state": "NEW",
-    "detected_at": "2026-06-19T01:41:05.426785+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "풍문또는보도에대한해명(미확정)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260619800395",
-    "state": "UPDATED",
-    "detected_at": "2026-06-19T01:41:05.428484+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "기업지배구조보고서공시              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601800769",
-    "state": "UPDATED",
-    "detected_at": "2026-06-19T01:41:05.428484+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "단일판매ㆍ공급계약체결              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601800384",
-    "state": "UPDATED",
-    "detected_at": "2026-06-19T01:41:05.428484+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "타인에대한채무보증결정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260618800741",
-    "state": "NEW",
-    "detected_at": "2026-06-19T02:00:39.602119+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "타인에대한채무보증결정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260618800741",
-    "state": "NEW",
-    "detected_at": "2026-06-19T02:00:39.602119+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "타인에대한채무보증결정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260618800741",
-    "state": "NEW",
-    "detected_at": "2026-06-19T02:20:57.539199+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "[기재정정]분기보고서 (2026.03)",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260519000171",
-    "state": "REMOVED",
-    "detected_at": "2026-06-19T02:20:57.538036+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "타인에대한채무보증결정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260618800741",
-    "state": "NEW",
-    "detected_at": "2026-06-19T02:20:57.539199+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대마린엔진",
-    "title": "[기재정정]분기보고서 (2026.03)",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260519000171",
-    "state": "REMOVED",
-    "detected_at": "2026-06-19T02:20:57.539961+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "타인에대한채무보증결정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260618800741",
-    "state": "NEW",
-    "detected_at": "2026-06-19T02:41:31.589627+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "타인에대한채무보증결정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260618800741",
-    "state": "NEW",
-    "detected_at": "2026-06-19T02:41:31.589627+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "타인에대한채무보증결정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260618800741",
-    "state": "NEW",
-    "detected_at": "2026-06-19T08:54:30.122501+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "타인에대한채무보증결정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260618800741",
-    "state": "NEW",
-    "detected_at": "2026-06-19T08:54:30.122501+00:00",
-    "tags": []
-  },
-  {
     "company": "HD현대일렉트릭",
     "title": "타인에대한채무보증결정              ",
     "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260618800741",
@@ -16501,6 +16357,38 @@
     "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260714800534",
     "state": "NEW",
     "detected_at": "2026-07-18T21:28:15.421235+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "[기재정정]단일판매ㆍ공급계약체결(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260714800534",
+    "state": "NEW",
+    "detected_at": "2026-07-19T15:35:22.421740+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린엔진",
+    "title": "[기재정정]단일판매ㆍ공급계약체결              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260715800300",
+    "state": "NEW",
+    "detected_at": "2026-07-19T15:35:22.418706+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린엔진",
+    "title": "[기재정정]단일판매ㆍ공급계약체결              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260715800300",
+    "state": "NEW",
+    "detected_at": "2026-07-19T15:35:22.418706+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "[기재정정]단일판매ㆍ공급계약체결(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260714800534",
+    "state": "NEW",
+    "detected_at": "2026-07-19T15:35:22.421740+00:00",
     "tags": []
   }
 ]
