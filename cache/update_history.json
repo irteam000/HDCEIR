@@ -1,21 +1,5 @@
 [
   {
-    "company": "HD현대일렉트릭",
-    "title": "타인에대한채무보증결정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260618800741",
-    "state": "NEW",
-    "detected_at": "2026-06-22T19:50:13.554148+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "타인에대한채무보증결정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260618800741",
-    "state": "NEW",
-    "detected_at": "2026-06-22T19:50:13.554148+00:00",
-    "tags": []
-  },
-  {
     "company": "HD현대",
     "title": "중대재해발생(종속회사의주요경영사항)              ",
     "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
@@ -18555,6 +18539,120 @@
     "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800044",
     "state": "NEW",
     "detected_at": "2026-07-22T15:50:30.035490+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "주주명부폐쇄기간또는기준일설정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800698",
+    "state": "NEW",
+    "detected_at": "2026-07-22T21:57:05.879093+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "기업설명회(IR)개최(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800703",
+    "state": "NEW",
+    "detected_at": "2026-07-22T21:57:05.879093+00:00",
+    "tags": [
+      "IR"
+    ]
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "주주총회소집결의              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800693",
+    "state": "NEW",
+    "detected_at": "2026-07-22T21:57:05.879093+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "생산중단              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800419",
+    "state": "NEW",
+    "detected_at": "2026-07-22T21:57:05.884729+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "중대재해발생              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800044",
+    "state": "NEW",
+    "detected_at": "2026-07-22T21:57:05.884729+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "기업설명회(IR)개최(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260722800553",
+    "state": "NEW",
+    "detected_at": "2026-07-22T21:57:05.875293+00:00",
+    "tags": [
+      "IR"
+    ]
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "주주명부폐쇄기간또는기준일설정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800698",
+    "state": "NEW",
+    "detected_at": "2026-07-22T21:57:05.879093+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "기업설명회(IR)개최(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800703",
+    "state": "NEW",
+    "detected_at": "2026-07-22T21:57:05.879093+00:00",
+    "tags": [
+      "IR"
+    ]
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "주주총회소집결의              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800693",
+    "state": "NEW",
+    "detected_at": "2026-07-22T21:57:05.879093+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "기업설명회(IR)개최(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800363",
+    "state": "NEW",
+    "detected_at": "2026-07-22T21:57:05.880073+00:00",
+    "tags": [
+      "IR"
+    ]
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "기업설명회(IR)개최(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260722800571",
+    "state": "NEW",
+    "detected_at": "2026-07-22T21:57:05.884729+00:00",
+    "tags": [
+      "IR"
+    ]
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "생산중단              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800419",
+    "state": "NEW",
+    "detected_at": "2026-07-22T21:57:05.884729+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "중대재해발생              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800044",
+    "state": "NEW",
+    "detected_at": "2026-07-22T21:57:05.884729+00:00",
     "tags": []
   }
 ]
