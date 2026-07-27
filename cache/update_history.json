@@ -1,1286 +1,6 @@
 [
   {
     "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:09:35.348767+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:09:35.348767+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "풍문또는보도에대한해명(미확정)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800121",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:09:35.345247+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800001",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:09:35.345247+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:09:35.348767+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:09:35.348767+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:09:35.348767+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:09:35.348767+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:09:35.348767+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:09:35.348767+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:09:35.348767+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:09:35.348767+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:09:35.348767+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:09:35.348767+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:28:30.437782+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:28:30.437782+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "풍문또는보도에대한해명(미확정)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800121",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:28:30.434062+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800001",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:28:30.434062+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:28:30.437782+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:28:30.437782+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:28:30.437782+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:28:30.437782+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:28:30.437782+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:28:30.437782+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:28:30.437782+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:28:30.437782+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:28:30.437782+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T01:28:30.437782+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T07:35:46.668593+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T07:35:46.668593+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T07:35:46.668593+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "타인에대한채무보증결정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800941",
-    "state": "UPDATED",
-    "detected_at": "2026-06-26T07:35:46.663990+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "유형자산처분결정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800492",
-    "state": "NEW",
-    "detected_at": "2026-06-26T07:35:46.668593+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "유형자산처분결정(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800504",
-    "state": "NEW",
-    "detected_at": "2026-06-26T07:35:46.662534+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800416",
-    "state": "NEW",
-    "detected_at": "2026-06-26T07:35:46.662534+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "풍문또는보도에대한해명(미확정)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800121",
-    "state": "NEW",
-    "detected_at": "2026-06-26T07:35:46.662534+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800001",
-    "state": "NEW",
-    "detected_at": "2026-06-26T07:35:46.662534+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T07:35:46.668593+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T07:35:46.668593+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T07:35:46.668593+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "타인에대한채무보증결정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800941",
-    "state": "UPDATED",
-    "detected_at": "2026-06-26T07:35:46.663990+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T07:35:46.668593+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T07:35:46.668593+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T07:35:46.668593+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T07:35:46.668593+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T07:35:46.668593+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T07:35:46.668593+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T07:35:46.668593+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T07:35:46.668593+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T07:35:46.668593+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T07:35:46.668593+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T07:35:46.668593+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T07:35:46.668593+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "유형자산처분결정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800492",
-    "state": "NEW",
-    "detected_at": "2026-06-26T07:35:46.668593+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.410513+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.410513+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.410513+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626801057",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.406453+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "유형자산처분결정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800492",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.410513+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "유형자산처분결정(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800504",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.405091+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800416",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.405091+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "풍문또는보도에대한해명(미확정)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800121",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.405091+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800001",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.405091+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.410513+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.410513+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.410513+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626801057",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.406453+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.410513+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.410513+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.410513+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.410513+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.410513+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.410513+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.410513+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.410513+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.410513+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.410513+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.410513+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.410513+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "유형자산처분결정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800492",
-    "state": "NEW",
-    "detected_at": "2026-06-26T13:46:19.410513+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.451176+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.451176+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.451176+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626801057",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.448423+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "유형자산처분결정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800492",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.451176+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "유형자산처분결정(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800504",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.447481+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800416",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.447481+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "풍문또는보도에대한해명(미확정)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800121",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.447481+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800001",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.447481+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.451176+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.451176+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.451176+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626801057",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.448423+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.451176+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.451176+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.451176+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.451176+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.451176+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.451176+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.451176+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.451176+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.451176+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.451176+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.451176+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.451176+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "유형자산처분결정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800492",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:03:59.451176+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.656765+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.656765+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.656765+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626801057",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.652798+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "유형자산처분결정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800492",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.656765+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "유형자산처분결정(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800504",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.651461+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800416",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.651461+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "풍문또는보도에대한해명(미확정)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800121",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.651461+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800001",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.651461+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.656765+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.656765+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.656765+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626801057",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.652798+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.656765+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.656765+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.656765+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.656765+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.656765+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.656765+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.656765+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.656765+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.656765+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.656765+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.656765+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.656765+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "유형자산처분결정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800492",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:19:21.656765+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.173644+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.173644+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.173644+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626801057",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.170031+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "유형자산처분결정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800492",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.173644+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "유형자산처분결정(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800504",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.168829+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800416",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.168829+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "풍문또는보도에대한해명(미확정)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800121",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.168829+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800001",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.168829+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.173644+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.173644+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.173644+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626801057",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.170031+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.173644+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.173644+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.173644+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.173644+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.173644+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.173644+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.173644+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.173644+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.173644+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "생산중단(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.173644+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800522",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.173644+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260623800003",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.173644+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "유형자산처분결정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800492",
-    "state": "NEW",
-    "detected_at": "2026-06-26T14:35:19.173644+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
     "title": "생산중단(자회사의 주요경영사항)              ",
     "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626800425",
     "state": "NEW",
@@ -18794,5 +17514,253 @@
     "state": "NEW",
     "detected_at": "2026-07-25T19:59:11.858966+00:00",
     "tags": []
+  },
+  {
+    "company": "두산밥캣",
+    "title": "감사보고서제출(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260724800722",
+    "state": "NEW",
+    "detected_at": "2026-07-27T02:20:20.546625+00:00",
+    "tags": []
+  },
+  {
+    "company": "두산밥캣",
+    "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260723800495",
+    "state": "NEW",
+    "detected_at": "2026-07-27T02:20:20.546625+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "두산밥캣",
+    "title": "현금ㆍ현물배당결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260723800487",
+    "state": "NEW",
+    "detected_at": "2026-07-27T02:20:20.546625+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "두산밥캣",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260723800468",
+    "state": "NEW",
+    "detected_at": "2026-07-27T02:20:20.546625+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "중대재해발생(종속회사의주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260727800066",
+    "state": "UPDATED",
+    "detected_at": "2026-07-27T02:20:20.564017+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "중대재해발생              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260727800018",
+    "state": "UPDATED",
+    "detected_at": "2026-07-27T02:20:20.564017+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "기업설명회(IR)개최(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260722800571",
+    "state": "UPDATED",
+    "detected_at": "2026-07-27T02:20:20.564017+00:00",
+    "tags": [
+      "IR"
+    ]
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "생산중단              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800419",
+    "state": "NEW",
+    "detected_at": "2026-07-27T02:20:20.564017+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "지속가능경영보고서등관련사항(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260701800652",
+    "state": "UPDATED",
+    "detected_at": "2026-07-27T02:20:20.564017+00:00",
+    "tags": [
+      "ESG"
+    ]
+  },
+  {
+    "company": "HD현대에너지솔루션",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260724800306",
+    "state": "NEW",
+    "detected_at": "2026-07-27T02:20:20.562022+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "주주명부폐쇄기간또는기준일설정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800698",
+    "state": "NEW",
+    "detected_at": "2026-07-27T02:20:20.559684+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "주주총회소집결의              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800693",
+    "state": "NEW",
+    "detected_at": "2026-07-27T02:20:20.559684+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "중대재해발생(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260727800019",
+    "state": "UPDATED",
+    "detected_at": "2026-07-27T02:20:20.557688+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "기업설명회(IR)개최(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260722800553",
+    "state": "NEW",
+    "detected_at": "2026-07-27T02:20:20.557688+00:00",
+    "tags": [
+      "IR"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "중대재해발생(종속회사의주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260727800066",
+    "state": "UPDATED",
+    "detected_at": "2026-07-27T02:20:20.564017+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "주주명부폐쇄기간또는기준일설정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800698",
+    "state": "NEW",
+    "detected_at": "2026-07-27T02:20:20.559684+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "기업설명회(IR)개최(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800703",
+    "state": "NEW",
+    "detected_at": "2026-07-27T02:20:20.559684+00:00",
+    "tags": [
+      "IR"
+    ]
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "주주총회소집결의              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800693",
+    "state": "NEW",
+    "detected_at": "2026-07-27T02:20:20.559684+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "중대재해발생(종속회사의주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260727800066",
+    "state": "UPDATED",
+    "detected_at": "2026-07-27T02:20:20.564017+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "기업설명회(IR)개최(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800363",
+    "state": "NEW",
+    "detected_at": "2026-07-27T02:20:20.560654+00:00",
+    "tags": [
+      "IR"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "중대재해발생(종속회사의주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260727800066",
+    "state": "UPDATED",
+    "detected_at": "2026-07-27T02:20:20.564017+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "중대재해발생(종속회사의주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260727800066",
+    "state": "UPDATED",
+    "detected_at": "2026-07-27T02:20:20.564017+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대에너지솔루션",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260724800306",
+    "state": "NEW",
+    "detected_at": "2026-07-27T02:20:20.562022+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "중대재해발생(종속회사의주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260727800066",
+    "state": "UPDATED",
+    "detected_at": "2026-07-27T02:20:20.564017+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "중대재해발생              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260727800018",
+    "state": "UPDATED",
+    "detected_at": "2026-07-27T02:20:20.564017+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "기업설명회(IR)개최(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260722800571",
+    "state": "UPDATED",
+    "detected_at": "2026-07-27T02:20:20.564017+00:00",
+    "tags": [
+      "IR"
+    ]
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "생산중단              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800419",
+    "state": "NEW",
+    "detected_at": "2026-07-27T02:20:20.564017+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "지속가능경영보고서등관련사항(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260701800652",
+    "state": "UPDATED",
+    "detected_at": "2026-07-27T02:20:20.564017+00:00",
+    "tags": [
+      "ESG"
+    ]
   }
 ]
