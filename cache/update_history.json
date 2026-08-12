@@ -4,166 +4,6 @@
     "title": "기업설명회(IR)개최(안내공시)              ",
     "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800729",
     "state": "NEW",
-    "detected_at": "2026-07-13T01:45:17.498221+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "결산실적공시예고(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800680",
-    "state": "NEW",
-    "detected_at": "2026-07-13T01:45:17.498221+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-13T01:45:17.507246+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800515",
-    "state": "NEW",
-    "detected_at": "2026-07-13T01:45:17.505104+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-13T01:45:17.507246+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800729",
-    "state": "NEW",
-    "detected_at": "2026-07-13T07:55:38.711626+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "결산실적공시예고(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800680",
-    "state": "NEW",
-    "detected_at": "2026-07-13T07:55:38.711626+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대",
-    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260713800204",
-    "state": "UPDATED",
-    "detected_at": "2026-07-13T07:55:38.723742+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260713800202",
-    "state": "UPDATED",
-    "detected_at": "2026-07-13T07:55:38.717944+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800515",
-    "state": "NEW",
-    "detected_at": "2026-07-13T07:55:38.717944+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260713800204",
-    "state": "UPDATED",
-    "detected_at": "2026-07-13T07:55:38.723742+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260713800204",
-    "state": "UPDATED",
-    "detected_at": "2026-07-13T07:55:38.723742+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260713800204",
-    "state": "UPDATED",
-    "detected_at": "2026-07-13T07:55:38.723742+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260713800204",
-    "state": "UPDATED",
-    "detected_at": "2026-07-13T07:55:38.723742+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260713800204",
-    "state": "UPDATED",
-    "detected_at": "2026-07-13T07:55:38.723742+00:00",
-    "tags": []
-  },
-  {
-    "company": "두산밥캣",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800729",
-    "state": "NEW",
-    "detected_at": "2026-07-13T14:06:07.324115+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "결산실적공시예고(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800680",
-    "state": "NEW",
-    "detected_at": "2026-07-13T14:06:07.324115+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800515",
-    "state": "NEW",
-    "detected_at": "2026-07-13T14:06:07.331190+00:00",
-    "tags": []
-  },
-  {
-    "company": "두산밥캣",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800729",
-    "state": "NEW",
     "detected_at": "2026-07-13T20:16:14.573387+00:00",
     "tags": [
       "IR"
@@ -25433,6 +25273,42 @@
     "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260805800193",
     "state": "NEW",
     "detected_at": "2026-08-12T01:04:31.395984+00:00",
+    "tags": []
+  },
+  {
+    "company": "두산밥캣",
+    "title": "기업설명회(IR)개최(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800729",
+    "state": "REMOVED",
+    "detected_at": "2026-08-12T19:18:23.737985+00:00",
+    "tags": [
+      "IR"
+    ]
+  },
+  {
+    "company": "두산밥캣",
+    "title": "결산실적공시예고(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800680",
+    "state": "REMOVED",
+    "detected_at": "2026-08-12T19:18:23.737985+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD건설기계",
+    "title": "주요사항보고서(자기주식취득신탁계약해지결정)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260810000659",
+    "state": "NEW",
+    "detected_at": "2026-08-12T19:18:23.738448+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260810800150",
+    "state": "NEW",
+    "detected_at": "2026-08-12T19:18:23.748089+00:00",
     "tags": []
   }
 ]
