@@ -1,1050 +1,6 @@
 [
   {
     "company": "두산밥캣",
-    "title": "지주회사의자회사탈퇴              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260701800625",
-    "state": "NEW",
-    "detected_at": "2026-07-07T20:10:02.571862+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD건설기계",
-    "title": "[첨부정정]지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260703800558",
-    "state": "NEW",
-    "detected_at": "2026-07-07T20:10:02.572035+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-07T20:10:02.578023+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "투자판단관련주요경영사항              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260702800227",
-    "state": "NEW",
-    "detected_at": "2026-07-07T20:10:02.578023+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260701800649",
-    "state": "NEW",
-    "detected_at": "2026-07-07T20:10:02.576537+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-07T20:10:02.578023+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "투자판단관련주요경영사항              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260702800227",
-    "state": "NEW",
-    "detected_at": "2026-07-07T20:10:02.578023+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "최대주주등소유주식변동신고서              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260701800627",
-    "state": "NEW",
-    "detected_at": "2026-07-07T20:10:02.578023+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260701800652",
-    "state": "NEW",
-    "detected_at": "2026-07-07T20:10:02.580581+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "지주회사의자회사탈퇴              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260701800625",
-    "state": "NEW",
-    "detected_at": "2026-07-07T20:29:37.397733+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD건설기계",
-    "title": "[첨부정정]지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260703800558",
-    "state": "NEW",
-    "detected_at": "2026-07-07T20:29:37.397907+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-07T20:29:37.405743+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "투자판단관련주요경영사항              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260702800227",
-    "state": "NEW",
-    "detected_at": "2026-07-07T20:29:37.405743+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260701800649",
-    "state": "NEW",
-    "detected_at": "2026-07-07T20:29:37.403796+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-07T20:29:37.405743+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "투자판단관련주요경영사항              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260702800227",
-    "state": "NEW",
-    "detected_at": "2026-07-07T20:29:37.405743+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "최대주주등소유주식변동신고서              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260701800627",
-    "state": "NEW",
-    "detected_at": "2026-07-07T20:29:37.405743+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260701800652",
-    "state": "NEW",
-    "detected_at": "2026-07-07T20:29:37.409037+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "지주회사의자회사탈퇴              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260701800625",
-    "state": "NEW",
-    "detected_at": "2026-07-08T02:36:41.145928+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD건설기계",
-    "title": "[첨부정정]지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260703800558",
-    "state": "NEW",
-    "detected_at": "2026-07-08T02:36:41.146100+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-08T02:36:41.156445+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "투자판단관련주요경영사항              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260702800227",
-    "state": "NEW",
-    "detected_at": "2026-07-08T02:36:41.156445+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260701800649",
-    "state": "NEW",
-    "detected_at": "2026-07-08T02:36:41.154248+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-08T02:36:41.156445+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "투자판단관련주요경영사항              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260702800227",
-    "state": "NEW",
-    "detected_at": "2026-07-08T02:36:41.156445+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "최대주주등소유주식변동신고서              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260701800627",
-    "state": "NEW",
-    "detected_at": "2026-07-08T02:36:41.156445+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260701800652",
-    "state": "NEW",
-    "detected_at": "2026-07-08T02:36:41.160171+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "HD건설기계",
-    "title": "[첨부정정]지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260703800558",
-    "state": "NEW",
-    "detected_at": "2026-07-09T08:45:12.929716+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "단일판매ㆍ공급계약체결              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260709800137",
-    "state": "UPDATED",
-    "detected_at": "2026-07-09T08:45:12.942291+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260701800652",
-    "state": "UPDATED",
-    "detected_at": "2026-07-09T08:45:12.942291+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-09T08:45:12.938477+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "투자판단관련주요경영사항              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260702800227",
-    "state": "NEW",
-    "detected_at": "2026-07-09T08:45:12.938477+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260709800139",
-    "state": "UPDATED",
-    "detected_at": "2026-07-09T08:45:12.936041+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-09T08:45:12.938477+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "투자판단관련주요경영사항              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260702800227",
-    "state": "NEW",
-    "detected_at": "2026-07-09T08:45:12.938477+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "단일판매ㆍ공급계약체결              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260709800137",
-    "state": "UPDATED",
-    "detected_at": "2026-07-09T08:45:12.942291+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260701800652",
-    "state": "UPDATED",
-    "detected_at": "2026-07-09T08:45:12.942291+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "HD건설기계",
-    "title": "[첨부정정]지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260703800558",
-    "state": "NEW",
-    "detected_at": "2026-07-09T09:29:56.775183+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-09T09:29:56.783155+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-09T09:29:56.783155+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD건설기계",
-    "title": "[첨부정정]지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260703800558",
-    "state": "NEW",
-    "detected_at": "2026-07-09T15:50:17.573564+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-09T15:50:17.581420+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-09T15:50:17.581420+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD건설기계",
-    "title": "[첨부정정]지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260703800558",
-    "state": "NEW",
-    "detected_at": "2026-07-09T16:24:58.190470+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-09T16:24:58.196178+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-09T16:24:58.196178+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD건설기계",
-    "title": "[첨부정정]지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260703800558",
-    "state": "NEW",
-    "detected_at": "2026-07-09T16:31:24.560183+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-09T16:31:24.564030+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-09T16:31:24.564030+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD건설기계",
-    "title": "[첨부정정]지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260703800558",
-    "state": "NEW",
-    "detected_at": "2026-07-09T16:51:17.898722+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-09T16:51:17.906673+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-09T16:51:17.906673+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD건설기계",
-    "title": "[첨부정정]지속가능경영보고서등관련사항(자율공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260703800558",
-    "state": "NEW",
-    "detected_at": "2026-07-09T23:07:42.270623+00:00",
-    "tags": [
-      "ESG"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-09T23:07:42.277844+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-09T23:07:42.277844+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800729",
-    "state": "NEW",
-    "detected_at": "2026-07-10T11:26:20.649171+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "결산실적공시예고(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800680",
-    "state": "NEW",
-    "detected_at": "2026-07-10T11:26:20.649171+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800495",
-    "state": "UPDATED",
-    "detected_at": "2026-07-10T11:26:20.662404+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-10T11:26:20.658544+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800515",
-    "state": "NEW",
-    "detected_at": "2026-07-10T11:26:20.656110+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800495",
-    "state": "UPDATED",
-    "detected_at": "2026-07-10T11:26:20.662404+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-10T11:26:20.658544+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800495",
-    "state": "UPDATED",
-    "detected_at": "2026-07-10T11:26:20.662404+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800495",
-    "state": "UPDATED",
-    "detected_at": "2026-07-10T11:26:20.662404+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800495",
-    "state": "UPDATED",
-    "detected_at": "2026-07-10T11:26:20.662404+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800495",
-    "state": "UPDATED",
-    "detected_at": "2026-07-10T11:26:20.662404+00:00",
-    "tags": []
-  },
-  {
-    "company": "두산밥캣",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800729",
-    "state": "NEW",
-    "detected_at": "2026-07-10T23:37:41.894050+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "결산실적공시예고(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800680",
-    "state": "NEW",
-    "detected_at": "2026-07-10T23:37:41.894050+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-10T23:37:41.903161+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800515",
-    "state": "NEW",
-    "detected_at": "2026-07-10T23:37:41.900998+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-10T23:37:41.903161+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800729",
-    "state": "NEW",
-    "detected_at": "2026-07-10T23:50:08.038616+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "결산실적공시예고(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800680",
-    "state": "NEW",
-    "detected_at": "2026-07-10T23:50:08.038616+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-10T23:50:08.045780+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800515",
-    "state": "NEW",
-    "detected_at": "2026-07-10T23:50:08.044184+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-10T23:50:08.045780+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800729",
-    "state": "NEW",
-    "detected_at": "2026-07-11T00:00:04.672039+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "결산실적공시예고(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800680",
-    "state": "NEW",
-    "detected_at": "2026-07-11T00:00:04.672039+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-11T00:00:04.681271+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800515",
-    "state": "NEW",
-    "detected_at": "2026-07-11T00:00:04.679112+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-11T00:00:04.681271+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800729",
-    "state": "NEW",
-    "detected_at": "2026-07-11T00:18:46.501460+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "결산실적공시예고(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800680",
-    "state": "NEW",
-    "detected_at": "2026-07-11T00:18:46.501460+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-11T00:18:46.508983+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800515",
-    "state": "NEW",
-    "detected_at": "2026-07-11T00:18:46.507185+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-11T00:18:46.508983+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800729",
-    "state": "NEW",
-    "detected_at": "2026-07-11T06:28:52.409259+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "결산실적공시예고(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800680",
-    "state": "NEW",
-    "detected_at": "2026-07-11T06:28:52.409259+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-11T06:28:52.417512+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800515",
-    "state": "NEW",
-    "detected_at": "2026-07-11T06:28:52.415547+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-11T06:28:52.417512+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800729",
-    "state": "NEW",
-    "detected_at": "2026-07-12T00:48:56.289437+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "결산실적공시예고(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800680",
-    "state": "NEW",
-    "detected_at": "2026-07-12T00:48:56.289437+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-12T00:48:56.297675+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800515",
-    "state": "NEW",
-    "detected_at": "2026-07-12T00:48:56.295716+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-12T00:48:56.297675+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800729",
-    "state": "NEW",
-    "detected_at": "2026-07-12T07:02:41.335191+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "결산실적공시예고(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800680",
-    "state": "NEW",
-    "detected_at": "2026-07-12T07:02:41.335191+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-12T07:02:41.342691+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800515",
-    "state": "NEW",
-    "detected_at": "2026-07-12T07:02:41.340917+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-12T07:02:41.342691+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800729",
-    "state": "NEW",
-    "detected_at": "2026-07-12T07:24:24.976333+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "결산실적공시예고(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800680",
-    "state": "NEW",
-    "detected_at": "2026-07-12T07:24:24.976333+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-12T07:24:24.985181+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800515",
-    "state": "NEW",
-    "detected_at": "2026-07-12T07:24:24.983078+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-12T07:24:24.985181+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800729",
-    "state": "NEW",
-    "detected_at": "2026-07-12T07:36:21.521827+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "결산실적공시예고(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800680",
-    "state": "NEW",
-    "detected_at": "2026-07-12T07:36:21.521827+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-12T07:36:21.528210+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800515",
-    "state": "NEW",
-    "detected_at": "2026-07-12T07:36:21.526706+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "[기재정정]연결재무제표기준영업실적등에대한전망(공정공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800260",
-    "state": "NEW",
-    "detected_at": "2026-07-12T07:36:21.528210+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "두산밥캣",
     "title": "기업설명회(IR)개최(안내공시)              ",
     "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800729",
     "state": "NEW",
@@ -26297,6 +25253,134 @@
     "detected_at": "2026-08-06T04:09:43.234834+00:00",
     "tags": [
       "실적"
+    ]
+  },
+  {
+    "company": "두산밥캣",
+    "title": "지주회사의자회사탈퇴              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260805800464",
+    "state": "NEW",
+    "detected_at": "2026-08-12T00:52:50.685601+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD건설기계",
+    "title": "주요사항보고서(자기주식취득신탁계약해지결정)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260810000659",
+    "state": "NEW",
+    "detected_at": "2026-08-12T00:52:50.686263+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "단일판매ㆍ공급계약체결              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260810800144",
+    "state": "UPDATED",
+    "detected_at": "2026-08-12T00:52:50.722475+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "현금ㆍ현물배당결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260729800512",
+    "state": "UPDATED",
+    "detected_at": "2026-08-12T00:52:50.722475+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260729800482",
+    "state": "UPDATED",
+    "detected_at": "2026-08-12T00:52:50.722475+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260729800445",
+    "state": "UPDATED",
+    "detected_at": "2026-08-12T00:52:50.722475+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "기업설명회(IR)개최(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260722800571",
+    "state": "UPDATED",
+    "detected_at": "2026-08-12T00:52:50.722475+00:00",
+    "tags": [
+      "IR"
+    ]
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260810800150",
+    "state": "NEW",
+    "detected_at": "2026-08-12T00:52:50.702496+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260805800193",
+    "state": "NEW",
+    "detected_at": "2026-08-12T00:52:50.711229+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "단일판매ㆍ공급계약체결              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260810800144",
+    "state": "UPDATED",
+    "detected_at": "2026-08-12T00:52:50.722475+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "현금ㆍ현물배당결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260729800512",
+    "state": "UPDATED",
+    "detected_at": "2026-08-12T00:52:50.722475+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260729800482",
+    "state": "UPDATED",
+    "detected_at": "2026-08-12T00:52:50.722475+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260729800445",
+    "state": "UPDATED",
+    "detected_at": "2026-08-12T00:52:50.722475+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "기업설명회(IR)개최(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260722800571",
+    "state": "UPDATED",
+    "detected_at": "2026-08-12T00:52:50.722475+00:00",
+    "tags": [
+      "IR"
     ]
   }
 ]
