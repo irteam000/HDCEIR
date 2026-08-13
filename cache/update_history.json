@@ -25326,5 +25326,97 @@
     "tags": [
       "ESG"
     ]
+  },
+  {
+    "company": "두산밥캣",
+    "title": "반기보고서 (2026.06)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260813001784",
+    "state": "NEW",
+    "detected_at": "2026-08-13T13:58:38.602211+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD건설기계",
+    "title": "주요사항보고서(자기주식취득신탁계약해지결정)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260810000659",
+    "state": "NEW",
+    "detected_at": "2026-08-13T13:58:38.602810+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "[첨부정정]지속가능경영보고서등관련사항(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260813800224",
+    "state": "NEW",
+    "detected_at": "2026-08-13T13:58:38.623210+00:00",
+    "tags": [
+      "ESG"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260713800204",
+    "state": "REMOVED",
+    "detected_at": "2026-08-13T13:58:38.612214+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260810800150",
+    "state": "NEW",
+    "detected_at": "2026-08-13T13:58:38.615735+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260713800204",
+    "state": "REMOVED",
+    "detected_at": "2026-08-13T13:58:38.619657+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "[첨부정정]지속가능경영보고서등관련사항(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260813800224",
+    "state": "NEW",
+    "detected_at": "2026-08-13T13:58:38.623210+00:00",
+    "tags": [
+      "ESG"
+    ]
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260713800204",
+    "state": "REMOVED",
+    "detected_at": "2026-08-13T13:58:38.623210+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린엔진",
+    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260713800204",
+    "state": "REMOVED",
+    "detected_at": "2026-08-13T13:58:38.625708+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대에너지솔루션",
+    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260713800204",
+    "state": "REMOVED",
+    "detected_at": "2026-08-13T13:58:38.627706+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260713800204",
+    "state": "REMOVED",
+    "detected_at": "2026-08-13T13:58:38.632351+00:00",
+    "tags": []
   }
 ]
