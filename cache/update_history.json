@@ -4,678 +4,6 @@
     "title": "주주명부폐쇄기간또는기준일설정              ",
     "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800698",
     "state": "NEW",
-    "detected_at": "2026-07-22T02:22:14.101299+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800703",
-    "state": "NEW",
-    "detected_at": "2026-07-22T02:22:14.101299+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "주주총회소집결의              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800693",
-    "state": "NEW",
-    "detected_at": "2026-07-22T02:22:14.101299+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "생산중단              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800419",
-    "state": "NEW",
-    "detected_at": "2026-07-22T02:22:14.105729+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "중대재해발생              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800044",
-    "state": "NEW",
-    "detected_at": "2026-07-22T02:22:14.105729+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대마린엔진",
-    "title": "[기재정정]단일판매ㆍ공급계약체결              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260715800300",
-    "state": "NEW",
-    "detected_at": "2026-07-22T02:22:14.102968+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "주주명부폐쇄기간또는기준일설정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800698",
-    "state": "NEW",
-    "detected_at": "2026-07-22T02:22:14.101299+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800703",
-    "state": "NEW",
-    "detected_at": "2026-07-22T02:22:14.101299+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "주주총회소집결의              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800693",
-    "state": "NEW",
-    "detected_at": "2026-07-22T02:22:14.101299+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대마린솔루션",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800363",
-    "state": "NEW",
-    "detected_at": "2026-07-22T02:22:14.102300+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "HD현대마린엔진",
-    "title": "[기재정정]단일판매ㆍ공급계약체결              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260715800300",
-    "state": "NEW",
-    "detected_at": "2026-07-22T02:22:14.102968+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "생산중단              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800419",
-    "state": "NEW",
-    "detected_at": "2026-07-22T02:22:14.105729+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "중대재해발생              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800044",
-    "state": "NEW",
-    "detected_at": "2026-07-22T02:22:14.105729+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD건설기계",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260722800573",
-    "state": "UPDATED",
-    "detected_at": "2026-07-22T08:32:32.159094+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "최대주주등소유주식변동신고서              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260722800647",
-    "state": "UPDATED",
-    "detected_at": "2026-07-22T08:32:32.175404+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "주주명부폐쇄기간또는기준일설정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800698",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:32:32.175404+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800703",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:32:32.175404+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "주주총회소집결의              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800693",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:32:32.175404+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "생산중단              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800419",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:32:32.181374+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "중대재해발생              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800044",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:32:32.181374+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800179",
-    "state": "UPDATED",
-    "detected_at": "2026-07-22T08:32:32.181374+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대마린엔진",
-    "title": "[기재정정]단일판매ㆍ공급계약체결              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260715800300",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:32:32.177193+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260722800553",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:32:32.171282+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "최대주주등소유주식변동신고서              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260722800647",
-    "state": "UPDATED",
-    "detected_at": "2026-07-22T08:32:32.175404+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "주주명부폐쇄기간또는기준일설정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800698",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:32:32.175404+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800703",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:32:32.175404+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "주주총회소집결의              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800693",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:32:32.175404+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대마린솔루션",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800363",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:32:32.176529+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "HD현대마린엔진",
-    "title": "[기재정정]단일판매ㆍ공급계약체결              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260715800300",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:32:32.177193+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260722800571",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:32:32.181374+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "생산중단              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800419",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:32:32.181374+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "중대재해발생              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800044",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:32:32.181374+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "중대재해발생(종속회사의주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800179",
-    "state": "UPDATED",
-    "detected_at": "2026-07-22T08:32:32.181374+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "주주명부폐쇄기간또는기준일설정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800698",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:50:32.758456+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800703",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:50:32.758456+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "주주총회소집결의              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800693",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:50:32.758456+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "생산중단              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800419",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:50:32.762111+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "중대재해발생              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800044",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:50:32.762111+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대마린엔진",
-    "title": "[기재정정]단일판매ㆍ공급계약체결              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260715800300",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:50:32.759538+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260722800553",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:50:32.756002+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "주주명부폐쇄기간또는기준일설정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800698",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:50:32.758456+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800703",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:50:32.758456+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "주주총회소집결의              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800693",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:50:32.758456+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대마린솔루션",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800363",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:50:32.759109+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "HD현대마린엔진",
-    "title": "[기재정정]단일판매ㆍ공급계약체결              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260715800300",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:50:32.759538+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260722800571",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:50:32.762111+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "생산중단              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800419",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:50:32.762111+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "중대재해발생              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800044",
-    "state": "NEW",
-    "detected_at": "2026-07-22T08:50:32.762111+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "주주명부폐쇄기간또는기준일설정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800698",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:15:03.684619+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800703",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:15:03.684619+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "주주총회소집결의              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800693",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:15:03.684619+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "생산중단              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800419",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:15:03.690976+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "중대재해발생              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800044",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:15:03.690976+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대마린엔진",
-    "title": "[기재정정]단일판매ㆍ공급계약체결              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260715800300",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:15:03.686488+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260722800553",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:15:03.680432+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "주주명부폐쇄기간또는기준일설정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800698",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:15:03.684619+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800703",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:15:03.684619+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "주주총회소집결의              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800693",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:15:03.684619+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대마린솔루션",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800363",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:15:03.685729+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "HD현대마린엔진",
-    "title": "[기재정정]단일판매ㆍ공급계약체결              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260715800300",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:15:03.686488+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260722800571",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:15:03.690976+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "생산중단              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800419",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:15:03.690976+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "중대재해발생              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800044",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:15:03.690976+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "주주명부폐쇄기간또는기준일설정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800698",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:21:39.301666+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800703",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:21:39.301666+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "주주총회소집결의              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800693",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:21:39.301666+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "생산중단              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800419",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:21:39.307840+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "중대재해발생              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800044",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:21:39.307840+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대마린엔진",
-    "title": "[기재정정]단일판매ㆍ공급계약체결              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260715800300",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:21:39.303459+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260722800553",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:21:39.297532+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "주주명부폐쇄기간또는기준일설정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800698",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:21:39.301666+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800703",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:21:39.301666+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "주주총회소집결의              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800693",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:21:39.301666+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대마린솔루션",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800363",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:21:39.302741+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "HD현대마린엔진",
-    "title": "[기재정정]단일판매ㆍ공급계약체결              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260715800300",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:21:39.303459+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260722800571",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:21:39.307840+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "생산중단              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800419",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:21:39.307840+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대중공업",
-    "title": "중대재해발생              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260720800044",
-    "state": "NEW",
-    "detected_at": "2026-07-22T09:21:39.307840+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD현대일렉트릭",
-    "title": "주주명부폐쇄기간또는기준일설정              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260721800698",
-    "state": "NEW",
     "detected_at": "2026-07-22T15:30:52.994616+00:00",
     "tags": []
   },
@@ -28414,5 +27742,73 @@
     "state": "NEW",
     "detected_at": "2026-08-21T02:03:17.413755+00:00",
     "tags": []
+  },
+  {
+    "company": "HD건설기계",
+    "title": "반기보고서 (2026.06)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814004300",
+    "state": "NEW",
+    "detected_at": "2026-08-21T14:36:58.291569+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "조회공시요구(풍문또는보도)에대한답변(미확정)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260821800136",
+    "state": "NEW",
+    "detected_at": "2026-08-21T14:36:58.322062+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "조회공시요구(풍문또는보도)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260821800054",
+    "state": "NEW",
+    "detected_at": "2026-08-21T14:36:58.322062+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "풍문또는보도에대한해명              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260821800491",
+    "state": "NEW",
+    "detected_at": "2026-08-21T14:36:58.304499+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "[첨부정정]지속가능경영보고서등관련사항(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260820800402",
+    "state": "NEW",
+    "detected_at": "2026-08-21T14:36:58.304499+00:00",
+    "tags": [
+      "ESG"
+    ]
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "조회공시요구(풍문또는보도)에대한답변(미확정)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260821800136",
+    "state": "NEW",
+    "detected_at": "2026-08-21T14:36:58.322062+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "조회공시요구(풍문또는보도)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260821800054",
+    "state": "NEW",
+    "detected_at": "2026-08-21T14:36:58.322062+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "[첨부정정]지속가능경영보고서등관련사항(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260820800399",
+    "state": "NEW",
+    "detected_at": "2026-08-21T14:36:58.322062+00:00",
+    "tags": [
+      "ESG"
+    ]
   }
 ]
