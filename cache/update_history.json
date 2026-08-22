@@ -26928,5 +26928,75 @@
     "tags": [
       "ESG"
     ]
+  },
+  {
+    "company": "HD건설기계",
+    "title": "기업설명회(IR)개최(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260722800573",
+    "state": "REMOVED",
+    "detected_at": "2026-08-22T15:38:37.426619+00:00",
+    "tags": [
+      "IR"
+    ]
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "조회공시요구(풍문또는보도)에대한답변(미확정)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260821800136",
+    "state": "NEW",
+    "detected_at": "2026-08-22T15:38:37.455013+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "조회공시요구(풍문또는보도)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260821800054",
+    "state": "NEW",
+    "detected_at": "2026-08-22T15:38:37.455013+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "풍문또는보도에대한해명              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260821800491",
+    "state": "NEW",
+    "detected_at": "2026-08-22T15:38:37.438553+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "[첨부정정]지속가능경영보고서등관련사항(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260820800402",
+    "state": "NEW",
+    "detected_at": "2026-08-22T15:38:37.438553+00:00",
+    "tags": [
+      "ESG"
+    ]
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "조회공시요구(풍문또는보도)에대한답변(미확정)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260821800136",
+    "state": "NEW",
+    "detected_at": "2026-08-22T15:38:37.455013+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "조회공시요구(풍문또는보도)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260821800054",
+    "state": "NEW",
+    "detected_at": "2026-08-22T15:38:37.455013+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "[첨부정정]지속가능경영보고서등관련사항(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260820800399",
+    "state": "NEW",
+    "detected_at": "2026-08-22T15:38:37.455013+00:00",
+    "tags": [
+      "ESG"
+    ]
   }
 ]
