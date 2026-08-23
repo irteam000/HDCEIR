@@ -26474,5 +26474,103 @@
     "tags": [
       "ESG"
     ]
+  },
+  {
+    "company": "두산밥캣",
+    "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260723800495",
+    "state": "REMOVED",
+    "detected_at": "2026-08-23T10:43:05.580947+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "두산밥캣",
+    "title": "현금ㆍ현물배당결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260723800487",
+    "state": "REMOVED",
+    "detected_at": "2026-08-23T10:43:05.580947+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "두산밥캣",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260723800468",
+    "state": "REMOVED",
+    "detected_at": "2026-08-23T10:43:05.580947+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "조회공시요구(풍문또는보도)에대한답변(미확정)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260821800136",
+    "state": "NEW",
+    "detected_at": "2026-08-23T10:43:05.609109+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "조회공시요구(풍문또는보도)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260821800054",
+    "state": "NEW",
+    "detected_at": "2026-08-23T10:43:05.609109+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "풍문또는보도에대한해명              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260821800491",
+    "state": "NEW",
+    "detected_at": "2026-08-23T10:43:05.592848+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "[첨부정정]지속가능경영보고서등관련사항(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260820800402",
+    "state": "NEW",
+    "detected_at": "2026-08-23T10:43:05.592848+00:00",
+    "tags": [
+      "ESG"
+    ]
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260723800577",
+    "state": "REMOVED",
+    "detected_at": "2026-08-23T10:43:05.595676+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "조회공시요구(풍문또는보도)에대한답변(미확정)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260821800136",
+    "state": "NEW",
+    "detected_at": "2026-08-23T10:43:05.609109+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "조회공시요구(풍문또는보도)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260821800054",
+    "state": "NEW",
+    "detected_at": "2026-08-23T10:43:05.609109+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "[첨부정정]지속가능경영보고서등관련사항(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260820800399",
+    "state": "NEW",
+    "detected_at": "2026-08-23T10:43:05.609109+00:00",
+    "tags": [
+      "ESG"
+    ]
   }
 ]
