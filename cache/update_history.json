@@ -25522,5 +25522,71 @@
     "state": "NEW",
     "detected_at": "2026-09-09T16:27:20.802760+00:00",
     "tags": []
+  },
+  {
+    "company": "두산밥캣",
+    "title": "기업설명회(IR)개최(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260904800404",
+    "state": "NEW",
+    "detected_at": "2026-09-09T16:43:06.918879+00:00",
+    "tags": [
+      "IR"
+    ]
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "임시주주총회결과              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260908800531",
+    "state": "NEW",
+    "detected_at": "2026-09-09T16:43:06.924240+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260903800626",
+    "state": "NEW",
+    "detected_at": "2026-09-09T16:43:06.928536+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "임시주주총회결과              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260908800531",
+    "state": "NEW",
+    "detected_at": "2026-09-09T16:43:06.924240+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260903800626",
+    "state": "NEW",
+    "detected_at": "2026-09-09T16:43:06.928536+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260903800626",
+    "state": "NEW",
+    "detected_at": "2026-09-09T16:43:06.928536+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260903800626",
+    "state": "NEW",
+    "detected_at": "2026-09-09T16:43:06.928536+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260903800626",
+    "state": "NEW",
+    "detected_at": "2026-09-09T16:43:06.928536+00:00",
+    "tags": []
   }
 ]
