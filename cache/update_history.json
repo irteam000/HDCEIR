@@ -25866,5 +25866,111 @@
     "state": "NEW",
     "detected_at": "2026-09-10T05:18:10.748750+00:00",
     "tags": []
+  },
+  {
+    "company": "두산밥캣",
+    "title": "기업설명회(IR)개최(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260904800404",
+    "state": "NEW",
+    "detected_at": "2026-09-10T05:33:30.573850+00:00",
+    "tags": [
+      "IR"
+    ]
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "신규시설투자등(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800163",
+    "state": "NEW",
+    "detected_at": "2026-09-10T05:33:30.592497+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "신규시설투자등              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800161",
+    "state": "NEW",
+    "detected_at": "2026-09-10T05:33:30.592497+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "임시주주총회결과              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260908800531",
+    "state": "NEW",
+    "detected_at": "2026-09-10T05:33:30.583900+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "신규시설투자등(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800164",
+    "state": "NEW",
+    "detected_at": "2026-09-10T05:33:30.582377+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260903800626",
+    "state": "NEW",
+    "detected_at": "2026-09-10T05:33:30.592497+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "임시주주총회결과              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260908800531",
+    "state": "NEW",
+    "detected_at": "2026-09-10T05:33:30.583900+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260903800626",
+    "state": "NEW",
+    "detected_at": "2026-09-10T05:33:30.592497+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260903800626",
+    "state": "NEW",
+    "detected_at": "2026-09-10T05:33:30.592497+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260903800626",
+    "state": "NEW",
+    "detected_at": "2026-09-10T05:33:30.592497+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "신규시설투자등(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800163",
+    "state": "NEW",
+    "detected_at": "2026-09-10T05:33:30.592497+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "신규시설투자등              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800161",
+    "state": "NEW",
+    "detected_at": "2026-09-10T05:33:30.592497+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260903800626",
+    "state": "NEW",
+    "detected_at": "2026-09-10T05:33:30.592497+00:00",
+    "tags": []
   }
 ]
