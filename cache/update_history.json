@@ -1,41 +1,5 @@
 [
   {
-    "company": "두산밥캣",
-    "title": "기업설명회(IR)개최(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800729",
-    "state": "REMOVED",
-    "detected_at": "2026-08-12T19:18:23.737985+00:00",
-    "tags": [
-      "IR"
-    ]
-  },
-  {
-    "company": "두산밥캣",
-    "title": "결산실적공시예고(안내공시)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710800680",
-    "state": "REMOVED",
-    "detected_at": "2026-08-12T19:18:23.737985+00:00",
-    "tags": [
-      "실적"
-    ]
-  },
-  {
-    "company": "HD건설기계",
-    "title": "주요사항보고서(자기주식취득신탁계약해지결정)",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260810000659",
-    "state": "NEW",
-    "detected_at": "2026-08-12T19:18:23.738448+00:00",
-    "tags": []
-  },
-  {
-    "company": "HD한국조선해양",
-    "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
-    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260810800150",
-    "state": "NEW",
-    "detected_at": "2026-08-12T19:18:23.748089+00:00",
-    "tags": []
-  },
-  {
     "company": "HD건설기계",
     "title": "주요사항보고서(자기주식취득신탁계약해지결정)",
     "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260810000659",
@@ -26999,6 +26963,158 @@
     "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800161",
     "state": "NEW",
     "detected_at": "2026-09-11T13:38:45.866443+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "[기재정정]벌금등의부과(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260911800490",
+    "state": "NEW",
+    "detected_at": "2026-09-12T01:45:29.242728+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "타법인주식및출자증권취득결정(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800627",
+    "state": "NEW",
+    "detected_at": "2026-09-12T01:45:29.242728+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "신규시설투자등(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800163",
+    "state": "NEW",
+    "detected_at": "2026-09-12T01:45:29.242728+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "신규시설투자등              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800161",
+    "state": "NEW",
+    "detected_at": "2026-09-12T01:45:29.242728+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "임시주주총회결과              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260908800531",
+    "state": "NEW",
+    "detected_at": "2026-09-12T01:45:29.230475+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "신규시설투자등(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800164",
+    "state": "NEW",
+    "detected_at": "2026-09-12T01:45:29.227781+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "[기재정정]벌금등의부과(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260911800490",
+    "state": "NEW",
+    "detected_at": "2026-09-12T01:45:29.242728+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "타법인주식및출자증권취득결정(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800627",
+    "state": "NEW",
+    "detected_at": "2026-09-12T01:45:29.242728+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "임시주주총회결과              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260908800531",
+    "state": "NEW",
+    "detected_at": "2026-09-12T01:45:29.230475+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "[기재정정]벌금등의부과(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260911800490",
+    "state": "NEW",
+    "detected_at": "2026-09-12T01:45:29.242728+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "타법인주식및출자증권취득결정(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800627",
+    "state": "NEW",
+    "detected_at": "2026-09-12T01:45:29.242728+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "[기재정정]벌금등의부과(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260911800490",
+    "state": "NEW",
+    "detected_at": "2026-09-12T01:45:29.242728+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "타법인주식및출자증권취득결정(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800627",
+    "state": "NEW",
+    "detected_at": "2026-09-12T01:45:29.242728+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "[기재정정]벌금등의부과(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260911800490",
+    "state": "NEW",
+    "detected_at": "2026-09-12T01:45:29.242728+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "타법인주식및출자증권취득결정(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800627",
+    "state": "NEW",
+    "detected_at": "2026-09-12T01:45:29.242728+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "[기재정정]벌금등의부과(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260911800490",
+    "state": "NEW",
+    "detected_at": "2026-09-12T01:45:29.242728+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "타법인주식및출자증권취득결정(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800627",
+    "state": "NEW",
+    "detected_at": "2026-09-12T01:45:29.242728+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "신규시설투자등(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800163",
+    "state": "NEW",
+    "detected_at": "2026-09-12T01:45:29.242728+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "신규시설투자등              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800161",
+    "state": "NEW",
+    "detected_at": "2026-09-12T01:45:29.242728+00:00",
     "tags": []
   }
 ]
