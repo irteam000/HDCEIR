@@ -27224,5 +27224,37 @@
     "state": "NEW",
     "detected_at": "2026-09-19T05:38:08.483721+00:00",
     "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "풍문또는보도에대한해명(미확정)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260918800250",
+    "state": "NEW",
+    "detected_at": "2026-09-19T05:54:16.695618+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "풍문또는보도에대한해명(미확정)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260917800398",
+    "state": "NEW",
+    "detected_at": "2026-09-19T05:54:16.679465+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린엔진",
+    "title": "[기재정정]단일판매ㆍ공급계약체결              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260918800219",
+    "state": "NEW",
+    "detected_at": "2026-09-19T05:54:16.686677+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "풍문또는보도에대한해명(미확정)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260918800250",
+    "state": "NEW",
+    "detected_at": "2026-09-19T05:54:16.695618+00:00",
+    "tags": []
   }
 ]
