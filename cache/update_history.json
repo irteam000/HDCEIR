@@ -26368,5 +26368,53 @@
     "state": "NEW",
     "detected_at": "2026-09-22T10:00:12.722022+00:00",
     "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "단일판매ㆍ공급계약체결(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260922800219",
+    "state": "NEW",
+    "detected_at": "2026-09-22T10:10:50.354056+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "풍문또는보도에대한해명(미확정)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260918800250",
+    "state": "NEW",
+    "detected_at": "2026-09-22T10:10:50.354056+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "풍문또는보도에대한해명(미확정)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260917800398",
+    "state": "NEW",
+    "detected_at": "2026-09-22T10:10:50.338956+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린엔진",
+    "title": "[기재정정]단일판매ㆍ공급계약체결              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260918800219",
+    "state": "NEW",
+    "detected_at": "2026-09-22T10:10:50.345843+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "단일판매ㆍ공급계약체결(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260922800219",
+    "state": "NEW",
+    "detected_at": "2026-09-22T10:10:50.354056+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "풍문또는보도에대한해명(미확정)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260918800250",
+    "state": "NEW",
+    "detected_at": "2026-09-22T10:10:50.354056+00:00",
+    "tags": []
   }
 ]
