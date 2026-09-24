@@ -24376,5 +24376,101 @@
     "state": "NEW",
     "detected_at": "2026-09-24T18:15:58.026482+00:00",
     "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "단일판매ㆍ공급계약체결(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260922800219",
+    "state": "NEW",
+    "detected_at": "2026-09-24T18:28:02.666765+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "풍문또는보도에대한해명(미확정)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260918800250",
+    "state": "NEW",
+    "detected_at": "2026-09-24T18:28:02.666765+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "풍문또는보도에대한해명(미확정)(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260824800261",
+    "state": "REMOVED",
+    "detected_at": "2026-09-24T18:28:02.653437+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "풍문또는보도에대한해명(미확정)(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260824800261",
+    "state": "REMOVED",
+    "detected_at": "2026-09-24T18:28:02.656978+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "풍문또는보도에대한해명(미확정)(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260824800261",
+    "state": "REMOVED",
+    "detected_at": "2026-09-24T18:28:02.658530+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린엔진",
+    "title": "[기재정정]단일판매ㆍ공급계약체결              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260918800219",
+    "state": "NEW",
+    "detected_at": "2026-09-24T18:28:02.660652+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린엔진",
+    "title": "풍문또는보도에대한해명(미확정)(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260824800261",
+    "state": "REMOVED",
+    "detected_at": "2026-09-24T18:28:02.660652+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대에너지솔루션",
+    "title": "풍문또는보도에대한해명(미확정)(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260824800261",
+    "state": "REMOVED",
+    "detected_at": "2026-09-24T18:28:02.662137+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "단일판매ㆍ공급계약체결(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260922800219",
+    "state": "NEW",
+    "detected_at": "2026-09-24T18:28:02.666765+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "풍문또는보도에대한해명(미확정)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260918800250",
+    "state": "NEW",
+    "detected_at": "2026-09-24T18:28:02.666765+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "단일판매ㆍ공급계약체결              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260824800122",
+    "state": "REMOVED",
+    "detected_at": "2026-09-24T18:28:02.666765+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "풍문또는보도에대한해명(미확정)(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260824800261",
+    "state": "REMOVED",
+    "detected_at": "2026-09-24T18:28:02.666765+00:00",
+    "tags": []
   }
 ]
