@@ -17584,5 +17584,63 @@
     "state": "NEW",
     "detected_at": "2026-10-03T11:07:00.773221+00:00",
     "tags": []
+  },
+  {
+    "company": "HD건설기계",
+    "title": "기업설명회(IR)개최(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260930800735",
+    "state": "NEW",
+    "detected_at": "2026-10-03T11:18:39.954009+00:00",
+    "tags": [
+      "IR"
+    ]
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "기업설명회(IR)개최(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260930801077",
+    "state": "NEW",
+    "detected_at": "2026-10-03T11:18:39.961174+00:00",
+    "tags": [
+      "IR"
+    ]
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "기업설명회(IR)개최(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260930801077",
+    "state": "NEW",
+    "detected_at": "2026-10-03T11:18:39.961174+00:00",
+    "tags": [
+      "IR"
+    ]
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "기업설명회(IR)개최(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260930800705",
+    "state": "NEW",
+    "detected_at": "2026-10-03T11:18:39.962130+00:00",
+    "tags": [
+      "IR"
+    ]
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "기업설명회(IR)개최(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260930801140",
+    "state": "NEW",
+    "detected_at": "2026-10-03T11:18:39.966451+00:00",
+    "tags": [
+      "IR"
+    ]
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "[기재정정]단일판매ㆍ공급계약체결              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260930800154",
+    "state": "NEW",
+    "detected_at": "2026-10-03T11:18:39.966451+00:00",
+    "tags": []
   }
 ]
