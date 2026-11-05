@@ -26,26 +26,108 @@
     }
   },
   "HD건설기계": {
-    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260930800735": {
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261026800543": {
+      "title": "주식소각결정              ",
+      "published": "2026-10-26T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.798556+00:00",
+      "last_seen": "2026-11-05T18:28:40.798556+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261026800273": {
+      "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+      "published": "2026-10-26T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.798556+00:00",
+      "last_seen": "2026-11-05T18:28:40.798556+00:00",
+      "miss_count": 0,
+      "tags": [
+        "실적"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261019800445": {
       "title": "기업설명회(IR)개최(안내공시)              ",
-      "published": "2026-09-30T00:00:00+00:00",
+      "published": "2026-10-19T00:00:00+00:00",
       "first_seen": "2026-09-30T18:59:57.889134+00:00",
-      "last_seen": "2026-10-06T18:02:02.245146+00:00",
+      "last_seen": "2026-11-05T18:28:40.798556+00:00",
       "miss_count": 0,
       "tags": [
         "IR"
       ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261007800221": {
+      "title": "단일판매ㆍ공급계약체결              ",
+      "published": "2026-10-07T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.798556+00:00",
+      "last_seen": "2026-11-05T18:28:40.798556+00:00",
+      "miss_count": 0,
+      "tags": []
     }
   },
   "두산밥캣": {
-    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260904800404": {
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261030800976": {
+      "title": "지주회사의자회사탈퇴              ",
+      "published": "2026-10-30T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.798056+00:00",
+      "last_seen": "2026-11-05T18:28:40.798056+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261030800858": {
+      "title": "투자판단관련주요경영사항(자회사의 주요경영사항)              ",
+      "published": "2026-10-30T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.798056+00:00",
+      "last_seen": "2026-11-05T18:28:40.798056+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261029800698": {
+      "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+      "published": "2026-10-29T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.798056+00:00",
+      "last_seen": "2026-11-05T18:28:40.798056+00:00",
+      "miss_count": 0,
+      "tags": [
+        "주주환원"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261029800687": {
+      "title": "현금ㆍ현물배당결정              ",
+      "published": "2026-10-29T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.798056+00:00",
+      "last_seen": "2026-11-05T18:28:40.798056+00:00",
+      "miss_count": 0,
+      "tags": [
+        "주주환원"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261029800568": {
+      "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+      "published": "2026-10-29T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.798056+00:00",
+      "last_seen": "2026-11-05T18:28:40.798056+00:00",
+      "miss_count": 0,
+      "tags": [
+        "실적"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261019800492": {
       "title": "기업설명회(IR)개최(안내공시)              ",
-      "published": "2026-09-04T00:00:00+00:00",
+      "published": "2026-10-19T00:00:00+00:00",
       "first_seen": "2026-09-04T11:20:44.006601+00:00",
-      "last_seen": "2026-10-04T22:05:51.935593+00:00",
+      "last_seen": "2026-11-05T18:28:40.798056+00:00",
       "miss_count": 0,
       "tags": [
         "IR"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261019800459": {
+      "title": "결산실적공시예고(안내공시)              ",
+      "published": "2026-10-19T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.798056+00:00",
+      "last_seen": "2026-11-05T18:28:40.798056+00:00",
+      "miss_count": 0,
+      "tags": [
+        "실적"
       ]
     }
   },
@@ -65,7 +147,7 @@
       "published": "2026-09-08T00:00:00+00:00",
       "first_seen": "2026-09-08T07:55:50.064206+00:00",
       "last_seen": "2026-10-06T18:02:02.248738+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800163": {
@@ -73,15 +155,7 @@
       "published": "2026-09-10T00:00:00+00:00",
       "first_seen": "2026-09-10T05:18:10.736124+00:00",
       "last_seen": "2026-10-06T18:02:02.248738+00:00",
-      "miss_count": 0,
-      "tags": []
-    },
-    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800161": {
-      "title": "신규시설투자등              ",
-      "published": "2026-09-10T00:00:00+00:00",
-      "first_seen": "2026-09-10T05:18:10.736124+00:00",
-      "last_seen": "2026-10-06T18:02:02.248738+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800627": {
@@ -89,7 +163,7 @@
       "published": "2026-09-10T00:00:00+00:00",
       "first_seen": "2026-09-10T11:49:09.672242+00:00",
       "last_seen": "2026-10-06T18:02:02.248738+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260911800490": {
@@ -97,25 +171,15 @@
       "published": "2026-09-11T00:00:00+00:00",
       "first_seen": "2026-09-11T12:57:27.813148+00:00",
       "last_seen": "2026-10-06T18:02:02.248738+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
-    },
-    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260914800398": {
-      "title": "영업(잠정)실적(공정공시)              ",
-      "published": "2026-09-14T00:00:00+00:00",
-      "first_seen": "2026-06-08T07:06:33.501307+00:00",
-      "last_seen": "2026-10-06T18:02:02.248738+00:00",
-      "miss_count": 0,
-      "tags": [
-        "실적"
-      ]
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260918800259": {
       "title": "조회공시요구(풍문또는보도)에대한답변(미확정)              ",
       "published": "2026-09-18T00:00:00+00:00",
       "first_seen": "2026-08-21T02:03:17.389016+00:00",
       "last_seen": "2026-10-06T18:02:02.248738+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260918800250": {
@@ -123,7 +187,7 @@
       "published": "2026-09-18T00:00:00+00:00",
       "first_seen": "2026-09-18T10:27:21.123460+00:00",
       "last_seen": "2026-10-06T18:02:02.248738+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260922800219": {
@@ -131,15 +195,7 @@
       "published": "2026-09-22T00:00:00+00:00",
       "first_seen": "2026-09-22T09:37:45.319153+00:00",
       "last_seen": "2026-10-06T18:02:02.248738+00:00",
-      "miss_count": 0,
-      "tags": []
-    },
-    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260930800154": {
-      "title": "[기재정정]단일판매ㆍ공급계약체결              ",
-      "published": "2026-09-30T00:00:00+00:00",
-      "first_seen": "2026-07-15T10:11:57.240216+00:00",
-      "last_seen": "2026-10-06T18:02:02.248738+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260930801313": {
@@ -147,32 +203,162 @@
       "published": "2026-09-30T00:00:00+00:00",
       "first_seen": "2026-09-02T14:24:25.284817+00:00",
       "last_seen": "2026-10-06T18:02:02.248738+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
-    },
-    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260930801077": {
-      "title": "기업설명회(IR)개최(안내공시)              ",
-      "published": "2026-09-30T00:00:00+00:00",
-      "first_seen": "2026-09-30T18:59:57.891987+00:00",
-      "last_seen": "2026-10-06T18:02:02.248738+00:00",
-      "miss_count": 0,
-      "tags": [
-        "IR"
-      ]
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261001800430": {
       "title": "최대주주등소유주식변동신고서              ",
       "published": "2026-10-01T00:00:00+00:00",
       "first_seen": "2026-06-08T07:06:33.501307+00:00",
       "last_seen": "2026-10-06T18:02:02.248738+00:00",
+      "miss_count": 1,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261102800599": {
+      "title": "[기재정정]단일판매ㆍ공급계약체결              ",
+      "published": "2026-11-02T00:00:00+00:00",
+      "first_seen": "2026-07-15T10:11:57.240216+00:00",
+      "last_seen": "2026-11-05T18:28:40.804914+00:00",
       "miss_count": 0,
       "tags": []
     },
-    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261006800417": {
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800211": {
+      "title": "영업(잠정)실적(공정공시)              ",
+      "published": "2026-10-28T00:00:00+00:00",
+      "first_seen": "2026-06-08T07:06:33.501307+00:00",
+      "last_seen": "2026-11-05T18:28:40.804914+00:00",
+      "miss_count": 0,
+      "tags": [
+        "실적"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800199": {
+      "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+      "published": "2026-10-28T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.804914+00:00",
+      "last_seen": "2026-11-05T18:28:40.804914+00:00",
+      "miss_count": 0,
+      "tags": [
+        "실적"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261021800389": {
+      "title": "기업설명회(IR)개최(안내공시)              ",
+      "published": "2026-10-21T00:00:00+00:00",
+      "first_seen": "2026-09-30T18:59:57.891987+00:00",
+      "last_seen": "2026-11-05T18:28:40.804914+00:00",
+      "miss_count": 0,
+      "tags": [
+        "IR"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261020800221": {
+      "title": "단일판매ㆍ공급계약체결              ",
+      "published": "2026-10-20T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.804914+00:00",
+      "last_seen": "2026-11-05T18:28:40.804914+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014800295": {
+      "title": "주주명부폐쇄기간또는기준일설정              ",
+      "published": "2026-10-14T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.804914+00:00",
+      "last_seen": "2026-11-05T18:28:40.804914+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014800278": {
+      "title": "주주총회소집결의              ",
+      "published": "2026-10-14T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.804914+00:00",
+      "last_seen": "2026-11-05T18:28:40.804914+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800354": {
+      "title": "연결재무제표기준영업(잠정)실적(공정공시)(자회사의 주요경영사항)              ",
+      "published": "2026-10-28T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.804914+00:00",
+      "last_seen": "2026-11-05T18:28:40.804914+00:00",
+      "miss_count": 0,
+      "tags": [
+        "실적"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027000277": {
+      "title": "주요사항보고서(교환사채권발행결정)",
+      "published": "2026-10-27T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.804914+00:00",
+      "last_seen": "2026-11-05T18:28:40.804914+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800433": {
+      "title": "현금ㆍ현물배당결정              ",
+      "published": "2026-10-27T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.804914+00:00",
+      "last_seen": "2026-11-05T18:28:40.804914+00:00",
+      "miss_count": 0,
+      "tags": [
+        "주주환원"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800430": {
+      "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+      "published": "2026-10-27T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.804914+00:00",
+      "last_seen": "2026-11-05T18:28:40.804914+00:00",
+      "miss_count": 0,
+      "tags": [
+        "주주환원"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261021800403": {
       "title": "[기재정정]단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
-      "published": "2026-10-06T00:00:00+00:00",
+      "published": "2026-10-21T00:00:00+00:00",
       "first_seen": "2026-08-24T17:23:11.133544+00:00",
-      "last_seen": "2026-10-06T18:02:02.248738+00:00",
+      "last_seen": "2026-11-05T18:28:40.804914+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261020800741": {
+      "title": "중대재해발생(종속회사의주요경영사항)              ",
+      "published": "2026-10-20T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.804914+00:00",
+      "last_seen": "2026-11-05T18:28:40.804914+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800235": {
+      "title": "신규시설투자등              ",
+      "published": "2026-10-27T00:00:00+00:00",
+      "first_seen": "2026-09-10T05:18:10.736124+00:00",
+      "last_seen": "2026-11-05T18:28:40.804914+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261026800468": {
+      "title": "타인에대한채무보증결정              ",
+      "published": "2026-10-26T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.804914+00:00",
+      "last_seen": "2026-11-05T18:28:40.804914+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261012000209": {
+      "title": "[첨부정정]주요사항보고서(타법인주식및출자증권양수결정)",
+      "published": "2026-10-12T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.804914+00:00",
+      "last_seen": "2026-11-05T18:28:40.804914+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261008000497": {
+      "title": "주요사항보고서(타법인주식및출자증권양수결정)",
+      "published": "2026-10-08T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.804914+00:00",
+      "last_seen": "2026-11-05T18:28:40.804914+00:00",
       "miss_count": 0,
       "tags": []
     }
@@ -183,44 +369,64 @@
       "published": "2026-09-10T00:00:00+00:00",
       "first_seen": "2026-09-10T05:18:10.738539+00:00",
       "last_seen": "2026-10-06T18:02:02.249323+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
     },
-    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260914800401": {
-      "title": "영업(잠정)실적(공정공시)              ",
-      "published": "2026-09-14T00:00:00+00:00",
-      "first_seen": "2026-06-08T07:06:33.502069+00:00",
-      "last_seen": "2026-10-06T18:02:02.249323+00:00",
-      "miss_count": 0,
-      "tags": [
-        "실적"
-      ]
-    },
-    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260914800395": {
-      "title": "영업(잠정)실적(공정공시)(자회사의 주요경영사항)              ",
-      "published": "2026-09-14T00:00:00+00:00",
-      "first_seen": "2026-08-27T17:15:05.367948+00:00",
-      "last_seen": "2026-10-06T18:02:02.249323+00:00",
-      "miss_count": 0,
-      "tags": [
-        "실적"
-      ]
-    },
-    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260917800398": {
-      "title": "풍문또는보도에대한해명(미확정)              ",
-      "published": "2026-09-17T00:00:00+00:00",
-      "first_seen": "2026-09-17T15:34:40.305765+00:00",
-      "last_seen": "2026-10-06T18:02:02.249323+00:00",
-      "miss_count": 0,
-      "tags": []
-    },
-    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261006800410": {
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261102800620": {
       "title": "[기재정정]단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
-      "published": "2026-10-06T00:00:00+00:00",
+      "published": "2026-11-02T00:00:00+00:00",
       "first_seen": "2026-08-12T00:52:50.702496+00:00",
-      "last_seen": "2026-10-06T18:02:02.249323+00:00",
+      "last_seen": "2026-11-05T18:28:40.809716+00:00",
       "miss_count": 0,
       "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800208": {
+      "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+      "published": "2026-10-28T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.809716+00:00",
+      "last_seen": "2026-11-05T18:28:40.809716+00:00",
+      "miss_count": 0,
+      "tags": [
+        "실적"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800206": {
+      "title": "영업(잠정)실적(공정공시)              ",
+      "published": "2026-10-28T00:00:00+00:00",
+      "first_seen": "2026-06-08T07:06:33.502069+00:00",
+      "last_seen": "2026-11-05T18:28:40.809716+00:00",
+      "miss_count": 0,
+      "tags": [
+        "실적"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800202": {
+      "title": "영업(잠정)실적(공정공시)(자회사의 주요경영사항)              ",
+      "published": "2026-10-28T00:00:00+00:00",
+      "first_seen": "2026-08-27T17:15:05.367948+00:00",
+      "last_seen": "2026-11-05T18:28:40.809716+00:00",
+      "miss_count": 0,
+      "tags": [
+        "실적"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261023800304": {
+      "title": "풍문또는보도에대한해명(미확정)              ",
+      "published": "2026-10-23T00:00:00+00:00",
+      "first_seen": "2026-09-17T15:34:40.305765+00:00",
+      "last_seen": "2026-11-05T18:28:40.809716+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261021800394": {
+      "title": "기업설명회(IR)개최(안내공시)              ",
+      "published": "2026-10-21T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.809716+00:00",
+      "last_seen": "2026-11-05T18:28:40.809716+00:00",
+      "miss_count": 0,
+      "tags": [
+        "IR"
+      ]
     }
   },
   "HD현대일렉트릭": {
@@ -229,7 +435,7 @@
       "published": "2026-09-08T00:00:00+00:00",
       "first_seen": "2026-09-08T07:55:50.066628+00:00",
       "last_seen": "2026-10-06T18:02:02.250134+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800627": {
@@ -237,7 +443,7 @@
       "published": "2026-09-10T00:00:00+00:00",
       "first_seen": "2026-09-10T11:49:09.677146+00:00",
       "last_seen": "2026-10-06T18:02:02.250134+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260911800490": {
@@ -245,7 +451,7 @@
       "published": "2026-09-11T00:00:00+00:00",
       "first_seen": "2026-09-11T12:57:27.817067+00:00",
       "last_seen": "2026-10-06T18:02:02.250134+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260930801313": {
@@ -253,32 +459,104 @@
       "published": "2026-09-30T00:00:00+00:00",
       "first_seen": "2026-09-02T14:24:25.287914+00:00",
       "last_seen": "2026-10-06T18:02:02.250134+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
-    },
-    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260930801077": {
-      "title": "기업설명회(IR)개최(안내공시)              ",
-      "published": "2026-09-30T00:00:00+00:00",
-      "first_seen": "2026-09-30T18:59:57.893653+00:00",
-      "last_seen": "2026-10-06T18:02:02.250134+00:00",
-      "miss_count": 0,
-      "tags": [
-        "IR"
-      ]
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261001800430": {
       "title": "최대주주등소유주식변동신고서              ",
       "published": "2026-10-01T00:00:00+00:00",
       "first_seen": "2026-09-03T16:24:05.832514+00:00",
       "last_seen": "2026-10-06T18:02:02.250134+00:00",
+      "miss_count": 1,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800354": {
+      "title": "연결재무제표기준영업(잠정)실적(공정공시)(자회사의 주요경영사항)              ",
+      "published": "2026-10-28T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.812242+00:00",
+      "last_seen": "2026-11-05T18:28:40.812242+00:00",
+      "miss_count": 0,
+      "tags": [
+        "실적"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800319": {
+      "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+      "published": "2026-10-28T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.812242+00:00",
+      "last_seen": "2026-11-05T18:28:40.812242+00:00",
+      "miss_count": 0,
+      "tags": [
+        "실적"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027000277": {
+      "title": "주요사항보고서(교환사채권발행결정)",
+      "published": "2026-10-27T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.812242+00:00",
+      "last_seen": "2026-11-05T18:28:40.812242+00:00",
       "miss_count": 0,
       "tags": []
     },
-    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261006800417": {
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800433": {
+      "title": "현금ㆍ현물배당결정              ",
+      "published": "2026-10-27T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.812242+00:00",
+      "last_seen": "2026-11-05T18:28:40.812242+00:00",
+      "miss_count": 0,
+      "tags": [
+        "주주환원"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800430": {
+      "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+      "published": "2026-10-27T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.812242+00:00",
+      "last_seen": "2026-11-05T18:28:40.812242+00:00",
+      "miss_count": 0,
+      "tags": [
+        "주주환원"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261021800480": {
+      "title": "기업설명회(IR)개최(안내공시)              ",
+      "published": "2026-10-21T00:00:00+00:00",
+      "first_seen": "2026-09-30T18:59:57.893653+00:00",
+      "last_seen": "2026-11-05T18:28:40.812242+00:00",
+      "miss_count": 0,
+      "tags": [
+        "IR"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261021800403": {
       "title": "[기재정정]단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
-      "published": "2026-10-06T00:00:00+00:00",
+      "published": "2026-10-21T00:00:00+00:00",
       "first_seen": "2026-08-24T17:23:11.144331+00:00",
-      "last_seen": "2026-10-06T18:02:02.250134+00:00",
+      "last_seen": "2026-11-05T18:28:40.812242+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261020800741": {
+      "title": "중대재해발생(종속회사의주요경영사항)              ",
+      "published": "2026-10-20T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.812242+00:00",
+      "last_seen": "2026-11-05T18:28:40.812242+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800235": {
+      "title": "신규시설투자등              ",
+      "published": "2026-10-27T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.812242+00:00",
+      "last_seen": "2026-11-05T18:28:40.812242+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261026800468": {
+      "title": "타인에대한채무보증결정              ",
+      "published": "2026-10-26T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.812242+00:00",
+      "last_seen": "2026-11-05T18:28:40.812242+00:00",
       "miss_count": 0,
       "tags": []
     }
@@ -289,7 +567,7 @@
       "published": "2026-09-10T00:00:00+00:00",
       "first_seen": "2026-09-10T11:49:09.679644+00:00",
       "last_seen": "2026-10-06T18:02:02.250718+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260911800490": {
@@ -297,7 +575,7 @@
       "published": "2026-09-11T00:00:00+00:00",
       "first_seen": "2026-09-11T12:57:27.819437+00:00",
       "last_seen": "2026-10-06T18:02:02.250718+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260930801313": {
@@ -305,24 +583,96 @@
       "published": "2026-09-30T00:00:00+00:00",
       "first_seen": "2026-09-02T14:24:25.289475+00:00",
       "last_seen": "2026-10-06T18:02:02.250718+00:00",
+      "miss_count": 1,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800354": {
+      "title": "연결재무제표기준영업(잠정)실적(공정공시)(자회사의 주요경영사항)              ",
+      "published": "2026-10-28T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.816014+00:00",
+      "last_seen": "2026-11-05T18:28:40.816014+00:00",
+      "miss_count": 0,
+      "tags": [
+        "실적"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800319": {
+      "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+      "published": "2026-10-28T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.816014+00:00",
+      "last_seen": "2026-11-05T18:28:40.816014+00:00",
+      "miss_count": 0,
+      "tags": [
+        "실적"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027000277": {
+      "title": "주요사항보고서(교환사채권발행결정)",
+      "published": "2026-10-27T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.816014+00:00",
+      "last_seen": "2026-11-05T18:28:40.816014+00:00",
       "miss_count": 0,
       "tags": []
     },
-    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260930800705": {
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800433": {
+      "title": "현금ㆍ현물배당결정              ",
+      "published": "2026-10-27T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.816014+00:00",
+      "last_seen": "2026-11-05T18:28:40.816014+00:00",
+      "miss_count": 0,
+      "tags": [
+        "주주환원"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800430": {
+      "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+      "published": "2026-10-27T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.816014+00:00",
+      "last_seen": "2026-11-05T18:28:40.816014+00:00",
+      "miss_count": 0,
+      "tags": [
+        "주주환원"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261021800480": {
       "title": "기업설명회(IR)개최(안내공시)              ",
-      "published": "2026-09-30T00:00:00+00:00",
+      "published": "2026-10-21T00:00:00+00:00",
       "first_seen": "2026-09-30T18:59:57.894484+00:00",
-      "last_seen": "2026-10-06T18:02:02.250718+00:00",
+      "last_seen": "2026-11-05T18:28:40.816014+00:00",
       "miss_count": 0,
       "tags": [
         "IR"
       ]
     },
-    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261006800417": {
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261021800403": {
       "title": "[기재정정]단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
-      "published": "2026-10-06T00:00:00+00:00",
+      "published": "2026-10-21T00:00:00+00:00",
       "first_seen": "2026-08-24T17:23:11.149677+00:00",
-      "last_seen": "2026-10-06T18:02:02.250718+00:00",
+      "last_seen": "2026-11-05T18:28:40.816014+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261020800741": {
+      "title": "중대재해발생(종속회사의주요경영사항)              ",
+      "published": "2026-10-20T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.816014+00:00",
+      "last_seen": "2026-11-05T18:28:40.816014+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261012000209": {
+      "title": "[첨부정정]주요사항보고서(타법인주식및출자증권양수결정)",
+      "published": "2026-10-12T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.816014+00:00",
+      "last_seen": "2026-11-05T18:28:40.816014+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261008000497": {
+      "title": "주요사항보고서(타법인주식및출자증권양수결정)",
+      "published": "2026-10-08T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.816014+00:00",
+      "last_seen": "2026-11-05T18:28:40.816014+00:00",
       "miss_count": 0,
       "tags": []
     }
@@ -333,7 +683,7 @@
       "published": "2026-09-10T00:00:00+00:00",
       "first_seen": "2026-09-10T11:49:09.682242+00:00",
       "last_seen": "2026-10-06T18:02:02.251215+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260911800490": {
@@ -341,7 +691,7 @@
       "published": "2026-09-11T00:00:00+00:00",
       "first_seen": "2026-09-11T12:57:27.821838+00:00",
       "last_seen": "2026-10-06T18:02:02.251215+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260918800219": {
@@ -349,7 +699,7 @@
       "published": "2026-09-18T00:00:00+00:00",
       "first_seen": "2026-09-18T10:27:21.132165+00:00",
       "last_seen": "2026-10-06T18:02:02.251215+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260930801313": {
@@ -357,14 +707,88 @@
       "published": "2026-09-30T00:00:00+00:00",
       "first_seen": "2026-09-02T14:24:25.291026+00:00",
       "last_seen": "2026-10-06T18:02:02.251215+00:00",
+      "miss_count": 1,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800354": {
+      "title": "연결재무제표기준영업(잠정)실적(공정공시)(자회사의 주요경영사항)              ",
+      "published": "2026-10-28T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.818879+00:00",
+      "last_seen": "2026-11-05T18:28:40.818879+00:00",
+      "miss_count": 0,
+      "tags": [
+        "실적"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800319": {
+      "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+      "published": "2026-10-28T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.818879+00:00",
+      "last_seen": "2026-11-05T18:28:40.818879+00:00",
+      "miss_count": 0,
+      "tags": [
+        "실적"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027000277": {
+      "title": "주요사항보고서(교환사채권발행결정)",
+      "published": "2026-10-27T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.818879+00:00",
+      "last_seen": "2026-11-05T18:28:40.818879+00:00",
       "miss_count": 0,
       "tags": []
     },
-    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261006800417": {
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800433": {
+      "title": "현금ㆍ현물배당결정              ",
+      "published": "2026-10-27T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.818879+00:00",
+      "last_seen": "2026-11-05T18:28:40.818879+00:00",
+      "miss_count": 0,
+      "tags": [
+        "주주환원"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800430": {
+      "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+      "published": "2026-10-27T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.818879+00:00",
+      "last_seen": "2026-11-05T18:28:40.818879+00:00",
+      "miss_count": 0,
+      "tags": [
+        "주주환원"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261021800480": {
+      "title": "기업설명회(IR)개최(안내공시)              ",
+      "published": "2026-10-21T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.818879+00:00",
+      "last_seen": "2026-11-05T18:28:40.818879+00:00",
+      "miss_count": 0,
+      "tags": [
+        "IR"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261021800403": {
       "title": "[기재정정]단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
-      "published": "2026-10-06T00:00:00+00:00",
+      "published": "2026-10-21T00:00:00+00:00",
       "first_seen": "2026-08-24T17:23:11.154712+00:00",
-      "last_seen": "2026-10-06T18:02:02.251215+00:00",
+      "last_seen": "2026-11-05T18:28:40.818879+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261020800741": {
+      "title": "중대재해발생(종속회사의주요경영사항)              ",
+      "published": "2026-10-20T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.818879+00:00",
+      "last_seen": "2026-11-05T18:28:40.818879+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261026800199": {
+      "title": "단일판매ㆍ공급계약체결              ",
+      "published": "2026-10-26T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.818879+00:00",
+      "last_seen": "2026-11-05T18:28:40.818879+00:00",
       "miss_count": 0,
       "tags": []
     }
@@ -375,7 +799,7 @@
       "published": "2026-09-10T00:00:00+00:00",
       "first_seen": "2026-09-10T11:49:09.684358+00:00",
       "last_seen": "2026-10-06T18:02:02.251635+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260911800490": {
@@ -383,7 +807,7 @@
       "published": "2026-09-11T00:00:00+00:00",
       "first_seen": "2026-09-11T12:57:27.823825+00:00",
       "last_seen": "2026-10-06T18:02:02.251635+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260930801313": {
@@ -391,14 +815,80 @@
       "published": "2026-09-30T00:00:00+00:00",
       "first_seen": "2026-09-02T14:24:25.292169+00:00",
       "last_seen": "2026-10-06T18:02:02.251635+00:00",
+      "miss_count": 1,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800354": {
+      "title": "연결재무제표기준영업(잠정)실적(공정공시)(자회사의 주요경영사항)              ",
+      "published": "2026-10-28T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.821398+00:00",
+      "last_seen": "2026-11-05T18:28:40.821398+00:00",
+      "miss_count": 0,
+      "tags": [
+        "실적"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800319": {
+      "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+      "published": "2026-10-28T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.821398+00:00",
+      "last_seen": "2026-11-05T18:28:40.821398+00:00",
+      "miss_count": 0,
+      "tags": [
+        "실적"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027000277": {
+      "title": "주요사항보고서(교환사채권발행결정)",
+      "published": "2026-10-27T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.821398+00:00",
+      "last_seen": "2026-11-05T18:28:40.821398+00:00",
       "miss_count": 0,
       "tags": []
     },
-    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261006800417": {
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800433": {
+      "title": "현금ㆍ현물배당결정              ",
+      "published": "2026-10-27T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.821398+00:00",
+      "last_seen": "2026-11-05T18:28:40.821398+00:00",
+      "miss_count": 0,
+      "tags": [
+        "주주환원"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800430": {
+      "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+      "published": "2026-10-27T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.821398+00:00",
+      "last_seen": "2026-11-05T18:28:40.821398+00:00",
+      "miss_count": 0,
+      "tags": [
+        "주주환원"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261021800480": {
+      "title": "기업설명회(IR)개최(안내공시)              ",
+      "published": "2026-10-21T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.821398+00:00",
+      "last_seen": "2026-11-05T18:28:40.821398+00:00",
+      "miss_count": 0,
+      "tags": [
+        "IR"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261021800403": {
       "title": "[기재정정]단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
-      "published": "2026-10-06T00:00:00+00:00",
+      "published": "2026-10-21T00:00:00+00:00",
       "first_seen": "2026-08-24T17:23:11.159375+00:00",
-      "last_seen": "2026-10-06T18:02:02.251635+00:00",
+      "last_seen": "2026-11-05T18:28:40.821398+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261020800741": {
+      "title": "중대재해발생(종속회사의주요경영사항)              ",
+      "published": "2026-10-20T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.821398+00:00",
+      "last_seen": "2026-11-05T18:28:40.821398+00:00",
       "miss_count": 0,
       "tags": []
     }
@@ -409,7 +899,7 @@
       "published": "2026-09-10T00:00:00+00:00",
       "first_seen": "2026-09-10T05:18:10.748750+00:00",
       "last_seen": "2026-10-06T18:02:02.253428+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800161": {
@@ -417,7 +907,7 @@
       "published": "2026-09-10T00:00:00+00:00",
       "first_seen": "2026-09-10T05:18:10.748750+00:00",
       "last_seen": "2026-10-06T18:02:02.253428+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800627": {
@@ -425,7 +915,7 @@
       "published": "2026-09-10T00:00:00+00:00",
       "first_seen": "2026-09-10T11:49:09.688607+00:00",
       "last_seen": "2026-10-06T18:02:02.253428+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260911800490": {
@@ -433,25 +923,15 @@
       "published": "2026-09-11T00:00:00+00:00",
       "first_seen": "2026-09-11T12:57:27.827722+00:00",
       "last_seen": "2026-10-06T18:02:02.253428+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
-    },
-    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260914800398": {
-      "title": "영업(잠정)실적(공정공시)              ",
-      "published": "2026-09-14T00:00:00+00:00",
-      "first_seen": "2026-06-08T07:06:33.512851+00:00",
-      "last_seen": "2026-10-06T18:02:02.253428+00:00",
-      "miss_count": 0,
-      "tags": [
-        "실적"
-      ]
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260918800259": {
       "title": "조회공시요구(풍문또는보도)에대한답변(미확정)              ",
       "published": "2026-09-18T00:00:00+00:00",
       "first_seen": "2026-08-21T02:03:17.413755+00:00",
       "last_seen": "2026-10-06T18:02:02.253428+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260918800250": {
@@ -459,7 +939,7 @@
       "published": "2026-09-18T00:00:00+00:00",
       "first_seen": "2026-09-18T10:27:21.139801+00:00",
       "last_seen": "2026-10-06T18:02:02.253428+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260922800219": {
@@ -467,15 +947,7 @@
       "published": "2026-09-22T00:00:00+00:00",
       "first_seen": "2026-09-22T09:37:45.331623+00:00",
       "last_seen": "2026-10-06T18:02:02.253428+00:00",
-      "miss_count": 0,
-      "tags": []
-    },
-    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260930800154": {
-      "title": "[기재정정]단일판매ㆍ공급계약체결              ",
-      "published": "2026-09-30T00:00:00+00:00",
-      "first_seen": "2026-09-30T06:36:24.365060+00:00",
-      "last_seen": "2026-10-06T18:02:02.253428+00:00",
-      "miss_count": 0,
+      "miss_count": 1,
       "tags": []
     },
     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260930801313": {
@@ -483,24 +955,122 @@
       "published": "2026-09-30T00:00:00+00:00",
       "first_seen": "2026-09-02T14:24:25.294712+00:00",
       "last_seen": "2026-10-06T18:02:02.253428+00:00",
+      "miss_count": 1,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261102800599": {
+      "title": "[기재정정]단일판매ㆍ공급계약체결              ",
+      "published": "2026-11-02T00:00:00+00:00",
+      "first_seen": "2026-09-30T06:36:24.365060+00:00",
+      "last_seen": "2026-11-05T18:28:40.825248+00:00",
       "miss_count": 0,
       "tags": []
     },
-    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260930801140": {
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800211": {
+      "title": "영업(잠정)실적(공정공시)              ",
+      "published": "2026-10-28T00:00:00+00:00",
+      "first_seen": "2026-06-08T07:06:33.512851+00:00",
+      "last_seen": "2026-11-05T18:28:40.825248+00:00",
+      "miss_count": 0,
+      "tags": [
+        "실적"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800199": {
+      "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+      "published": "2026-10-28T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.825248+00:00",
+      "last_seen": "2026-11-05T18:28:40.825248+00:00",
+      "miss_count": 0,
+      "tags": [
+        "실적"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261021800389": {
       "title": "기업설명회(IR)개최(안내공시)              ",
-      "published": "2026-09-30T00:00:00+00:00",
+      "published": "2026-10-21T00:00:00+00:00",
       "first_seen": "2026-09-30T18:59:57.898094+00:00",
-      "last_seen": "2026-10-06T18:02:02.253428+00:00",
+      "last_seen": "2026-11-05T18:28:40.825248+00:00",
       "miss_count": 0,
       "tags": [
         "IR"
       ]
     },
-    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261006800417": {
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261020800221": {
+      "title": "단일판매ㆍ공급계약체결              ",
+      "published": "2026-10-20T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.825248+00:00",
+      "last_seen": "2026-11-05T18:28:40.825248+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014800295": {
+      "title": "주주명부폐쇄기간또는기준일설정              ",
+      "published": "2026-10-14T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.825248+00:00",
+      "last_seen": "2026-11-05T18:28:40.825248+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014800278": {
+      "title": "주주총회소집결의              ",
+      "published": "2026-10-14T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.825248+00:00",
+      "last_seen": "2026-11-05T18:28:40.825248+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800354": {
+      "title": "연결재무제표기준영업(잠정)실적(공정공시)(자회사의 주요경영사항)              ",
+      "published": "2026-10-28T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.825248+00:00",
+      "last_seen": "2026-11-05T18:28:40.825248+00:00",
+      "miss_count": 0,
+      "tags": [
+        "실적"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027000277": {
+      "title": "주요사항보고서(교환사채권발행결정)",
+      "published": "2026-10-27T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.825248+00:00",
+      "last_seen": "2026-11-05T18:28:40.825248+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800433": {
+      "title": "현금ㆍ현물배당결정              ",
+      "published": "2026-10-27T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.825248+00:00",
+      "last_seen": "2026-11-05T18:28:40.825248+00:00",
+      "miss_count": 0,
+      "tags": [
+        "주주환원"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800430": {
+      "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+      "published": "2026-10-27T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.825248+00:00",
+      "last_seen": "2026-11-05T18:28:40.825248+00:00",
+      "miss_count": 0,
+      "tags": [
+        "주주환원"
+      ]
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261021800403": {
       "title": "[기재정정]단일판매ㆍ공급계약체결(자회사의 주요경영사항)              ",
-      "published": "2026-10-06T00:00:00+00:00",
+      "published": "2026-10-21T00:00:00+00:00",
       "first_seen": "2026-08-24T17:23:11.168305+00:00",
-      "last_seen": "2026-10-06T18:02:02.253428+00:00",
+      "last_seen": "2026-11-05T18:28:40.825248+00:00",
+      "miss_count": 0,
+      "tags": []
+    },
+    "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261020800741": {
+      "title": "중대재해발생(종속회사의주요경영사항)              ",
+      "published": "2026-10-20T00:00:00+00:00",
+      "first_seen": "2026-11-05T18:28:40.825248+00:00",
+      "last_seen": "2026-11-05T18:28:40.825248+00:00",
       "miss_count": 0,
       "tags": []
     }
