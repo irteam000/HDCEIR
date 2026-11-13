@@ -27436,5 +27436,117 @@
     "state": "NEW",
     "detected_at": "2026-11-12T18:20:07.657702+00:00",
     "tags": []
+  },
+  {
+    "company": "두산밥캣",
+    "title": "분기보고서 (2026.09)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261112000726",
+    "state": "NEW",
+    "detected_at": "2026-11-13T12:37:48.294904+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD건설기계",
+    "title": "단일판매ㆍ공급계약체결              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261110800183",
+    "state": "NEW",
+    "detected_at": "2026-11-13T12:37:48.295343+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "분기보고서 (2026.09)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261113000467",
+    "state": "NEW",
+    "detected_at": "2026-11-13T12:37:48.308865+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261026800285",
+    "state": "UPDATED",
+    "detected_at": "2026-11-13T12:37:48.308865+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "현금ㆍ현물배당결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261026800310",
+    "state": "UPDATED",
+    "detected_at": "2026-11-13T12:37:48.308865+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261026800212",
+    "state": "UPDATED",
+    "detected_at": "2026-11-13T12:37:48.308865+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "기업설명회(IR)개최(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261022800494",
+    "state": "UPDATED",
+    "detected_at": "2026-11-13T12:37:48.308865+00:00",
+    "tags": [
+      "IR"
+    ]
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "분기보고서 (2026.09)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261113000467",
+    "state": "NEW",
+    "detected_at": "2026-11-13T12:37:48.308865+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261026800285",
+    "state": "UPDATED",
+    "detected_at": "2026-11-13T12:37:48.308865+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "현금ㆍ현물배당결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261026800310",
+    "state": "UPDATED",
+    "detected_at": "2026-11-13T12:37:48.308865+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261026800212",
+    "state": "UPDATED",
+    "detected_at": "2026-11-13T12:37:48.308865+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "기업설명회(IR)개최(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261022800494",
+    "state": "UPDATED",
+    "detected_at": "2026-11-13T12:37:48.308865+00:00",
+    "tags": [
+      "IR"
+    ]
   }
 ]
