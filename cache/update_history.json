@@ -28100,5 +28100,45 @@
     "state": "NEW",
     "detected_at": "2026-11-16T00:34:27.444889+00:00",
     "tags": []
+  },
+  {
+    "company": "두산밥캣",
+    "title": "분기보고서 (2026.09)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261112000726",
+    "state": "NEW",
+    "detected_at": "2026-11-16T01:08:15.636536+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD건설기계",
+    "title": "단일판매ㆍ공급계약체결              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261110800183",
+    "state": "NEW",
+    "detected_at": "2026-11-16T01:08:15.637149+00:00",
+    "tags": []
+  },
+  {
+    "company": "진성티이씨",
+    "title": "분기보고서 (2026.09)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261116000008",
+    "state": "NEW",
+    "detected_at": "2026-11-16T01:08:15.637261+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "분기보고서 (2026.09)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261113000467",
+    "state": "NEW",
+    "detected_at": "2026-11-16T01:08:15.651344+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "분기보고서 (2026.09)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261113000467",
+    "state": "NEW",
+    "detected_at": "2026-11-16T01:08:15.651344+00:00",
+    "tags": []
   }
 ]
