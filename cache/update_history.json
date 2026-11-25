@@ -32830,5 +32830,61 @@
     "state": "NEW",
     "detected_at": "2026-11-24T12:52:34.609312+00:00",
     "tags": []
+  },
+  {
+    "company": "HD건설기계",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261124800338",
+    "state": "NEW",
+    "detected_at": "2026-11-25T01:13:19.327519+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "대표이사(대표집행임원)변경(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261123800342",
+    "state": "NEW",
+    "detected_at": "2026-11-25T01:13:19.342278+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "임시주주총회결과              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261123800334",
+    "state": "NEW",
+    "detected_at": "2026-11-25T01:13:19.342278+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261124800800",
+    "state": "NEW",
+    "detected_at": "2026-11-25T01:13:19.334141+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261123800385",
+    "state": "NEW",
+    "detected_at": "2026-11-25T01:13:19.342278+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "대표이사(대표집행임원)변경(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261123800342",
+    "state": "NEW",
+    "detected_at": "2026-11-25T01:13:19.342278+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "임시주주총회결과              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261123800334",
+    "state": "NEW",
+    "detected_at": "2026-11-25T01:13:19.342278+00:00",
+    "tags": []
   }
 ]
