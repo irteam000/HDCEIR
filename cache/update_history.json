@@ -34672,5 +34672,325 @@
     "state": "NEW",
     "detected_at": "2026-11-27T10:47:36.840573+00:00",
     "tags": []
+  },
+  {
+    "company": "HD건설기계",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261124800338",
+    "state": "NEW",
+    "detected_at": "2026-11-27T11:22:31.242285+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "유상증자또는주식관련사채등의발행결과(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261126800411",
+    "state": "NEW",
+    "detected_at": "2026-11-27T11:22:31.253014+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "대표이사(대표집행임원)변경(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261123800342",
+    "state": "NEW",
+    "detected_at": "2026-11-27T11:22:31.253014+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "임시주주총회결과              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261123800334",
+    "state": "NEW",
+    "detected_at": "2026-11-27T11:22:31.253014+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "주요사항보고서(교환사채권발행결정)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027000277",
+    "state": "REMOVED",
+    "detected_at": "2026-11-27T11:22:31.245873+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "신규시설투자등              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800235",
+    "state": "REMOVED",
+    "detected_at": "2026-11-27T11:22:31.245873+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "현금ㆍ현물배당결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800433",
+    "state": "REMOVED",
+    "detected_at": "2026-11-27T11:22:31.245873+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800430",
+    "state": "REMOVED",
+    "detected_at": "2026-11-27T11:22:31.245873+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261124800800",
+    "state": "NEW",
+    "detected_at": "2026-11-27T11:22:31.247262+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "유상증자또는주식관련사채등의발행결과(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261126800411",
+    "state": "NEW",
+    "detected_at": "2026-11-27T11:22:31.253014+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261125800602",
+    "state": "NEW",
+    "detected_at": "2026-11-27T11:22:31.253014+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "주요사항보고서(교환사채권발행결정)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027000277",
+    "state": "REMOVED",
+    "detected_at": "2026-11-27T11:22:31.248080+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "신규시설투자등              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800235",
+    "state": "REMOVED",
+    "detected_at": "2026-11-27T11:22:31.248080+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "현금ㆍ현물배당결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800433",
+    "state": "REMOVED",
+    "detected_at": "2026-11-27T11:22:31.248080+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800430",
+    "state": "REMOVED",
+    "detected_at": "2026-11-27T11:22:31.248080+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "유상증자또는주식관련사채등의발행결과(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261126800411",
+    "state": "NEW",
+    "detected_at": "2026-11-27T11:22:31.253014+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261125800602",
+    "state": "NEW",
+    "detected_at": "2026-11-27T11:22:31.253014+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "주요사항보고서(교환사채권발행결정)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027000277",
+    "state": "REMOVED",
+    "detected_at": "2026-11-27T11:22:31.248837+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "현금ㆍ현물배당결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800433",
+    "state": "REMOVED",
+    "detected_at": "2026-11-27T11:22:31.248837+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800430",
+    "state": "REMOVED",
+    "detected_at": "2026-11-27T11:22:31.248837+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "유상증자또는주식관련사채등의발행결과(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261126800411",
+    "state": "NEW",
+    "detected_at": "2026-11-27T11:22:31.253014+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261125800602",
+    "state": "NEW",
+    "detected_at": "2026-11-27T11:22:31.253014+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린엔진",
+    "title": "주요사항보고서(교환사채권발행결정)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027000277",
+    "state": "REMOVED",
+    "detected_at": "2026-11-27T11:22:31.249750+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린엔진",
+    "title": "현금ㆍ현물배당결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800433",
+    "state": "REMOVED",
+    "detected_at": "2026-11-27T11:22:31.249750+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대마린엔진",
+    "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800430",
+    "state": "REMOVED",
+    "detected_at": "2026-11-27T11:22:31.249750+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "유상증자또는주식관련사채등의발행결과(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261126800411",
+    "state": "NEW",
+    "detected_at": "2026-11-27T11:22:31.253014+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261125800602",
+    "state": "NEW",
+    "detected_at": "2026-11-27T11:22:31.253014+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대에너지솔루션",
+    "title": "주요사항보고서(교환사채권발행결정)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027000277",
+    "state": "REMOVED",
+    "detected_at": "2026-11-27T11:22:31.250427+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대에너지솔루션",
+    "title": "현금ㆍ현물배당결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800433",
+    "state": "REMOVED",
+    "detected_at": "2026-11-27T11:22:31.250427+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대에너지솔루션",
+    "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800430",
+    "state": "REMOVED",
+    "detected_at": "2026-11-27T11:22:31.250427+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "유상증자또는주식관련사채등의발행결과(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261126800411",
+    "state": "NEW",
+    "detected_at": "2026-11-27T11:22:31.253014+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261125800602",
+    "state": "NEW",
+    "detected_at": "2026-11-27T11:22:31.253014+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "대표이사(대표집행임원)변경(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261123800342",
+    "state": "NEW",
+    "detected_at": "2026-11-27T11:22:31.253014+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "임시주주총회결과              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261123800334",
+    "state": "NEW",
+    "detected_at": "2026-11-27T11:22:31.253014+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "주요사항보고서(교환사채권발행결정)",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027000277",
+    "state": "REMOVED",
+    "detected_at": "2026-11-27T11:22:31.253014+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "현금ㆍ현물배당결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800433",
+    "state": "REMOVED",
+    "detected_at": "2026-11-27T11:22:31.253014+00:00",
+    "tags": [
+      "주주환원"
+    ]
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261027800430",
+    "state": "REMOVED",
+    "detected_at": "2026-11-27T11:22:31.253014+00:00",
+    "tags": [
+      "주주환원"
+    ]
   }
 ]
