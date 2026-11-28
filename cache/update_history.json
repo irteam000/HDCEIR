@@ -36216,5 +36216,271 @@
     "state": "NEW",
     "detected_at": "2026-11-28T14:57:05.807960+00:00",
     "tags": []
+  },
+  {
+    "company": "HD건설기계",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261124800338",
+    "state": "NEW",
+    "detected_at": "2026-11-28T16:15:15.503017+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "유상증자또는주식관련사채등의발행결과(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261126800411",
+    "state": "NEW",
+    "detected_at": "2026-11-28T16:15:15.509595+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "대표이사(대표집행임원)변경(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261123800342",
+    "state": "NEW",
+    "detected_at": "2026-11-28T16:15:15.509595+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "임시주주총회결과              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261123800334",
+    "state": "NEW",
+    "detected_at": "2026-11-28T16:15:15.509595+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800354",
+    "state": "REMOVED",
+    "detected_at": "2026-11-28T16:15:15.505301+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800319",
+    "state": "REMOVED",
+    "detected_at": "2026-11-28T16:15:15.505301+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261124800800",
+    "state": "NEW",
+    "detected_at": "2026-11-28T16:15:15.506391+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD한국조선해양",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800208",
+    "state": "REMOVED",
+    "detected_at": "2026-11-28T16:15:15.506391+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "유상증자또는주식관련사채등의발행결과(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261126800411",
+    "state": "NEW",
+    "detected_at": "2026-11-28T16:15:15.509595+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261125800602",
+    "state": "NEW",
+    "detected_at": "2026-11-28T16:15:15.509595+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800354",
+    "state": "REMOVED",
+    "detected_at": "2026-11-28T16:15:15.506882+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대일렉트릭",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800319",
+    "state": "REMOVED",
+    "detected_at": "2026-11-28T16:15:15.506882+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "유상증자또는주식관련사채등의발행결과(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261126800411",
+    "state": "NEW",
+    "detected_at": "2026-11-28T16:15:15.509595+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261125800602",
+    "state": "NEW",
+    "detected_at": "2026-11-28T16:15:15.509595+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800354",
+    "state": "REMOVED",
+    "detected_at": "2026-11-28T16:15:15.507312+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대마린솔루션",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800319",
+    "state": "REMOVED",
+    "detected_at": "2026-11-28T16:15:15.507312+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "유상증자또는주식관련사채등의발행결과(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261126800411",
+    "state": "NEW",
+    "detected_at": "2026-11-28T16:15:15.509595+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261125800602",
+    "state": "NEW",
+    "detected_at": "2026-11-28T16:15:15.509595+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대마린엔진",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800354",
+    "state": "REMOVED",
+    "detected_at": "2026-11-28T16:15:15.507714+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대마린엔진",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800319",
+    "state": "REMOVED",
+    "detected_at": "2026-11-28T16:15:15.507714+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "유상증자또는주식관련사채등의발행결과(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261126800411",
+    "state": "NEW",
+    "detected_at": "2026-11-28T16:15:15.509595+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261125800602",
+    "state": "NEW",
+    "detected_at": "2026-11-28T16:15:15.509595+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대에너지솔루션",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800354",
+    "state": "REMOVED",
+    "detected_at": "2026-11-28T16:15:15.508064+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대에너지솔루션",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800319",
+    "state": "REMOVED",
+    "detected_at": "2026-11-28T16:15:15.508064+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대",
+    "title": "유상증자또는주식관련사채등의발행결과(자율공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261126800411",
+    "state": "NEW",
+    "detected_at": "2026-11-28T16:15:15.509595+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대",
+    "title": "최대주주등소유주식변동신고서              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261125800602",
+    "state": "NEW",
+    "detected_at": "2026-11-28T16:15:15.509595+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "대표이사(대표집행임원)변경(안내공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261123800342",
+    "state": "NEW",
+    "detected_at": "2026-11-28T16:15:15.509595+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "임시주주총회결과              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261123800334",
+    "state": "NEW",
+    "detected_at": "2026-11-28T16:15:15.509595+00:00",
+    "tags": []
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)(자회사의 주요경영사항)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800354",
+    "state": "REMOVED",
+    "detected_at": "2026-11-28T16:15:15.509595+00:00",
+    "tags": [
+      "실적"
+    ]
+  },
+  {
+    "company": "HD현대중공업",
+    "title": "연결재무제표기준영업(잠정)실적(공정공시)              ",
+    "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800319",
+    "state": "REMOVED",
+    "detected_at": "2026-11-28T16:15:15.509595+00:00",
+    "tags": [
+      "실적"
+    ]
   }
 ]
